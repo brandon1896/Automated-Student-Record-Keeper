@@ -8,7 +8,7 @@ create table student
 	studentid integer primary key,
 	transferstudent boolean set default FALSE,
 	transferschool text,
-	department text,
+	program	text,
 	yearlevel integer
 );
 CREATE UNIQUE INDEX studentid ON table (student);
