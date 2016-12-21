@@ -16,5 +16,23 @@ namespace AutomatedStudentRecordKeeper
         {
             InitializeComponent();
         }
+
+        private void login_Click(object sender, EventArgs e)
+        {
+            LoginForm login = new LoginForm();
+            login.ShowDialog();
+        }
+
+        private void addstudentbutton_Click(object sender, EventArgs e)
+        {
+            AddStudent add = new AddStudent();
+            add.ShowDialog();
+        }
+
+        private void viewstudentsbutton_Click(object sender, EventArgs e)
+        {
+            ViewStudents view = new ViewStudents();
+            view.ShowDialog();
+        }
     }
 }
