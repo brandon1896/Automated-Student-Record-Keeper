@@ -19,3 +19,6 @@ C:\Users\ander\Documents\GitHub\Automated-Student-Record-Keeper\Gui\AutomatedStu
 C:\Users\ander\Documents\GitHub\Automated-Student-Record-Keeper\Gui\AutomatedStudentRecordKeeper\AutomatedStudentRecordKeeper\bin\Debug\AutomatedStudentRecordKeeper.exe
 C:\Users\ander\Documents\GitHub\Automated-Student-Record-Keeper\Gui\AutomatedStudentRecordKeeper\AutomatedStudentRecordKeeper\bin\Debug\AutomatedStudentRecordKeeper.pdb
 C:\Users\ander\Documents\GitHub\Automated-Student-Record-Keeper\Gui\AutomatedStudentRecordKeeper\AutomatedStudentRecordKeeper\obj\Debug\AutomatedStudentRecordKeeper.AddStudent.resources
+C:\Users\bjcri\Desktop\Degree Project\Automated-Student-Record-Keeper\Gui\AutomatedStudentRecordKeeper\AutomatedStudentRecordKeeper\obj\Debug\AutomatedStudentRecordKeeper.AddStudent.resources
+C:\Users\bjcri\Desktop\Degree Project\Automated-Student-Record-Keeper\Gui\AutomatedStudentRecordKeeper\AutomatedStudentRecordKeeper\obj\Debug\AutomatedStudentRecordKeeper.MainScreen.resources
+C:\Users\bjcri\Desktop\Degree Project\Automated-Student-Record-Keeper\Gui\AutomatedStudentRecordKeeper\AutomatedStudentRecordKeeper\obj\Debug\AutomatedStudentRecordKeeper.LoginForm.resources

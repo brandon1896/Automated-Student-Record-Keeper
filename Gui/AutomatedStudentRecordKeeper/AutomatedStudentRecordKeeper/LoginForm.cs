@@ -34,6 +34,8 @@ namespace AutomatedStudentRecordKeeper
             else
             {
                 MessageBox.Show("Login Successful");
+                MainScreen main = new MainScreen();
+                main.ShowDialog();
                 this.Close();
             }
         }
