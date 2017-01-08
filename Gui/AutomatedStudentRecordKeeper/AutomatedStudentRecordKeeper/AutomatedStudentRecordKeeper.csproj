@@ -52,6 +52,12 @@
     <Compile Include="AddCourse.Designer.cs">
       <DependentUpon>AddCourse.cs</DependentUpon>
     </Compile>
+    <Compile Include="AddGrade.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddGrade.Designer.cs">
+      <DependentUpon>AddGrade.cs</DependentUpon>
+    </Compile>
     <Compile Include="AddStudent.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -72,6 +78,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="StudentMenu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="StudentMenu.Designer.cs">
+      <DependentUpon>StudentMenu.cs</DependentUpon>
+    </Compile>
     <Compile Include="TransferStudent.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -84,12 +96,24 @@
     <Compile Include="ViewCourse.Designer.cs">
       <DependentUpon>ViewCourse.cs</DependentUpon>
     </Compile>
+    <Compile Include="ViewGrade.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ViewGrade.Designer.cs">
+      <DependentUpon>ViewGrade.cs</DependentUpon>
+    </Compile>
     <Compile Include="ViewStudents.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="ViewStudents.Designer.cs">
       <DependentUpon>ViewStudents.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="AddCourse.resx">
+      <DependentUpon>AddCourse.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AddGrade.resx">
+      <DependentUpon>AddGrade.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AddStudent.resx">
       <DependentUpon>AddStudent.cs</DependentUpon>
     </EmbeddedResource>
@@ -108,8 +132,20 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="StudentMenu.resx">
+      <DependentUpon>StudentMenu.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="TransferStudent.resx">
       <DependentUpon>TransferStudent.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ViewCourse.resx">
+      <DependentUpon>ViewCourse.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ViewGrade.resx">
+      <DependentUpon>ViewGrade.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ViewStudents.resx">
+      <DependentUpon>ViewStudents.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

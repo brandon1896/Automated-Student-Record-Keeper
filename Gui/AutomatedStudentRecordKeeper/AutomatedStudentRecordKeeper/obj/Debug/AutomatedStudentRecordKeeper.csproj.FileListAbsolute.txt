@@ -22,3 +22,9 @@ C:\Users\ander\Documents\GitHub\Automated-Student-Record-Keeper\Gui\AutomatedStu
 C:\Users\bjcri\Desktop\Degree Project\Automated-Student-Record-Keeper\Gui\AutomatedStudentRecordKeeper\AutomatedStudentRecordKeeper\obj\Debug\AutomatedStudentRecordKeeper.AddStudent.resources
 C:\Users\bjcri\Desktop\Degree Project\Automated-Student-Record-Keeper\Gui\AutomatedStudentRecordKeeper\AutomatedStudentRecordKeeper\obj\Debug\AutomatedStudentRecordKeeper.MainScreen.resources
 C:\Users\bjcri\Desktop\Degree Project\Automated-Student-Record-Keeper\Gui\AutomatedStudentRecordKeeper\AutomatedStudentRecordKeeper\obj\Debug\AutomatedStudentRecordKeeper.LoginForm.resources
+C:\Users\bjcri\Desktop\Degree Project\Automated-Student-Record-Keeper\Gui\AutomatedStudentRecordKeeper\AutomatedStudentRecordKeeper\obj\Debug\AutomatedStudentRecordKeeper.AddCourse.resources
+C:\Users\bjcri\Desktop\Degree Project\Automated-Student-Record-Keeper\Gui\AutomatedStudentRecordKeeper\AutomatedStudentRecordKeeper\obj\Debug\AutomatedStudentRecordKeeper.AddGrade.resources
+C:\Users\bjcri\Desktop\Degree Project\Automated-Student-Record-Keeper\Gui\AutomatedStudentRecordKeeper\AutomatedStudentRecordKeeper\obj\Debug\AutomatedStudentRecordKeeper.StudentMenu.resources
+C:\Users\bjcri\Desktop\Degree Project\Automated-Student-Record-Keeper\Gui\AutomatedStudentRecordKeeper\AutomatedStudentRecordKeeper\obj\Debug\AutomatedStudentRecordKeeper.ViewCourse.resources
+C:\Users\bjcri\Desktop\Degree Project\Automated-Student-Record-Keeper\Gui\AutomatedStudentRecordKeeper\AutomatedStudentRecordKeeper\obj\Debug\AutomatedStudentRecordKeeper.ViewGrade.resources
+C:\Users\bjcri\Desktop\Degree Project\Automated-Student-Record-Keeper\Gui\AutomatedStudentRecordKeeper\AutomatedStudentRecordKeeper\obj\Debug\AutomatedStudentRecordKeeper.ViewStudents.resources
