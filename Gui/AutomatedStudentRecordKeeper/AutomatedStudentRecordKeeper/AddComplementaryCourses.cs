@@ -10,16 +10,11 @@ using System.Windows.Forms;
 
 namespace AutomatedStudentRecordKeeper
 {
-    public partial class TransferStudent : Form
+    public partial class AddComplementaryCourses : Form
     {
-        public TransferStudent()
+        public AddComplementaryCourses()
         {
             InitializeComponent();
-        }
-
-        private void TransferStudent_Load(object sender, EventArgs e)
-        {
-
         }
     }
 }
