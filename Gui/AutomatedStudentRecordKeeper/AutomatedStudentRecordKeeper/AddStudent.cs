@@ -10,14 +10,19 @@ using System.Windows.Forms;
 
 namespace AutomatedStudentRecordKeeper
 {
-    public partial class TransferStudent : Form
+    public partial class AddStudent : Form
     {
-        public TransferStudent()
+        public AddStudent()
         {
             InitializeComponent();
         }
 
         private void TransferStudent_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label3_Click(object sender, EventArgs e)
         {
 
         }

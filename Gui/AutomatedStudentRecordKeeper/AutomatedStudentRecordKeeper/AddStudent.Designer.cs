@@ -1,6 +1,6 @@
 ﻿namespace AutomatedStudentRecordKeeper
 {
-    partial class TransferStudent
+    partial class AddStudent
     {
         /// <summary>
         /// Required designer variable.
@@ -100,11 +100,12 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(14, 74);
+            this.label3.Location = new System.Drawing.Point(5, 71);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(42, 13);
+            this.label3.Size = new System.Drawing.Size(51, 26);
             this.label3.TabIndex = 5;
-            this.label3.Text = "College";
+            this.label3.Text = "Previous \r\nSchool";
+            this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // CollegeBox
             // 
@@ -159,7 +160,7 @@
             this.MakeupCourseTable.ColumnCount = 3;
             this.MakeupCourseTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 48.42105F));
             this.MakeupCourseTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 51.57895F));
-            this.MakeupCourseTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 102F));
+            this.MakeupCourseTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 104F));
             this.MakeupCourseTable.Location = new System.Drawing.Point(12, 169);
             this.MakeupCourseTable.Name = "MakeupCourseTable";
             this.MakeupCourseTable.RowCount = 2;
@@ -287,7 +288,7 @@
             this.tableLayoutPanel1.ColumnCount = 3;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 48.42105F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 51.57895F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 102F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 104F));
             this.tableLayoutPanel1.Location = new System.Drawing.Point(238, 169);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 2;
@@ -296,7 +297,7 @@
             this.tableLayoutPanel1.Size = new System.Drawing.Size(200, 36);
             this.tableLayoutPanel1.TabIndex = 24;
             // 
-            // TransferStudent
+            // AddStudent
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -326,7 +327,7 @@
             this.Controls.Add(this.Namebox);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.AddStudentButton);
-            this.Name = "TransferStudent";
+            this.Name = "AddStudent";
             this.Text = "TransferStudent";
             this.Load += new System.EventHandler(this.TransferStudent_Load);
             this.ResumeLayout(false);

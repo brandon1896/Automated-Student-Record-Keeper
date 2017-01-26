@@ -33,6 +33,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Npgsql, Version=3.1.9.0, Culture=neutral, PublicKeyToken=5d8b90d52f46fda7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Npgsql.3.1.9\lib\net451\Npgsql.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -58,23 +62,17 @@
     <Compile Include="AddGrade.Designer.cs">
       <DependentUpon>AddGrade.cs</DependentUpon>
     </Compile>
-    <Compile Include="AddStudent.cs">
+    <Compile Include="AddComplementaryCourses.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AddStudent.Designer.cs">
-      <DependentUpon>AddStudent.cs</DependentUpon>
+    <Compile Include="AddComplementaryCourses.Designer.cs">
+      <DependentUpon>AddComplementaryCourses.cs</DependentUpon>
     </Compile>
     <Compile Include="MainScreen.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="MainScreen.Designer.cs">
       <DependentUpon>MainScreen.cs</DependentUpon>
-    </Compile>
-    <Compile Include="LoginForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="LoginForm.Designer.cs">
-      <DependentUpon>LoginForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -84,11 +82,11 @@
     <Compile Include="StudentMenu.Designer.cs">
       <DependentUpon>StudentMenu.cs</DependentUpon>
     </Compile>
-    <Compile Include="TransferStudent.cs">
+    <Compile Include="AddStudent.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="TransferStudent.Designer.cs">
-      <DependentUpon>TransferStudent.cs</DependentUpon>
+    <Compile Include="AddStudent.Designer.cs">
+      <DependentUpon>AddStudent.cs</DependentUpon>
     </Compile>
     <Compile Include="ViewCourse.cs">
       <SubType>Form</SubType>
@@ -108,20 +106,17 @@
     <Compile Include="ViewStudents.Designer.cs">
       <DependentUpon>ViewStudents.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="AddComplementaryCourses.resx">
+      <DependentUpon>AddComplementaryCourses.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AddCourse.resx">
       <DependentUpon>AddCourse.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="AddGrade.resx">
       <DependentUpon>AddGrade.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="AddStudent.resx">
-      <DependentUpon>AddStudent.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="MainScreen.resx">
       <DependentUpon>MainScreen.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="LoginForm.resx">
-      <DependentUpon>LoginForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -135,8 +130,8 @@
     <EmbeddedResource Include="StudentMenu.resx">
       <DependentUpon>StudentMenu.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="TransferStudent.resx">
-      <DependentUpon>TransferStudent.cs</DependentUpon>
+    <EmbeddedResource Include="AddStudent.resx">
+      <DependentUpon>AddStudent.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ViewCourse.resx">
       <DependentUpon>ViewCourse.cs</DependentUpon>
@@ -147,6 +142,7 @@
     <EmbeddedResource Include="ViewStudents.resx">
       <DependentUpon>ViewStudents.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

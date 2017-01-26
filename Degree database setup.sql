@@ -16,11 +16,11 @@ CREATE UNIQUE INDEX studentid ON table (student);
 create table courses
 (
 	ID serial primary key,
-	coursesubject text null constraint valid_coursecode check (length(coursesubject) > 0),
+	coursesubject text ,
 	coursenumber integer,
 	coursesection text,
-	coursename text null constraint valid_name check (length(name) >0),
-	courseyear integer null constraint valid_year check(courseyear>2000),
+	coursename text,
+	courseyear integer,
 	yearlevel integer,
 	credits integer
 );
@@ -28,13 +28,11 @@ CREATE UNIQUE INDEX coursename ON table (courses);
 
 create table complementarycourses
 (
-	ID serial primary key,
-	coursesubject text null constraint valid_coursecode check (length(coursesubject) > 0),
+	coursesubject text,
 	coursenumber integer,
 	coursesection text,
-	coursename text null constraint valid_name check (length(name) >0),
+	coursename text ,
 	yearlevel integer,
-	courseyear integer null constraint valid_year check(courseyear>2000),
 	credits integer
 );
 CREATE UNIQUE INDEX coursename ON table (courses);

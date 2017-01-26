@@ -47,7 +47,7 @@
             this.CourseTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 48.14815F));
             this.CourseTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 51.85185F));
             this.CourseTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 220F));
-            this.CourseTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.CourseTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 41F));
             this.CourseTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 258F));
             this.CourseTable.Location = new System.Drawing.Point(12, 87);
             this.CourseTable.Name = "CourseTable";
@@ -61,6 +61,7 @@
             this.CourseTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.CourseTable.Size = new System.Drawing.Size(411, 139);
             this.CourseTable.TabIndex = 1;
+            this.CourseTable.Paint += new System.Windows.Forms.PaintEventHandler(this.CourseTable_Paint);
             // 
             // label1
             // 
@@ -70,6 +71,7 @@
             this.label1.Size = new System.Drawing.Size(79, 13);
             this.label1.TabIndex = 0;
             this.label1.Text = "Course Subject";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // label2
             // 
@@ -79,6 +81,7 @@
             this.label2.Size = new System.Drawing.Size(71, 13);
             this.label2.TabIndex = 2;
             this.label2.Text = "Course Name";
+            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // label3
             // 
@@ -88,6 +91,7 @@
             this.label3.Size = new System.Drawing.Size(80, 13);
             this.label3.TabIndex = 3;
             this.label3.Text = "Course Number";
+            this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // button1
             // 
@@ -97,6 +101,7 @@
             this.button1.TabIndex = 4;
             this.button1.Text = "Submit";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // label5
             // 
@@ -124,7 +129,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(195, 26);
+            this.label4.Location = new System.Drawing.Point(157, 26);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(43, 13);
             this.label4.TabIndex = 14;
@@ -138,7 +143,7 @@
             "Fall",
             "Winter",
             "Spring/Summer"});
-            this.comboBox1.Location = new System.Drawing.Point(244, 23);
+            this.comboBox1.Location = new System.Drawing.Point(205, 23);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(107, 21);
             this.comboBox1.TabIndex = 13;
@@ -151,6 +156,7 @@
             this.label6.Size = new System.Drawing.Size(39, 13);
             this.label6.TabIndex = 15;
             this.label6.Text = "Credits";
+            this.label6.Click += new System.EventHandler(this.label6_Click);
             // 
             // AddCourse
             // 
@@ -169,6 +175,7 @@
             this.Controls.Add(this.CourseTable);
             this.Name = "AddCourse";
             this.Text = "AddCourse";
+            this.Load += new System.EventHandler(this.AddCourse_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
