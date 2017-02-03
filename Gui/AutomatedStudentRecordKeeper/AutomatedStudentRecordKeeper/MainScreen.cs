@@ -46,5 +46,11 @@ namespace AutomatedStudentRecordKeeper
             ViewCourse view_course = new ViewCourse();
             view_course.ShowDialog();
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            AddComplementaryCourses add_comp_course = new AddComplementaryCourses();
+            add_comp_course.ShowDialog();
+        }
     }
 }

@@ -15,14 +15,13 @@ CREATE UNIQUE INDEX studentid ON table (student);
 
 create table courses
 (
-	ID serial primary key,
 	coursesubject text ,
 	coursenumber integer,
 	coursesection text,
 	coursename text,
 	courseyear integer,
 	yearlevel integer,
-	credits integer
+	credits double precision
 );
 CREATE UNIQUE INDEX coursename ON table (courses);
 
@@ -30,9 +29,7 @@ create table complementarycourses
 (
 	coursesubject text,
 	coursenumber integer,
-	coursesection text,
 	coursename text ,
-	yearlevel integer,
 	credits integer
 );
 CREATE UNIQUE INDEX coursename ON table (courses);
