@@ -52,5 +52,11 @@ namespace AutomatedStudentRecordKeeper
             AddComplementaryCourses add_comp_course = new AddComplementaryCourses();
             add_comp_course.ShowDialog();
         }
+
+        private void AddButton_Click(object sender, EventArgs e)
+        {
+            AddGrade add_grade = new AddGrade();
+            add_grade.ShowDialog();
+        }
     }
 }

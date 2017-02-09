@@ -38,6 +38,7 @@
             this.richTextBox26 = new System.Windows.Forms.RichTextBox();
             this.richTextBox24 = new System.Windows.Forms.RichTextBox();
             this.richTextBox23 = new System.Windows.Forms.RichTextBox();
+            this.richTextBox12 = new System.Windows.Forms.RichTextBox();
             this.richTextBox22 = new System.Windows.Forms.RichTextBox();
             this.richTextBox20 = new System.Windows.Forms.RichTextBox();
             this.richTextBox19 = new System.Windows.Forms.RichTextBox();
@@ -45,7 +46,6 @@
             this.richTextBox16 = new System.Windows.Forms.RichTextBox();
             this.richTextBox15 = new System.Windows.Forms.RichTextBox();
             this.richTextBox14 = new System.Windows.Forms.RichTextBox();
-            this.richTextBox12 = new System.Windows.Forms.RichTextBox();
             this.richTextBox11 = new System.Windows.Forms.RichTextBox();
             this.richTextBox10 = new System.Windows.Forms.RichTextBox();
             this.richTextBox8 = new System.Windows.Forms.RichTextBox();
@@ -54,13 +54,16 @@
             this.richTextBox2 = new System.Windows.Forms.RichTextBox();
             this.richTextBox3 = new System.Windows.Forms.RichTextBox();
             this.richTextBox4 = new System.Windows.Forms.RichTextBox();
+            this.StudentNumber = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.CourseTable.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
             // 
+            this.label1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(39, 17);
+            this.label1.Location = new System.Drawing.Point(36, 53);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(79, 13);
             this.label1.TabIndex = 3;
@@ -68,8 +71,9 @@
             // 
             // label3
             // 
+            this.label3.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(296, 17);
+            this.label3.Location = new System.Drawing.Point(293, 53);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(36, 13);
             this.label3.TabIndex = 6;
@@ -77,17 +81,20 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(127, 284);
+            this.button1.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.button1.Location = new System.Drawing.Point(143, 320);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 7;
             this.button1.Text = "Submit";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // label4
             // 
+            this.label4.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(173, 17);
+            this.label4.Location = new System.Drawing.Point(157, 53);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(80, 13);
             this.label4.TabIndex = 8;
@@ -95,6 +102,7 @@
             // 
             // CourseTable
             // 
+            this.CourseTable.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.CourseTable.BackColor = System.Drawing.SystemColors.Window;
             this.CourseTable.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Inset;
             this.CourseTable.ColumnCount = 3;
@@ -122,7 +130,7 @@
             this.CourseTable.Controls.Add(this.richTextBox2, 0, 0);
             this.CourseTable.Controls.Add(this.richTextBox3, 1, 0);
             this.CourseTable.Controls.Add(this.richTextBox4, 2, 0);
-            this.CourseTable.Location = new System.Drawing.Point(15, 33);
+            this.CourseTable.Location = new System.Drawing.Point(12, 69);
             this.CourseTable.Name = "CourseTable";
             this.CourseTable.RowCount = 7;
             this.CourseTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
@@ -175,6 +183,14 @@
             this.richTextBox23.Size = new System.Drawing.Size(114, 26);
             this.richTextBox23.TabIndex = 22;
             this.richTextBox23.Text = "";
+            // 
+            // richTextBox12
+            // 
+            this.richTextBox12.Location = new System.Drawing.Point(250, 73);
+            this.richTextBox12.Name = "richTextBox12";
+            this.richTextBox12.Size = new System.Drawing.Size(80, 26);
+            this.richTextBox12.TabIndex = 11;
+            this.richTextBox12.Text = "";
             // 
             // richTextBox22
             // 
@@ -231,14 +247,6 @@
             this.richTextBox14.Size = new System.Drawing.Size(114, 26);
             this.richTextBox14.TabIndex = 13;
             this.richTextBox14.Text = "";
-            // 
-            // richTextBox12
-            // 
-            this.richTextBox12.Location = new System.Drawing.Point(250, 73);
-            this.richTextBox12.Name = "richTextBox12";
-            this.richTextBox12.Size = new System.Drawing.Size(80, 26);
-            this.richTextBox12.TabIndex = 11;
-            this.richTextBox12.Text = "";
             // 
             // richTextBox11
             // 
@@ -304,11 +312,30 @@
             this.richTextBox4.TabIndex = 3;
             this.richTextBox4.Text = "";
             // 
+            // StudentNumber
+            // 
+            this.StudentNumber.Location = new System.Drawing.Point(140, 12);
+            this.StudentNumber.Name = "StudentNumber";
+            this.StudentNumber.Size = new System.Drawing.Size(139, 20);
+            this.StudentNumber.TabIndex = 19;
+            // 
+            // label2
+            // 
+            this.label2.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(52, 15);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(84, 13);
+            this.label2.TabIndex = 20;
+            this.label2.Text = "Student Number";
+            // 
             // AddGrade
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(362, 321);
+            this.ClientSize = new System.Drawing.Size(362, 357);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.StudentNumber);
             this.Controls.Add(this.CourseTable);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.button1);
@@ -349,5 +376,7 @@
         private System.Windows.Forms.RichTextBox richTextBox2;
         private System.Windows.Forms.RichTextBox richTextBox3;
         private System.Windows.Forms.RichTextBox richTextBox4;
+        private System.Windows.Forms.TextBox StudentNumber;
+        private System.Windows.Forms.Label label2;
     }
 }

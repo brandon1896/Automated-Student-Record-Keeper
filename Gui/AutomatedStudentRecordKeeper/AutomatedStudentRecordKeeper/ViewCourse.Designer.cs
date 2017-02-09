@@ -32,26 +32,18 @@
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
             this.label10 = new System.Windows.Forms.Label();
+            this.year1wintertable = new System.Windows.Forms.TableLayoutPanel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             this.year1falltable = new System.Windows.Forms.TableLayoutPanel();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
-            this.year1wintertable = new System.Windows.Forms.TableLayoutPanel();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.tabPage4 = new System.Windows.Forms.TabPage();
-            this.tabPage5 = new System.Windows.Forms.TabPage();
-            this.comptable = new System.Windows.Forms.TableLayoutPanel();
-            this.label47 = new System.Windows.Forms.Label();
-            this.label50 = new System.Windows.Forms.Label();
-            this.label49 = new System.Windows.Forms.Label();
-            this.label48 = new System.Windows.Forms.Label();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
             this.label11 = new System.Windows.Forms.Label();
             this.year2wintertable = new System.Windows.Forms.TableLayoutPanel();
@@ -65,6 +57,7 @@
             this.label18 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
             this.label20 = new System.Windows.Forms.Label();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.label21 = new System.Windows.Forms.Label();
             this.year3wintertable = new System.Windows.Forms.TableLayoutPanel();
@@ -78,6 +71,7 @@
             this.label28 = new System.Windows.Forms.Label();
             this.label29 = new System.Windows.Forms.Label();
             this.label30 = new System.Windows.Forms.Label();
+            this.tabPage4 = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.label31 = new System.Windows.Forms.Label();
             this.year4wintertable = new System.Windows.Forms.TableLayoutPanel();
@@ -91,25 +85,31 @@
             this.label38 = new System.Windows.Forms.Label();
             this.label39 = new System.Windows.Forms.Label();
             this.label40 = new System.Windows.Forms.Label();
+            this.tabPage5 = new System.Windows.Forms.TabPage();
+            this.comptable = new System.Windows.Forms.TableLayoutPanel();
+            this.label47 = new System.Windows.Forms.Label();
+            this.label50 = new System.Windows.Forms.Label();
+            this.label49 = new System.Windows.Forms.Label();
+            this.label48 = new System.Windows.Forms.Label();
             this.Coursetab.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tableLayoutPanel7.SuspendLayout();
-            this.year1falltable.SuspendLayout();
             this.year1wintertable.SuspendLayout();
+            this.year1falltable.SuspendLayout();
             this.tabPage2.SuspendLayout();
-            this.tabPage3.SuspendLayout();
-            this.tabPage4.SuspendLayout();
-            this.tabPage5.SuspendLayout();
-            this.comptable.SuspendLayout();
             this.tableLayoutPanel5.SuspendLayout();
             this.year2wintertable.SuspendLayout();
             this.year2falltable.SuspendLayout();
+            this.tabPage3.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
             this.year3wintertable.SuspendLayout();
             this.year3falltable.SuspendLayout();
+            this.tabPage4.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.year4wintertable.SuspendLayout();
             this.year4falltable.SuspendLayout();
+            this.tabPage5.SuspendLayout();
+            this.comptable.SuspendLayout();
             this.SuspendLayout();
             // 
             // Coursetab
@@ -156,7 +156,7 @@
             this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel7.Size = new System.Drawing.Size(692, 100);
+            this.tableLayoutPanel7.Size = new System.Drawing.Size(695, 100);
             this.tableLayoutPanel7.TabIndex = 35;
             this.tableLayoutPanel7.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel7_Paint);
             // 
@@ -165,81 +165,11 @@
             this.label10.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(327, 0);
+            this.label10.Location = new System.Drawing.Point(328, 0);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(38, 20);
             this.label10.TabIndex = 31;
             this.label10.Text = "Fall";
-            // 
-            // year1falltable
-            // 
-            this.year1falltable.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.year1falltable.AutoScroll = true;
-            this.year1falltable.AutoSize = true;
-            this.year1falltable.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.year1falltable.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Inset;
-            this.year1falltable.ColumnCount = 4;
-            this.year1falltable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 51.59575F));
-            this.year1falltable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 48.40425F));
-            this.year1falltable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 437F));
-            this.year1falltable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 60F));
-            this.year1falltable.Controls.Add(this.label5, 3, 0);
-            this.year1falltable.Controls.Add(this.label6, 0, 0);
-            this.year1falltable.Controls.Add(this.label7, 2, 0);
-            this.year1falltable.Controls.Add(this.label8, 1, 0);
-            this.year1falltable.Location = new System.Drawing.Point(3, 23);
-            this.year1falltable.Name = "year1falltable";
-            this.year1falltable.RowCount = 1;
-            this.year1falltable.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.year1falltable.Size = new System.Drawing.Size(685, 17);
-            this.year1falltable.TabIndex = 33;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(625, 2);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(39, 13);
-            this.label5.TabIndex = 21;
-            this.label5.Text = "Credits";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(5, 2);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(79, 13);
-            this.label6.TabIndex = 18;
-            this.label6.Text = "Course Subject";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(186, 2);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(71, 13);
-            this.label7.TabIndex = 19;
-            this.label7.Text = "Course Name";
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(98, 2);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(80, 13);
-            this.label8.TabIndex = 20;
-            this.label8.Text = "Course Number";
-            // 
-            // label9
-            // 
-            this.label9.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(315, 50);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(61, 20);
-            this.label9.TabIndex = 32;
-            this.label9.Text = "Winter";
             // 
             // year1wintertable
             // 
@@ -252,7 +182,7 @@
             this.year1wintertable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 51.59575F));
             this.year1wintertable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 48.40425F));
             this.year1wintertable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 437F));
-            this.year1wintertable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 61F));
+            this.year1wintertable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 64F));
             this.year1wintertable.Controls.Add(this.label1, 3, 0);
             this.year1wintertable.Controls.Add(this.label2, 0, 0);
             this.year1wintertable.Controls.Add(this.label3, 2, 0);
@@ -261,7 +191,7 @@
             this.year1wintertable.Name = "year1wintertable";
             this.year1wintertable.RowCount = 1;
             this.year1wintertable.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.year1wintertable.Size = new System.Drawing.Size(686, 17);
+            this.year1wintertable.Size = new System.Drawing.Size(689, 17);
             this.year1wintertable.TabIndex = 34;
             // 
             // label1
@@ -287,9 +217,9 @@
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(186, 2);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(71, 13);
+            this.label3.Size = new System.Drawing.Size(63, 13);
             this.label3.TabIndex = 19;
-            this.label3.Text = "Course Name";
+            this.label3.Text = "Course Title";
             // 
             // label4
             // 
@@ -299,6 +229,76 @@
             this.label4.Size = new System.Drawing.Size(80, 13);
             this.label4.TabIndex = 20;
             this.label4.Text = "Course Number";
+            // 
+            // year1falltable
+            // 
+            this.year1falltable.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.year1falltable.AutoScroll = true;
+            this.year1falltable.AutoSize = true;
+            this.year1falltable.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.year1falltable.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Inset;
+            this.year1falltable.ColumnCount = 4;
+            this.year1falltable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 51.59575F));
+            this.year1falltable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 48.40425F));
+            this.year1falltable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 437F));
+            this.year1falltable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 63F));
+            this.year1falltable.Controls.Add(this.label5, 3, 0);
+            this.year1falltable.Controls.Add(this.label6, 0, 0);
+            this.year1falltable.Controls.Add(this.label7, 2, 0);
+            this.year1falltable.Controls.Add(this.label8, 1, 0);
+            this.year1falltable.Location = new System.Drawing.Point(3, 23);
+            this.year1falltable.Name = "year1falltable";
+            this.year1falltable.RowCount = 1;
+            this.year1falltable.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.year1falltable.Size = new System.Drawing.Size(688, 17);
+            this.year1falltable.TabIndex = 33;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(625, 2);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(39, 13);
+            this.label5.TabIndex = 21;
+            this.label5.Text = "Credits";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(5, 2);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(79, 13);
+            this.label6.TabIndex = 18;
+            this.label6.Text = "Course Subject";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(186, 2);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(63, 13);
+            this.label7.TabIndex = 19;
+            this.label7.Text = "Course Title";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(98, 2);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(80, 13);
+            this.label8.TabIndex = 20;
+            this.label8.Text = "Course Number";
+            // 
+            // label9
+            // 
+            this.label9.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Location = new System.Drawing.Point(317, 50);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(61, 20);
+            this.label9.TabIndex = 32;
+            this.label9.Text = "Winter";
             // 
             // tabPage2
             // 
@@ -310,98 +310,6 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Year 2";
             this.tabPage2.UseVisualStyleBackColor = true;
-            // 
-            // tabPage3
-            // 
-            this.tabPage3.Controls.Add(this.tableLayoutPanel3);
-            this.tabPage3.Location = new System.Drawing.Point(4, 22);
-            this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(740, 361);
-            this.tabPage3.TabIndex = 2;
-            this.tabPage3.Text = "Year 3";
-            this.tabPage3.UseVisualStyleBackColor = true;
-            // 
-            // tabPage4
-            // 
-            this.tabPage4.Controls.Add(this.tableLayoutPanel1);
-            this.tabPage4.Location = new System.Drawing.Point(4, 22);
-            this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Size = new System.Drawing.Size(740, 361);
-            this.tabPage4.TabIndex = 3;
-            this.tabPage4.Text = "Year 4";
-            this.tabPage4.UseVisualStyleBackColor = true;
-            // 
-            // tabPage5
-            // 
-            this.tabPage5.AutoScroll = true;
-            this.tabPage5.AutoScrollMargin = new System.Drawing.Size(20, 20);
-            this.tabPage5.AutoScrollMinSize = new System.Drawing.Size(20, 20);
-            this.tabPage5.Controls.Add(this.comptable);
-            this.tabPage5.Location = new System.Drawing.Point(4, 22);
-            this.tabPage5.Name = "tabPage5";
-            this.tabPage5.Size = new System.Drawing.Size(740, 361);
-            this.tabPage5.TabIndex = 4;
-            this.tabPage5.Text = "Complementary";
-            this.tabPage5.UseVisualStyleBackColor = true;
-            // 
-            // comptable
-            // 
-            this.comptable.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.comptable.AutoScroll = true;
-            this.comptable.AutoSize = true;
-            this.comptable.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.comptable.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Inset;
-            this.comptable.ColumnCount = 4;
-            this.comptable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 51.59575F));
-            this.comptable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 48.40425F));
-            this.comptable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 437F));
-            this.comptable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 61F));
-            this.comptable.Controls.Add(this.label47, 3, 0);
-            this.comptable.Controls.Add(this.label50, 0, 0);
-            this.comptable.Controls.Add(this.label49, 2, 0);
-            this.comptable.Controls.Add(this.label48, 1, 0);
-            this.comptable.Location = new System.Drawing.Point(26, 25);
-            this.comptable.Name = "comptable";
-            this.comptable.RowCount = 1;
-            this.comptable.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.comptable.Size = new System.Drawing.Size(686, 17);
-            this.comptable.TabIndex = 17;
-            // 
-            // label47
-            // 
-            this.label47.AutoSize = true;
-            this.label47.Location = new System.Drawing.Point(625, 2);
-            this.label47.Name = "label47";
-            this.label47.Size = new System.Drawing.Size(39, 13);
-            this.label47.TabIndex = 21;
-            this.label47.Text = "Credits";
-            // 
-            // label50
-            // 
-            this.label50.AutoSize = true;
-            this.label50.Location = new System.Drawing.Point(5, 2);
-            this.label50.Name = "label50";
-            this.label50.Size = new System.Drawing.Size(79, 13);
-            this.label50.TabIndex = 18;
-            this.label50.Text = "Course Subject";
-            // 
-            // label49
-            // 
-            this.label49.AutoSize = true;
-            this.label49.Location = new System.Drawing.Point(186, 2);
-            this.label49.Name = "label49";
-            this.label49.Size = new System.Drawing.Size(71, 13);
-            this.label49.TabIndex = 19;
-            this.label49.Text = "Course Name";
-            // 
-            // label48
-            // 
-            this.label48.AutoSize = true;
-            this.label48.Location = new System.Drawing.Point(98, 2);
-            this.label48.Name = "label48";
-            this.label48.Size = new System.Drawing.Size(80, 13);
-            this.label48.TabIndex = 20;
-            this.label48.Text = "Course Number";
             // 
             // tableLayoutPanel5
             // 
@@ -420,7 +328,7 @@
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel5.Size = new System.Drawing.Size(692, 100);
+            this.tableLayoutPanel5.Size = new System.Drawing.Size(695, 100);
             this.tableLayoutPanel5.TabIndex = 36;
             // 
             // label11
@@ -428,7 +336,7 @@
             this.label11.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(327, 0);
+            this.label11.Location = new System.Drawing.Point(328, 0);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(38, 20);
             this.label11.TabIndex = 31;
@@ -445,7 +353,7 @@
             this.year2wintertable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 51.59575F));
             this.year2wintertable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 48.40425F));
             this.year2wintertable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 437F));
-            this.year2wintertable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 61F));
+            this.year2wintertable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 64F));
             this.year2wintertable.Controls.Add(this.label12, 3, 0);
             this.year2wintertable.Controls.Add(this.label13, 0, 0);
             this.year2wintertable.Controls.Add(this.label14, 2, 0);
@@ -454,7 +362,7 @@
             this.year2wintertable.Name = "year2wintertable";
             this.year2wintertable.RowCount = 1;
             this.year2wintertable.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.year2wintertable.Size = new System.Drawing.Size(686, 17);
+            this.year2wintertable.Size = new System.Drawing.Size(689, 17);
             this.year2wintertable.TabIndex = 34;
             // 
             // label12
@@ -480,9 +388,9 @@
             this.label14.AutoSize = true;
             this.label14.Location = new System.Drawing.Point(186, 2);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(71, 13);
+            this.label14.Size = new System.Drawing.Size(63, 13);
             this.label14.TabIndex = 19;
-            this.label14.Text = "Course Name";
+            this.label14.Text = "Course Title";
             // 
             // label15
             // 
@@ -504,7 +412,7 @@
             this.year2falltable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 51.59575F));
             this.year2falltable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 48.40425F));
             this.year2falltable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 437F));
-            this.year2falltable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 60F));
+            this.year2falltable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 63F));
             this.year2falltable.Controls.Add(this.label16, 3, 0);
             this.year2falltable.Controls.Add(this.label17, 0, 0);
             this.year2falltable.Controls.Add(this.label18, 2, 0);
@@ -513,7 +421,7 @@
             this.year2falltable.Name = "year2falltable";
             this.year2falltable.RowCount = 1;
             this.year2falltable.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.year2falltable.Size = new System.Drawing.Size(685, 17);
+            this.year2falltable.Size = new System.Drawing.Size(688, 17);
             this.year2falltable.TabIndex = 33;
             // 
             // label16
@@ -539,9 +447,9 @@
             this.label18.AutoSize = true;
             this.label18.Location = new System.Drawing.Point(186, 2);
             this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(71, 13);
+            this.label18.Size = new System.Drawing.Size(63, 13);
             this.label18.TabIndex = 19;
-            this.label18.Text = "Course Name";
+            this.label18.Text = "Course Title";
             // 
             // label19
             // 
@@ -557,11 +465,21 @@
             this.label20.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label20.AutoSize = true;
             this.label20.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label20.Location = new System.Drawing.Point(315, 50);
+            this.label20.Location = new System.Drawing.Point(317, 50);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(61, 20);
             this.label20.TabIndex = 32;
             this.label20.Text = "Winter";
+            // 
+            // tabPage3
+            // 
+            this.tabPage3.Controls.Add(this.tableLayoutPanel3);
+            this.tabPage3.Location = new System.Drawing.Point(4, 22);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Size = new System.Drawing.Size(740, 361);
+            this.tabPage3.TabIndex = 2;
+            this.tabPage3.Text = "Year 3";
+            this.tabPage3.UseVisualStyleBackColor = true;
             // 
             // tableLayoutPanel3
             // 
@@ -580,7 +498,7 @@
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(692, 100);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(695, 100);
             this.tableLayoutPanel3.TabIndex = 36;
             // 
             // label21
@@ -588,7 +506,7 @@
             this.label21.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label21.AutoSize = true;
             this.label21.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label21.Location = new System.Drawing.Point(327, 0);
+            this.label21.Location = new System.Drawing.Point(328, 0);
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(38, 20);
             this.label21.TabIndex = 31;
@@ -605,7 +523,7 @@
             this.year3wintertable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 51.59575F));
             this.year3wintertable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 48.40425F));
             this.year3wintertable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 437F));
-            this.year3wintertable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 61F));
+            this.year3wintertable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 64F));
             this.year3wintertable.Controls.Add(this.label22, 3, 0);
             this.year3wintertable.Controls.Add(this.label23, 0, 0);
             this.year3wintertable.Controls.Add(this.label24, 2, 0);
@@ -614,7 +532,7 @@
             this.year3wintertable.Name = "year3wintertable";
             this.year3wintertable.RowCount = 1;
             this.year3wintertable.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.year3wintertable.Size = new System.Drawing.Size(686, 17);
+            this.year3wintertable.Size = new System.Drawing.Size(689, 17);
             this.year3wintertable.TabIndex = 34;
             // 
             // label22
@@ -640,9 +558,9 @@
             this.label24.AutoSize = true;
             this.label24.Location = new System.Drawing.Point(186, 2);
             this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(71, 13);
+            this.label24.Size = new System.Drawing.Size(63, 13);
             this.label24.TabIndex = 19;
-            this.label24.Text = "Course Name";
+            this.label24.Text = "Course Title";
             // 
             // label25
             // 
@@ -664,7 +582,7 @@
             this.year3falltable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 51.59575F));
             this.year3falltable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 48.40425F));
             this.year3falltable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 437F));
-            this.year3falltable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 60F));
+            this.year3falltable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 63F));
             this.year3falltable.Controls.Add(this.label26, 3, 0);
             this.year3falltable.Controls.Add(this.label27, 0, 0);
             this.year3falltable.Controls.Add(this.label28, 2, 0);
@@ -673,7 +591,7 @@
             this.year3falltable.Name = "year3falltable";
             this.year3falltable.RowCount = 1;
             this.year3falltable.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.year3falltable.Size = new System.Drawing.Size(685, 17);
+            this.year3falltable.Size = new System.Drawing.Size(688, 17);
             this.year3falltable.TabIndex = 33;
             // 
             // label26
@@ -699,9 +617,9 @@
             this.label28.AutoSize = true;
             this.label28.Location = new System.Drawing.Point(186, 2);
             this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(71, 13);
+            this.label28.Size = new System.Drawing.Size(63, 13);
             this.label28.TabIndex = 19;
-            this.label28.Text = "Course Name";
+            this.label28.Text = "Course Title";
             // 
             // label29
             // 
@@ -717,11 +635,21 @@
             this.label30.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label30.AutoSize = true;
             this.label30.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label30.Location = new System.Drawing.Point(315, 50);
+            this.label30.Location = new System.Drawing.Point(317, 50);
             this.label30.Name = "label30";
             this.label30.Size = new System.Drawing.Size(61, 20);
             this.label30.TabIndex = 32;
             this.label30.Text = "Winter";
+            // 
+            // tabPage4
+            // 
+            this.tabPage4.Controls.Add(this.tableLayoutPanel1);
+            this.tabPage4.Location = new System.Drawing.Point(4, 22);
+            this.tabPage4.Name = "tabPage4";
+            this.tabPage4.Size = new System.Drawing.Size(740, 361);
+            this.tabPage4.TabIndex = 3;
+            this.tabPage4.Text = "Year 4";
+            this.tabPage4.UseVisualStyleBackColor = true;
             // 
             // tableLayoutPanel1
             // 
@@ -740,7 +668,7 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(692, 100);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(695, 100);
             this.tableLayoutPanel1.TabIndex = 36;
             // 
             // label31
@@ -748,7 +676,7 @@
             this.label31.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label31.AutoSize = true;
             this.label31.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label31.Location = new System.Drawing.Point(327, 0);
+            this.label31.Location = new System.Drawing.Point(328, 0);
             this.label31.Name = "label31";
             this.label31.Size = new System.Drawing.Size(38, 20);
             this.label31.TabIndex = 31;
@@ -765,7 +693,7 @@
             this.year4wintertable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 51.59575F));
             this.year4wintertable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 48.40425F));
             this.year4wintertable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 437F));
-            this.year4wintertable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 61F));
+            this.year4wintertable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 64F));
             this.year4wintertable.Controls.Add(this.label32, 3, 0);
             this.year4wintertable.Controls.Add(this.label33, 0, 0);
             this.year4wintertable.Controls.Add(this.label34, 2, 0);
@@ -774,7 +702,7 @@
             this.year4wintertable.Name = "year4wintertable";
             this.year4wintertable.RowCount = 1;
             this.year4wintertable.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.year4wintertable.Size = new System.Drawing.Size(686, 17);
+            this.year4wintertable.Size = new System.Drawing.Size(689, 17);
             this.year4wintertable.TabIndex = 34;
             // 
             // label32
@@ -800,9 +728,9 @@
             this.label34.AutoSize = true;
             this.label34.Location = new System.Drawing.Point(186, 2);
             this.label34.Name = "label34";
-            this.label34.Size = new System.Drawing.Size(71, 13);
+            this.label34.Size = new System.Drawing.Size(63, 13);
             this.label34.TabIndex = 19;
-            this.label34.Text = "Course Name";
+            this.label34.Text = "Course Title";
             // 
             // label35
             // 
@@ -824,7 +752,7 @@
             this.year4falltable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 51.59575F));
             this.year4falltable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 48.40425F));
             this.year4falltable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 437F));
-            this.year4falltable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 60F));
+            this.year4falltable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 63F));
             this.year4falltable.Controls.Add(this.label36, 3, 0);
             this.year4falltable.Controls.Add(this.label37, 0, 0);
             this.year4falltable.Controls.Add(this.label38, 2, 0);
@@ -833,7 +761,7 @@
             this.year4falltable.Name = "year4falltable";
             this.year4falltable.RowCount = 1;
             this.year4falltable.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.year4falltable.Size = new System.Drawing.Size(685, 17);
+            this.year4falltable.Size = new System.Drawing.Size(688, 17);
             this.year4falltable.TabIndex = 33;
             // 
             // label36
@@ -859,9 +787,9 @@
             this.label38.AutoSize = true;
             this.label38.Location = new System.Drawing.Point(186, 2);
             this.label38.Name = "label38";
-            this.label38.Size = new System.Drawing.Size(71, 13);
+            this.label38.Size = new System.Drawing.Size(63, 13);
             this.label38.TabIndex = 19;
-            this.label38.Text = "Course Name";
+            this.label38.Text = "Course Title";
             // 
             // label39
             // 
@@ -877,11 +805,83 @@
             this.label40.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label40.AutoSize = true;
             this.label40.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label40.Location = new System.Drawing.Point(315, 50);
+            this.label40.Location = new System.Drawing.Point(317, 50);
             this.label40.Name = "label40";
             this.label40.Size = new System.Drawing.Size(61, 20);
             this.label40.TabIndex = 32;
             this.label40.Text = "Winter";
+            // 
+            // tabPage5
+            // 
+            this.tabPage5.AutoScroll = true;
+            this.tabPage5.AutoScrollMargin = new System.Drawing.Size(20, 20);
+            this.tabPage5.AutoScrollMinSize = new System.Drawing.Size(20, 20);
+            this.tabPage5.Controls.Add(this.comptable);
+            this.tabPage5.Location = new System.Drawing.Point(4, 22);
+            this.tabPage5.Name = "tabPage5";
+            this.tabPage5.Size = new System.Drawing.Size(740, 361);
+            this.tabPage5.TabIndex = 4;
+            this.tabPage5.Text = "Complementary";
+            this.tabPage5.UseVisualStyleBackColor = true;
+            // 
+            // comptable
+            // 
+            this.comptable.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.comptable.AutoScroll = true;
+            this.comptable.AutoSize = true;
+            this.comptable.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.comptable.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Inset;
+            this.comptable.ColumnCount = 4;
+            this.comptable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 51.59575F));
+            this.comptable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 48.40425F));
+            this.comptable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 437F));
+            this.comptable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 64F));
+            this.comptable.Controls.Add(this.label47, 3, 0);
+            this.comptable.Controls.Add(this.label50, 0, 0);
+            this.comptable.Controls.Add(this.label49, 2, 0);
+            this.comptable.Controls.Add(this.label48, 1, 0);
+            this.comptable.Location = new System.Drawing.Point(26, 25);
+            this.comptable.Name = "comptable";
+            this.comptable.RowCount = 1;
+            this.comptable.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.comptable.Size = new System.Drawing.Size(689, 17);
+            this.comptable.TabIndex = 17;
+            // 
+            // label47
+            // 
+            this.label47.AutoSize = true;
+            this.label47.Location = new System.Drawing.Point(625, 2);
+            this.label47.Name = "label47";
+            this.label47.Size = new System.Drawing.Size(39, 13);
+            this.label47.TabIndex = 21;
+            this.label47.Text = "Credits";
+            // 
+            // label50
+            // 
+            this.label50.AutoSize = true;
+            this.label50.Location = new System.Drawing.Point(5, 2);
+            this.label50.Name = "label50";
+            this.label50.Size = new System.Drawing.Size(79, 13);
+            this.label50.TabIndex = 18;
+            this.label50.Text = "Course Subject";
+            // 
+            // label49
+            // 
+            this.label49.AutoSize = true;
+            this.label49.Location = new System.Drawing.Point(186, 2);
+            this.label49.Name = "label49";
+            this.label49.Size = new System.Drawing.Size(63, 13);
+            this.label49.TabIndex = 19;
+            this.label49.Text = "Course Title";
+            // 
+            // label48
+            // 
+            this.label48.AutoSize = true;
+            this.label48.Location = new System.Drawing.Point(98, 2);
+            this.label48.Name = "label48";
+            this.label48.Size = new System.Drawing.Size(80, 13);
+            this.label48.TabIndex = 20;
+            this.label48.Text = "Course Number";
             // 
             // ViewCourse
             // 
@@ -896,38 +896,38 @@
             this.tabPage1.PerformLayout();
             this.tableLayoutPanel7.ResumeLayout(false);
             this.tableLayoutPanel7.PerformLayout();
-            this.year1falltable.ResumeLayout(false);
-            this.year1falltable.PerformLayout();
             this.year1wintertable.ResumeLayout(false);
             this.year1wintertable.PerformLayout();
+            this.year1falltable.ResumeLayout(false);
+            this.year1falltable.PerformLayout();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
-            this.tabPage3.ResumeLayout(false);
-            this.tabPage3.PerformLayout();
-            this.tabPage4.ResumeLayout(false);
-            this.tabPage4.PerformLayout();
-            this.tabPage5.ResumeLayout(false);
-            this.tabPage5.PerformLayout();
-            this.comptable.ResumeLayout(false);
-            this.comptable.PerformLayout();
             this.tableLayoutPanel5.ResumeLayout(false);
             this.tableLayoutPanel5.PerformLayout();
             this.year2wintertable.ResumeLayout(false);
             this.year2wintertable.PerformLayout();
             this.year2falltable.ResumeLayout(false);
             this.year2falltable.PerformLayout();
+            this.tabPage3.ResumeLayout(false);
+            this.tabPage3.PerformLayout();
             this.tableLayoutPanel3.ResumeLayout(false);
             this.tableLayoutPanel3.PerformLayout();
             this.year3wintertable.ResumeLayout(false);
             this.year3wintertable.PerformLayout();
             this.year3falltable.ResumeLayout(false);
             this.year3falltable.PerformLayout();
+            this.tabPage4.ResumeLayout(false);
+            this.tabPage4.PerformLayout();
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             this.year4wintertable.ResumeLayout(false);
             this.year4wintertable.PerformLayout();
             this.year4falltable.ResumeLayout(false);
             this.year4falltable.PerformLayout();
+            this.tabPage5.ResumeLayout(false);
+            this.tabPage5.PerformLayout();
+            this.comptable.ResumeLayout(false);
+            this.comptable.PerformLayout();
             this.ResumeLayout(false);
 
         }

@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.ViewButton = new System.Windows.Forms.Button();
-            this.AddButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // ViewButton
@@ -41,21 +40,11 @@
             this.ViewButton.Text = "View Grades";
             this.ViewButton.UseVisualStyleBackColor = true;
             // 
-            // AddButton
-            // 
-            this.AddButton.Location = new System.Drawing.Point(165, 65);
-            this.AddButton.Name = "AddButton";
-            this.AddButton.Size = new System.Drawing.Size(125, 50);
-            this.AddButton.TabIndex = 1;
-            this.AddButton.Text = "Add Grades";
-            this.AddButton.UseVisualStyleBackColor = true;
-            // 
             // StudentMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(313, 180);
-            this.Controls.Add(this.AddButton);
             this.Controls.Add(this.ViewButton);
             this.Name = "StudentMenu";
             this.Text = "StudentMenu";
@@ -66,6 +55,5 @@
         #endregion
 
         private System.Windows.Forms.Button ViewButton;
-        private System.Windows.Forms.Button AddButton;
     }
 }

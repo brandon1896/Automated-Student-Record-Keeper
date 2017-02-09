@@ -4,12 +4,12 @@ set datestyle to 'SQL, DMY';
 
 create table student
 (
-	name text null constraint valid_name check (length(name) >0),
-	studentid integer primary key,
-	transferstudent boolean set default FALSE,
+	name text,
+	studentid integer,
 	previouschool text,
-	program	text,
-	yearlevel integer
+	previousprogram	text,
+	yearlevel integer,
+	yearentered date default Current_date
 );
 CREATE UNIQUE INDEX studentid ON table (student);
 

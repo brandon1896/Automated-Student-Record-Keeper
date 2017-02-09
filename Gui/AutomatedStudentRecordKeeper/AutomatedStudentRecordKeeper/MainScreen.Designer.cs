@@ -34,6 +34,7 @@
             this.ViewCoursesButton = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
+            this.AddButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // addstudentbutton
@@ -58,7 +59,7 @@
             // 
             // AddCoursesButton
             // 
-            this.AddCoursesButton.Location = new System.Drawing.Point(12, 82);
+            this.AddCoursesButton.Location = new System.Drawing.Point(12, 70);
             this.AddCoursesButton.Name = "AddCoursesButton";
             this.AddCoursesButton.Size = new System.Drawing.Size(116, 52);
             this.AddCoursesButton.TabIndex = 3;
@@ -68,7 +69,7 @@
             // 
             // ViewCoursesButton
             // 
-            this.ViewCoursesButton.Location = new System.Drawing.Point(77, 140);
+            this.ViewCoursesButton.Location = new System.Drawing.Point(12, 128);
             this.ViewCoursesButton.Name = "ViewCoursesButton";
             this.ViewCoursesButton.Size = new System.Drawing.Size(116, 52);
             this.ViewCoursesButton.TabIndex = 4;
@@ -78,7 +79,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(77, 195);
+            this.button1.Location = new System.Drawing.Point(134, 128);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(116, 52);
             this.button1.TabIndex = 6;
@@ -87,7 +88,7 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(134, 82);
+            this.button2.Location = new System.Drawing.Point(134, 70);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(116, 52);
             this.button2.TabIndex = 7;
@@ -95,11 +96,22 @@
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
+            // AddButton
+            // 
+            this.AddButton.Location = new System.Drawing.Point(12, 186);
+            this.AddButton.Name = "AddButton";
+            this.AddButton.Size = new System.Drawing.Size(116, 52);
+            this.AddButton.TabIndex = 8;
+            this.AddButton.Text = "Add Grades";
+            this.AddButton.UseVisualStyleBackColor = true;
+            this.AddButton.Click += new System.EventHandler(this.AddButton_Click);
+            // 
             // MainScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(284, 269);
+            this.ClientSize = new System.Drawing.Size(284, 323);
+            this.Controls.Add(this.AddButton);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.ViewCoursesButton);
@@ -119,6 +131,7 @@
         private System.Windows.Forms.Button ViewCoursesButton;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button AddButton;
     }
 }
 
