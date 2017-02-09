@@ -1,0 +1,34 @@
+CREATE DATABASE studentrecordkeeper;
+
+CREATE TABLE complementarycourses
+(
+  coursesubject text,
+  coursenumber integer,
+  coursename text,
+  credits integer
+);
+CREATE TABLE courses
+(
+  coursesubject text,
+  coursenumber integer,
+  coursesection text,
+  coursename text,
+  credits double precision,
+  yearlevel integer
+);
+CREATE TABLE makeupcourses
+(
+  studentid integer,
+  coursesubject text,
+  coursenumber integer,
+  coursename text
+);
+CREATE TABLE student
+(
+  name text,
+  studentid integer,
+  previouschool text,
+  previousprogram text,
+  yearlevel integer,
+  yearentered date DEFAULT ('now'::text)::date
+);
