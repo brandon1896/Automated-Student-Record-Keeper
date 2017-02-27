@@ -17,6 +17,11 @@ namespace AutomatedStudentRecordKeeper
         public AddGrade()
         {
             InitializeComponent();
+            int tempyear = DateTime.Now.Year;
+            for (int i = 6; i >= 0; i--)
+            {
+                this.yeardropbox.Items.Add((tempyear - i).ToString() + "/" + (tempyear - i + 1).ToString());
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -51,10 +56,12 @@ namespace AutomatedStudentRecordKeeper
                         }
                         else
                         {
-                            cmd = new NpgsqlCommand("insert into \"" + StudentNumber.Text + "\"(coursesubject,coursenumber,coursegrade) values(:sub, :num, :grade)", conn);
+                            cmd = new NpgsqlCommand("insert into \"" + StudentNumber.Text + "\"(coursesubject,coursenumber,coursegrade,yearsection, year) values(:sub, :num, :grade, :yrsec , :yr)", conn);
                             cmd.Parameters.Add(new NpgsqlParameter("sub", CourseTable.GetControlFromPosition(0, j).Text));
-                            cmd.Parameters.Add(new NpgsqlParameter("num", int.Parse(CourseTable.GetControlFromPosition(1, j).Text)));
+                            cmd.Parameters.Add(new NpgsqlParameter("num", CourseTable.GetControlFromPosition(1, j).Text));
                             cmd.Parameters.Add(new NpgsqlParameter("grade", int.Parse(CourseTable.GetControlFromPosition(2, j).Text)));
+                            cmd.Parameters.Add(new NpgsqlParameter("yrsec", yeardropbox.Text));
+                            cmd.Parameters.Add(new NpgsqlParameter("yr", int.Parse(yeardropbox.Text.Substring(0,4))));
                             cmd.ExecuteNonQuery();
                         }
                     }
@@ -66,6 +73,11 @@ namespace AutomatedStudentRecordKeeper
                 MessageBox.Show("Connection error to database");
             }
             }
+
+        private void yeardropbox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+        
+        }
     }
-    }
+}
 

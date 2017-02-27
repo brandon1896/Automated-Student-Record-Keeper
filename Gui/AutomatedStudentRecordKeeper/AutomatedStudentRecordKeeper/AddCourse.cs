@@ -17,6 +17,11 @@ namespace AutomatedStudentRecordKeeper
         public AddCourse()
         {
             InitializeComponent();
+            int tempyear = DateTime.Now.Year;
+            for (int i = 6; i >= -1; i--)
+            {
+                this.yeardropbox.Items.Add((tempyear - i).ToString() + "/" + (tempyear - i + 1).ToString());
+            }
         }
 
 
@@ -42,13 +47,15 @@ namespace AutomatedStudentRecordKeeper
                     }
                     else
                     {
-                        NpgsqlCommand cmd = new NpgsqlCommand("insert into courses values(:sub, :num, :sec, :name, :cred, :yrlvl)", conn);
+                        NpgsqlCommand cmd = new NpgsqlCommand("insert into courses values(:sub, :num, :sec, :name, :cred, :yrlvl, :yrsec, :entyear)", conn);
                         cmd.Parameters.Add(new NpgsqlParameter("sub", AddCourseTable.GetControlFromPosition(0, j).Text));
-                        cmd.Parameters.Add(new NpgsqlParameter("num", int.Parse(AddCourseTable.GetControlFromPosition(1, j).Text)));
+                        cmd.Parameters.Add(new NpgsqlParameter("num", AddCourseTable.GetControlFromPosition(1, j).Text));
                         cmd.Parameters.Add(new NpgsqlParameter("sec", sectiondropbox.Text));
                         cmd.Parameters.Add(new NpgsqlParameter("name", AddCourseTable.GetControlFromPosition(2, j).Text));
                         cmd.Parameters.Add(new NpgsqlParameter("cred", double.Parse(AddCourseTable.GetControlFromPosition(3, j).Text)));
                         cmd.Parameters.Add(new NpgsqlParameter("yrlvl", int.Parse(Yearleveldropbox.Text)));
+                        cmd.Parameters.Add(new NpgsqlParameter("yrsec", yeardropbox.Text));
+                        cmd.Parameters.Add(new NpgsqlParameter("entyear", int.Parse(yeardropbox.Text.Substring(0,4))));
                         cmd.ExecuteNonQuery();
                     }
                 }

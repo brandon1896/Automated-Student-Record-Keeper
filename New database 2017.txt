@@ -3,32 +3,39 @@ CREATE DATABASE studentrecordkeeper;
 CREATE TABLE complementarycourses
 (
   coursesubject text,
-  coursenumber integer,
+  coursenumber text,
   coursename text,
-  credits integer
+  credits double precision,
+  firstusedyear integer,
+  lastusedyear integer
 );
 CREATE TABLE courses
 (
   coursesubject text,
-  coursenumber integer,
+  coursenumber text,
   coursesection text,
   coursename text,
   credits double precision,
-  yearlevel integer
+  yearlevel integer,
+  yearsection text,  
+  firstusedyear integer,
+  lastusedyear integer
 );
 CREATE TABLE makeupcourses
 (
-  studentid integer,
+  studentid text,
   coursesubject text,
-  coursenumber integer,
-  coursename text
+  coursenumber text,
+  coursename text,
+  credits double precision
 );
 CREATE TABLE student
 (
   name text,
-  studentid integer,
+  studentid text,
   previouschool text,
   previousprogram text,
   yearlevel integer,
-  yearentered date DEFAULT ('now'::text)::date
+  yearsection text,  
+  year integer
 );

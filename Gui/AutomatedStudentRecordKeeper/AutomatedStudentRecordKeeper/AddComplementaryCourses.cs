@@ -40,11 +40,12 @@ namespace AutomatedStudentRecordKeeper
                     }
                     else
                     {
-                        NpgsqlCommand cmd = new NpgsqlCommand("insert into complementarycourses values(:sub, :num, :name, :cred)", conn);
+                        NpgsqlCommand cmd = new NpgsqlCommand("insert into complementarycourses values(:sub, :num, :name, :cred, :entyear)", conn);
                         cmd.Parameters.Add(new NpgsqlParameter("sub", CourseTable.GetControlFromPosition(0, j).Text));
-                        cmd.Parameters.Add(new NpgsqlParameter("num", int.Parse(CourseTable.GetControlFromPosition(1, j).Text)));
+                        cmd.Parameters.Add(new NpgsqlParameter("num", CourseTable.GetControlFromPosition(1, j).Text));
                         cmd.Parameters.Add(new NpgsqlParameter("name", CourseTable.GetControlFromPosition(2, j).Text));
-                        cmd.Parameters.Add(new NpgsqlParameter("cred", int.Parse(CourseTable.GetControlFromPosition(3, j).Text)));
+                        cmd.Parameters.Add(new NpgsqlParameter("cred", double.Parse(CourseTable.GetControlFromPosition(3, j).Text)));
+                        cmd.Parameters.Add(new NpgsqlParameter("entyear", DateTime.Now.Year));
                         cmd.ExecuteNonQuery();
                     }
                 }

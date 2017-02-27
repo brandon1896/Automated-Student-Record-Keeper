@@ -75,16 +75,18 @@ namespace AutomatedStudentRecordKeeper
                 }
                 else
                 {
-                    NpgsqlCommand cmd = new NpgsqlCommand("insert into student values(:name, :num, :prevsc, :prevprog, :yrlvl)", conn);
+                    NpgsqlCommand cmd = new NpgsqlCommand("insert into student values(:name, :num, :prevsc, :prevprog, :yrlvl,:yrsec ,:entyear)", conn);
                     cmd.Parameters.Add(new NpgsqlParameter("name", Namebox.Text));
-                    cmd.Parameters.Add(new NpgsqlParameter("num", int.Parse(StudentNumberBox.Text)));
+                    cmd.Parameters.Add(new NpgsqlParameter("num", StudentNumberBox.Text));
                     cmd.Parameters.Add(new NpgsqlParameter("prevsc", PrevSchoolBox.Text));
                     cmd.Parameters.Add(new NpgsqlParameter("prevprog", PrevProgramBox.Text));
                     cmd.Parameters.Add(new NpgsqlParameter("yrlvl", int.Parse(Yeardropbox.Text)));
+                    cmd.Parameters.Add(new NpgsqlParameter("yrsec", DateTime.Now.Year.ToString()+"/"+ (DateTime.Now.Year+1).ToString()));
+                    cmd.Parameters.Add(new NpgsqlParameter("entyear", DateTime.Now.Year));
                     cmd.ExecuteNonQuery();
 
                     cmd.Cancel();
-                    cmd = new NpgsqlCommand("create table \"" + StudentNumberBox.Text + "\"(coursesubject text, coursenumber integer, coursename text, coursegrade integer, year date default Current_date)", conn);
+                    cmd = new NpgsqlCommand("create table \"" + StudentNumberBox.Text + "\"(coursesubject text, coursenumber text, coursename text, coursegrade integer, yearsection text, year integer)", conn);
                     cmd.ExecuteNonQuery();
 
                     cmd.Cancel();
@@ -97,11 +99,12 @@ namespace AutomatedStudentRecordKeeper
                         }
                         else
                         {
-                            cmd = new NpgsqlCommand("insert into makeupcourses values(:student, :sub, :num, :name)", conn);
-                            cmd.Parameters.Add(new NpgsqlParameter("student", int.Parse(StudentNumberBox.Text)));
+                            cmd = new NpgsqlCommand("insert into makeupcourses values(:student, :sub, :num, :name, :cred)", conn);
+                            cmd.Parameters.Add(new NpgsqlParameter("student", StudentNumberBox.Text));
                             cmd.Parameters.Add(new NpgsqlParameter("sub", MakeupCourseTable.GetControlFromPosition(0, j).Text));
-                            cmd.Parameters.Add(new NpgsqlParameter("num", int.Parse(MakeupCourseTable.GetControlFromPosition(1, j).Text)));
+                            cmd.Parameters.Add(new NpgsqlParameter("num", MakeupCourseTable.GetControlFromPosition(1, j).Text));
                             cmd.Parameters.Add(new NpgsqlParameter("name", MakeupCourseTable.GetControlFromPosition(2, j).Text));
+                            cmd.Parameters.Add(new NpgsqlParameter("cred", 0.5 ));
                             cmd.ExecuteNonQuery();
                         }
                     }
@@ -116,10 +119,12 @@ namespace AutomatedStudentRecordKeeper
                         }
                         else
                         {
-                            cmd = new NpgsqlCommand("insert into \"" + StudentNumberBox.Text + "\" values( :sub, :num, :name)", conn);
+                            cmd = new NpgsqlCommand("insert into \"" + StudentNumberBox.Text + "\"(coursesubject, coursenumber, coursename, yearsection, year) values( :sub, :num, :name, :yrsec, :yr)", conn);
                             cmd.Parameters.Add(new NpgsqlParameter("sub", CourseCredTable.GetControlFromPosition(0, j).Text));
-                            cmd.Parameters.Add(new NpgsqlParameter("num", int.Parse(CourseCredTable.GetControlFromPosition(1, j).Text)));
+                            cmd.Parameters.Add(new NpgsqlParameter("num", CourseCredTable.GetControlFromPosition(1, j).Text));
                             cmd.Parameters.Add(new NpgsqlParameter("name", CourseCredTable.GetControlFromPosition(2, j).Text));
+                            cmd.Parameters.Add(new NpgsqlParameter("yrsec", DateTime.Now.Year.ToString() + "/" + (DateTime.Now.Year + 1).ToString()));
+                            cmd.Parameters.Add(new NpgsqlParameter("yr", DateTime.Now.Year));
                             cmd.ExecuteNonQuery();
                         }
                     }
