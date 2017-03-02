@@ -15,6 +15,7 @@ namespace AutomatedStudentRecordKeeper
 {
     public partial class ViewCourse : Form
     {
+        bool alldone = false, fallfin1 = false, fallfin2 = false, fallfin3 = false, fallfin4 = false, wintfin1 = false, wintfin2 = false, wintfin3 = false, wintfin4 = false, compfin = false;
         int fall1page = 1, wint1page = 1, fall2page = 1, wint2page = 1, fall3page = 1, wint3page = 1, fall4page = 1, wint4page = 1, comppage = 1;
         List<viewtabletinfo> fall1list = new List<viewtabletinfo>();
         List<viewtabletinfo> wint1list = new List<viewtabletinfo>();
@@ -36,7 +37,10 @@ namespace AutomatedStudentRecordKeeper
             Thread threadwinter2 = new Thread(new ThreadStart(loadtablewinter2));
             Thread threadwinter3 = new Thread(new ThreadStart(loadtablewinter3));
             Thread threadwinter4 = new Thread(new ThreadStart(loadtablewinter4));
-
+            Thread threadcomp = new Thread(new ThreadStart(loadcomptable));
+            waitScreen waitscrn = new waitScreen();
+            waitscrn.Show();
+            threadcomp.Start();
             threadfall1.Start();
             threadfall2.Start();
             threadfall3.Start();
@@ -45,7 +49,57 @@ namespace AutomatedStudentRecordKeeper
             threadwinter2.Start();
             threadwinter3.Start();
             threadwinter4.Start();
-
+            while (alldone==false)
+            if (compfin && fallfin1 && fallfin2 && fallfin3 && fallfin4 && wintfin1 && wintfin2 && wintfin3 && wintfin4)
+            {
+                
+                alldone = true;
+                    waitscrn.Hide();
+                
+            }
+        }
+        public void loadcomptable()
+        {
+            NpgsqlConnection conn = new NpgsqlConnection("Server=Localhost; Port=5432; Database=studentrecordkeeper; User Id=postgres; Password=;");
+            //connect to database
+            conn.Open();
+            if (conn.State == System.Data.ConnectionState.Open)
+            {
+                NpgsqlCommand cmd;
+                NpgsqlDataReader reader;
+                //Fall year1
+                cmd = new NpgsqlCommand("select coursesubject,coursenumber,coursename,credits FROM complementarycourses where lastusedyear IS NULL", conn);
+                reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    complist.Add(new viewtabletinfo { Subject = reader[0].ToString(), Number = reader[1].ToString(), Name = reader[2].ToString(), Credits = reader[3].ToString() });
+                }
+                cmd.Cancel();
+                reader.Close();
+                for (int i = 1; i <= 18; i++)
+                {
+                    if (complist.Count >= i)
+                    {
+                        SetControlPropertyThreadSafe(complementtable.GetControlFromPosition(0, i), "Text", complist[i - 1].Subject);
+                        SetControlPropertyThreadSafe(complementtable.GetControlFromPosition(1, i), "Text", complist[i - 1].Number);
+                        SetControlPropertyThreadSafe(complementtable.GetControlFromPosition(2, i), "Text", complist[i - 1].Name);
+                        SetControlPropertyThreadSafe(complementtable.GetControlFromPosition(3, i), "Text", complist[i - 1].Credits);
+                    }
+                    else
+                    {
+                        SetControlPropertyThreadSafe(complementtable.GetControlFromPosition(0, i), "Text", "");
+                        SetControlPropertyThreadSafe(complementtable.GetControlFromPosition(1, i), "Text", "");
+                        SetControlPropertyThreadSafe(complementtable.GetControlFromPosition(2, i), "Text", "");
+                        SetControlPropertyThreadSafe(complementtable.GetControlFromPosition(3, i), "Text", "");
+                    }
+                }
+                conn.Close();
+            }
+            else
+            {
+                MessageBox.Show("Connection error to database");
+            }
+            compfin = true;
         }
         public void loadtablefall1()
         {
@@ -88,6 +142,7 @@ namespace AutomatedStudentRecordKeeper
             {
                     MessageBox.Show("Connection error to database");
                 }
+            fallfin1 = true;
             }
         public void loadtablewinter1()
         {
@@ -131,7 +186,7 @@ namespace AutomatedStudentRecordKeeper
                 MessageBox.Show("Connection error to database");
             }
 
-
+            wintfin1 = true;
 
         }
 
@@ -310,6 +365,58 @@ namespace AutomatedStudentRecordKeeper
                         year2wintertable.GetControlFromPosition(1, i).Text = "";
                         year2wintertable.GetControlFromPosition(2, i).Text = "";
                         year2wintertable.GetControlFromPosition(3, i).Text = "";
+                    }
+                }
+            }
+            else { }
+        }
+
+        private void prevcomp_Click(object sender, EventArgs e)
+        {
+            if (comppage > 1)
+            {
+                comppage--;
+                for (int i = (comppage - 1 * 7) + 1; i <= (7 * comppage); i++)
+                {
+                    if (complist.Count >= i)
+                    {
+                        complementtable.GetControlFromPosition(0, i).Text = complist[i - 1].Subject;
+                        complementtable.GetControlFromPosition(1, i).Text = complist[i - 1].Number;
+                        complementtable.GetControlFromPosition(2, i).Text = complist[i - 1].Name;
+                        complementtable.GetControlFromPosition(3, i).Text = complist[i - 1].Credits;
+                    }
+                    else
+                    {
+                        complementtable.GetControlFromPosition(0, i).Text = "";
+                        complementtable.GetControlFromPosition(1, i).Text = "";
+                        complementtable.GetControlFromPosition(2, i).Text = "";
+                        complementtable.GetControlFromPosition(3, i).Text = "";
+                    }
+                }
+            }
+            else { }
+        }
+
+        private void nextcomp_Click(object sender, EventArgs e)
+        {
+            if (complist.Count > comppage * 7)
+            {
+                comppage++;
+                for (int i = (comppage - 1 * 7) + 1; i <= (7 * comppage); i++)
+                {
+                    if (complist.Count >= i)
+                    {
+                        complementtable.GetControlFromPosition(0, i).Text = complist[i - 1].Subject;
+                        complementtable.GetControlFromPosition(1, i).Text = complist[i - 1].Number;
+                        complementtable.GetControlFromPosition(2, i).Text = complist[i - 1].Name;
+                        complementtable.GetControlFromPosition(3, i).Text = complist[i - 1].Credits;
+                    }
+                    else
+                    {
+                        complementtable.GetControlFromPosition(0, i).Text = "";
+                        complementtable.GetControlFromPosition(1, i).Text = "";
+                        complementtable.GetControlFromPosition(2, i).Text = "";
+                        complementtable.GetControlFromPosition(3, i).Text = "";
                     }
                 }
             }
@@ -594,7 +701,7 @@ namespace AutomatedStudentRecordKeeper
             }
 
 
-
+            fallfin2 = true;
         }
         public void loadtablewinter2()
         {
@@ -639,7 +746,7 @@ namespace AutomatedStudentRecordKeeper
                 MessageBox.Show("Connection error to database");
             }
 
-
+            wintfin2 = true;
         }
         public void loadtablefall3()
         {
@@ -684,7 +791,7 @@ namespace AutomatedStudentRecordKeeper
                 MessageBox.Show("Connection error to database");
             }
 
-
+            fallfin3 = true;
 
         }
         public void loadtablewinter3()
@@ -731,7 +838,7 @@ namespace AutomatedStudentRecordKeeper
                 MessageBox.Show("Connection error to database");
             }
 
-
+            wintfin3 = true;
 
         }
         public void loadtablefall4()
@@ -777,7 +884,7 @@ namespace AutomatedStudentRecordKeeper
                 MessageBox.Show("Connection error to database");
             }
 
-
+            fallfin4 = true;
 
         }
         public void loadtablewinter4()
@@ -823,7 +930,7 @@ namespace AutomatedStudentRecordKeeper
                 MessageBox.Show("Connection error to database");
             }
 
-
+            wintfin4 = true;
 
         }
         private delegate void SetControlPropertyThreadSafeDelegate(Control control,string propertyName, object propertyValue);

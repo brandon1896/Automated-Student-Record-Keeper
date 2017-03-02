@@ -68,6 +68,12 @@
     <Compile Include="AddComplementaryCourses.Designer.cs">
       <DependentUpon>AddComplementaryCourses.cs</DependentUpon>
     </Compile>
+    <Compile Include="waitScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="waitScreen.Designer.cs">
+      <DependentUpon>waitScreen.cs</DependentUpon>
+    </Compile>
     <Compile Include="viewtabletinfo.cs" />
     <Compile Include="MainScreen.cs">
       <SubType>Form</SubType>
@@ -142,6 +148,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ViewStudents.resx">
       <DependentUpon>ViewStudents.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="waitScreen.resx">
+      <DependentUpon>waitScreen.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
