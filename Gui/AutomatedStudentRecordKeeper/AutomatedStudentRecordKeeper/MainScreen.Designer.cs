@@ -35,6 +35,7 @@
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.AddButton = new System.Windows.Forms.Button();
+            this.ViewButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // addstudentbutton
@@ -106,11 +107,22 @@
             this.AddButton.UseVisualStyleBackColor = true;
             this.AddButton.Click += new System.EventHandler(this.AddButton_Click);
             // 
+            // ViewButton
+            // 
+            this.ViewButton.Location = new System.Drawing.Point(134, 188);
+            this.ViewButton.Name = "ViewButton";
+            this.ViewButton.Size = new System.Drawing.Size(125, 50);
+            this.ViewButton.TabIndex = 9;
+            this.ViewButton.Text = "View Grades";
+            this.ViewButton.UseVisualStyleBackColor = true;
+            this.ViewButton.Click += new System.EventHandler(this.ViewButton_Click);
+            // 
             // MainScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(284, 323);
+            this.Controls.Add(this.ViewButton);
             this.Controls.Add(this.AddButton);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
@@ -132,6 +144,7 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button AddButton;
+        private System.Windows.Forms.Button ViewButton;
     }
 }
 
