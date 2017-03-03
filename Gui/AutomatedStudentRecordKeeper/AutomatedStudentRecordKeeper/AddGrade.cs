@@ -108,14 +108,15 @@ namespace AutomatedStudentRecordKeeper
                     result = Regex.Replace(result, @"(Full Time).*?(>)", string.Empty, RegexOptions.Singleline);
                     result = Regex.Replace(result, @"(Degree/CCD:).*?(?<=END OF)", string.Empty, RegexOptions.Singleline);
                     result = Regex.Replace(result, @"(Printed on:).*?(\))", string.Empty, RegexOptions.Singleline);
+                    result = Regex.Replace(result, @"INTERNAL USE ONLY", string.Empty); //this line causes issues with courseCodeList values because of ONLY
                     //result = Regex.Replace(result, "[%|+]", string.Empty); //might not be needed
                     result = Regex.Replace(result, "[-]", "\n");
                     result = Regex.Replace(result, @"(MATH Average:)|(ENGI Average:)", string.Empty, RegexOptions.Singleline);
 
                     result = Regex.Replace(result, @"(name:)\s+", "Name: ", RegexOptions.IgnoreCase); //puts student name on same line
                     result = Regex.Replace(result, @"(student number:)\s+", "Student Number: ", RegexOptions.IgnoreCase); //puts student number on same line
-                    string[] files = result.Split(new string[] { "ACADEMIC TRANSCRIPT" }, StringSplitOptions.RemoveEmptyEntries);
-                    //splits into multiple files 
+                    string[] files = result.Split(new string[] { "Term Average:" }, StringSplitOptions.RemoveEmptyEntries);
+                    //splits into multiple files, divided into years --spring/summer causes an extra split
 
                     int i = 0;
                     while (i < files.Length)
@@ -134,9 +135,9 @@ namespace AutomatedStudentRecordKeeper
                         reader.Close();
                         if (checknum == "False")
                         {
-                            MessageBox.Show("Student Doesnt exist");
+                            //MessageBox.Show("Student Doesnt exist");
                             //write to dB
-                            var studentName = Regex.Matches(files[i], @"(?<=Name: ).*?(\.)", RegexOptions.Singleline); //extracts student name --needs tweaking--
+                            var studentName = Regex.Matches(files[i], @"(?<=Name: ).*?(?<=\n)", RegexOptions.Singleline); //extracts student name --needs tweaking--
                             //this only works if every name ends with a period. Not sure how all students appear in file
                             var studentNameList = studentName.Cast<Match>().Select(match => match.Value).ToList();
 
@@ -151,9 +152,37 @@ namespace AutomatedStudentRecordKeeper
                             //some dates snuck through, 2014/2015, 2016/2017 possibly only in my half of the file? didnt seem to happen before
                             //possibly a non issue
 
+                            //consider breaking up into more files to seperate by year??????
+
                             //trying to grab all grades, -- 132 is the magic number
                             var studentGrade = Regex.Matches(files[i], @"\s[0-9]{2,3}\s|\s(IP)\s");
                             var studentGradeList = studentGrade.Cast<Match>().Select(match => match.Value).ToList();
+
+                            //if (courseCodeList.Count == courseNumberList.Count && courseCodeList.Count == studentGradeList.Count)
+                            int count = courseCodeList.Count;
+
+                            System.IO.File.WriteAllLines(@"C:\Users\Shawn\Documents\WriteLines" + i + ".txt", studentNameList); //writes to text file
+                            string year = files[i]; //need to convert to date? spring and summer courses cause an issue here
+
+                            for (int n = 0; n < count; n++) //need the list size
+                            {
+                                /*
+                                //write to dB --this is questionable--
+                                cmd = new NpgsqlCommand("insert into \"" + studentNumberList + "\"(coursesubject,coursenumber,coursegrade,yearsection, year) values(:sub, :num, :grade, :yrsec, :yr)", conn);
+                                cmd.Parameters.Add(new NpgsqlParameter("sub", courseCodeList[n]));
+                                cmd.Parameters.Add(new NpgsqlParameter("num", courseNumberList[n]));
+                                cmd.Parameters.Add(new NpgsqlParameter("grade", studentGradeList[n]));
+                                cmd.Parameters.Add(new NpgsqlParameter("yrsec", "NULL"));
+                                cmd.Parameters.Add(new NpgsqlParameter("yr", "NULL"));
+                                cmd.ExecuteNonQuery(); //currently broken!!!!!!!!!!!!!!!
+                                */
+                                //--testing testing 123 testing testing--
+                                
+                                System.IO.File.AppendAllText(@"C:\Users\Shawn\Documents\WriteLines" + i + ".txt", "\nEntry: " + n + " ");
+                                System.IO.File.AppendAllText(@"C:\Users\Shawn\Documents\WriteLines" + i + ".txt", studentGradeList[n]); //writes to text file
+                                System.Diagnostics.Process.Start(@"C:\Users\Shawn\Documents\WriteLines" + i + ".txt"); //opens file
+
+                            }
                         }
 
                         //System.IO.File.WriteAllLines(@"C:\Users\Shawn\Documents\WriteLines" + i + ".txt", studentGradeList); //writes to text file
