@@ -3,6 +3,7 @@ C:\Users\bjcri\Desktop\Degree Project\Automated-Student-Record-Keeper\Gui\Automa
 C:\Users\bjcri\Desktop\Degree Project\Automated-Student-Record-Keeper\Gui\AutomatedStudentRecordKeeper\AutomatedStudentRecordKeeper\bin\Debug\AutomatedStudentRecordKeeper.pdb
 C:\Users\bjcri\Desktop\Degree Project\Automated-Student-Record-Keeper\Gui\AutomatedStudentRecordKeeper\AutomatedStudentRecordKeeper\bin\Debug\Npgsql.dll
 C:\Users\bjcri\Desktop\Degree Project\Automated-Student-Record-Keeper\Gui\AutomatedStudentRecordKeeper\AutomatedStudentRecordKeeper\bin\Debug\Npgsql.xml
+C:\Users\bjcri\Desktop\Degree Project\Automated-Student-Record-Keeper\Gui\AutomatedStudentRecordKeeper\AutomatedStudentRecordKeeper\obj\Debug\AutomatedStudentRecordKeeper.csprojResolveAssemblyReference.cache
 C:\Users\bjcri\Desktop\Degree Project\Automated-Student-Record-Keeper\Gui\AutomatedStudentRecordKeeper\AutomatedStudentRecordKeeper\obj\Debug\AutomatedStudentRecordKeeper.AddComplementaryCourses.resources
 C:\Users\bjcri\Desktop\Degree Project\Automated-Student-Record-Keeper\Gui\AutomatedStudentRecordKeeper\AutomatedStudentRecordKeeper\obj\Debug\AutomatedStudentRecordKeeper.AddCourse.resources
 C:\Users\bjcri\Desktop\Degree Project\Automated-Student-Record-Keeper\Gui\AutomatedStudentRecordKeeper\AutomatedStudentRecordKeeper\obj\Debug\AutomatedStudentRecordKeeper.AddGrade.resources
@@ -16,4 +17,3 @@ C:\Users\bjcri\Desktop\Degree Project\Automated-Student-Record-Keeper\Gui\Automa
 C:\Users\bjcri\Desktop\Degree Project\Automated-Student-Record-Keeper\Gui\AutomatedStudentRecordKeeper\AutomatedStudentRecordKeeper\obj\Debug\AutomatedStudentRecordKeeper.csproj.GenerateResource.Cache
 C:\Users\bjcri\Desktop\Degree Project\Automated-Student-Record-Keeper\Gui\AutomatedStudentRecordKeeper\AutomatedStudentRecordKeeper\obj\Debug\AutomatedStudentRecordKeeper.exe
 C:\Users\bjcri\Desktop\Degree Project\Automated-Student-Record-Keeper\Gui\AutomatedStudentRecordKeeper\AutomatedStudentRecordKeeper\obj\Debug\AutomatedStudentRecordKeeper.pdb
-C:\Users\bjcri\Desktop\Degree Project\Automated-Student-Record-Keeper\Gui\AutomatedStudentRecordKeeper\AutomatedStudentRecordKeeper\obj\Debug\AutomatedStudentRecordKeeper.csprojResolveAssemblyReference.cache
