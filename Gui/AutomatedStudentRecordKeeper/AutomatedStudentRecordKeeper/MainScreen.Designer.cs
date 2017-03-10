@@ -130,6 +130,7 @@
             this.Controls.Add(this.AddCoursesButton);
             this.Controls.Add(this.viewstudentsbutton);
             this.Controls.Add(this.addstudentbutton);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "MainScreen";
             this.Text = "Automated Student Record Keeper";
             this.ResumeLayout(false);

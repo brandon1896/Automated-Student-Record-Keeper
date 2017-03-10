@@ -68,6 +68,7 @@
     <Compile Include="AddComplementaryCourses.Designer.cs">
       <DependentUpon>AddComplementaryCourses.cs</DependentUpon>
     </Compile>
+    <Compile Include="studentinfo.cs" />
     <Compile Include="viewgradetableinfo.cs" />
     <Compile Include="waitScreen.cs">
       <SubType>Form</SubType>

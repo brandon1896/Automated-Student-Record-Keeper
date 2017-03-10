@@ -462,6 +462,27 @@ namespace AutomatedStudentRecordKeeper
             complementtable.ResumeLayout();
         }
 
+        private void removebutton_Click(object sender, EventArgs e)
+        {
+            NpgsqlConnection conn = new NpgsqlConnection("Server=Localhost; Port=5432; Database=studentrecordkeeper; User Id=postgres; Password=;");
+            //connect to database
+            conn.Open();
+            if (conn.State == System.Data.ConnectionState.Open)
+            {
+                NpgsqlCommand cmd;
+                cmd = new NpgsqlCommand("update courses set lastusedyear = "+DateTime.Now.Year+" where coursesubject = '"+coursesubject.Text+"' and coursenumber = '"+coursenumber.Text+ "'", conn);
+                cmd.ExecuteNonQuery();
+                cmd = new NpgsqlCommand("update complementarycourses set lastusedyear = " + DateTime.Now.Year + " where coursesubject = '" + coursesubject.Text + "' and coursenumber = '" + coursenumber.Text + "'", conn);
+                cmd.ExecuteNonQuery();
+
+                conn.Close();
+            }
+            else
+            {
+                MessageBox.Show("Connection error to database");
+            }
+        }
+
         private void wint2next_Click(object sender, EventArgs e)
         {
             year2wintertable.SuspendLayout();
