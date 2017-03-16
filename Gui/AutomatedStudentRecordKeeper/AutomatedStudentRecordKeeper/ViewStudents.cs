@@ -60,20 +60,29 @@ namespace AutomatedStudentRecordKeeper
 
         private void removebutton_Click(object sender, EventArgs e)
         {
+
             NpgsqlConnection conn = new NpgsqlConnection("Server=Localhost; Port=5432; Database=studentrecordkeeper; User Id=postgres; Password=;");
             //connect to database
             conn.Open();
             if (conn.State == System.Data.ConnectionState.Open)
             {
-                NpgsqlCommand cmd;
-                cmd = new NpgsqlCommand("delete from student where studentid = '"+removetext.Text+"'", conn);
-                cmd.ExecuteNonQuery();
-                cmd = new NpgsqlCommand("delete from makeupcourses where studentid = '"+removetext.Text+"'", conn);
-                cmd.ExecuteNonQuery();
-                cmd = new NpgsqlCommand("drop table if exists \"" + removetext.Text + "\"", conn);
-                cmd.ExecuteNonQuery();
-
-                conn.Close();
+                if (removetext.Text.Length != 7)
+                {
+                    MessageBox.Show("Please enter valid student number");
+                }
+                else
+                {
+                    NpgsqlCommand cmd;
+                    cmd = new NpgsqlCommand("delete from student where studentid = '" + removetext.Text + "'", conn);
+                    cmd.ExecuteNonQuery();
+                    cmd = new NpgsqlCommand("delete from makeupcourses where studentid = '" + removetext.Text + "'", conn);
+                    cmd.ExecuteNonQuery();
+                    cmd = new NpgsqlCommand("drop table if exists \"" + removetext.Text + "\"", conn);
+                    cmd.ExecuteNonQuery();
+                    MessageBox.Show("Studnet removed if existed");
+                }
+                    conn.Close();
+                
             }
             else
             {
@@ -135,6 +144,15 @@ namespace AutomatedStudentRecordKeeper
                 StudentTable.Show();
             }
             else { }
+        }
+
+        private void removetext_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char ch = e.KeyChar;
+            if (!Char.IsDigit(ch) && ch != 8)
+            {
+                e.Handled = true;
+            }
         }
     }
     }

@@ -409,7 +409,7 @@ namespace AutomatedStudentRecordKeeper
             {
                 int j = 1;
                 comppage--;
-                for (int i = ((comppage - 1 )* 7) + 1; i <= (7 * comppage); i++)
+                for (int i = ((comppage - 1 )* 18) + 1; i <= (18 * comppage); i++)
                 {
                     if (complist.Count >= i)
                     {
@@ -435,11 +435,11 @@ namespace AutomatedStudentRecordKeeper
         private void nextcomp_Click(object sender, EventArgs e)
         {
             complementtable.SuspendLayout();
-            if (complist.Count > comppage * 7)
+            if (complist.Count > comppage * 18)
             {
                 int j = 1;
                 comppage++;
-                for (int i = ((comppage - 1) * 7) + 1; i <= (7 * comppage); i++)
+                for (int i = ((comppage - 1) * 18) + 1; i <= (18 * comppage); i++)
                 {
                     if (complist.Count >= i)
                     {
@@ -469,17 +469,52 @@ namespace AutomatedStudentRecordKeeper
             conn.Open();
             if (conn.State == System.Data.ConnectionState.Open)
             {
-                NpgsqlCommand cmd;
-                cmd = new NpgsqlCommand("update courses set lastusedyear = "+DateTime.Now.Year+" where coursesubject = '"+coursesubject.Text+"' and coursenumber = '"+coursenumber.Text+ "'", conn);
-                cmd.ExecuteNonQuery();
-                cmd = new NpgsqlCommand("update complementarycourses set lastusedyear = " + DateTime.Now.Year + " where coursesubject = '" + coursesubject.Text + "' and coursenumber = '" + coursenumber.Text + "'", conn);
-                cmd.ExecuteNonQuery();
-
+                if (coursenumber.Text.Length != 4)
+                {
+                    MessageBox.Show("Please enter valid course number");
+                }
+                else if (coursesubject.Text.Length != 4)
+                {
+                    MessageBox.Show("Please enter valid course subject");
+                }
+                else
+                {
+                    NpgsqlCommand cmd;
+                    cmd = new NpgsqlCommand("update courses set lastusedyear = " + DateTime.Now.Year + " where coursesubject = '" + coursesubject.Text + "' and coursenumber = '" + coursenumber.Text + "'", conn);
+                    cmd.ExecuteNonQuery();
+                    cmd = new NpgsqlCommand("update complementarycourses set lastusedyear = " + DateTime.Now.Year + " where coursesubject = '" + coursesubject.Text + "' and coursenumber = '" + coursenumber.Text + "'", conn);
+                    cmd.ExecuteNonQuery();
+                    MessageBox.Show("Successfully Removed");
+                    coursesubject.Text = "";
+                    coursenumber.Text = "";
+                }
                 conn.Close();
             }
             else
             {
                 MessageBox.Show("Connection error to database");
+            }
+        }
+
+        private void coursesubject_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char ch = e.KeyChar;
+            if (Char.IsDigit(ch))
+            {
+                e.Handled = true;
+            }
+            else
+            {
+                e.KeyChar = Char.ToUpper(ch);
+            }
+        }
+
+        private void coursenumber_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char ch = e.KeyChar;
+            if (!Char.IsDigit(ch) && ch != 8)
+            {
+                e.Handled = true;
             }
         }
 

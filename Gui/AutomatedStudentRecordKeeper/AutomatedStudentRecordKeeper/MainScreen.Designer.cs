@@ -32,7 +32,6 @@
             this.viewstudentsbutton = new System.Windows.Forms.Button();
             this.AddCoursesButton = new System.Windows.Forms.Button();
             this.ViewCoursesButton = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.AddButton = new System.Windows.Forms.Button();
             this.ViewButton = new System.Windows.Forms.Button();
@@ -70,22 +69,13 @@
             // 
             // ViewCoursesButton
             // 
-            this.ViewCoursesButton.Location = new System.Drawing.Point(12, 128);
+            this.ViewCoursesButton.Location = new System.Drawing.Point(73, 128);
             this.ViewCoursesButton.Name = "ViewCoursesButton";
             this.ViewCoursesButton.Size = new System.Drawing.Size(116, 52);
             this.ViewCoursesButton.TabIndex = 4;
             this.ViewCoursesButton.Text = "View Courses";
             this.ViewCoursesButton.UseVisualStyleBackColor = true;
             this.ViewCoursesButton.Click += new System.EventHandler(this.ViewCoursesButton_Click);
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(134, 128);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(116, 52);
-            this.button1.TabIndex = 6;
-            this.button1.Text = "Export Database";
-            this.button1.UseVisualStyleBackColor = true;
             // 
             // button2
             // 
@@ -125,7 +115,6 @@
             this.Controls.Add(this.ViewButton);
             this.Controls.Add(this.AddButton);
             this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.ViewCoursesButton);
             this.Controls.Add(this.AddCoursesButton);
             this.Controls.Add(this.viewstudentsbutton);
@@ -142,7 +131,6 @@
         private System.Windows.Forms.Button viewstudentsbutton;
         private System.Windows.Forms.Button AddCoursesButton;
         private System.Windows.Forms.Button ViewCoursesButton;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button AddButton;
         private System.Windows.Forms.Button ViewButton;

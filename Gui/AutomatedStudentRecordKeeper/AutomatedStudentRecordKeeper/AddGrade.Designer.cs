@@ -151,177 +151,221 @@ namespace AutomatedStudentRecordKeeper
             // richTextBox28
             // 
             this.richTextBox28.Location = new System.Drawing.Point(242, 209);
+            this.richTextBox28.MaxLength = 3;
             this.richTextBox28.Name = "richTextBox28";
             this.richTextBox28.Size = new System.Drawing.Size(80, 26);
             this.richTextBox28.TabIndex = 27;
             this.richTextBox28.Text = "";
+            this.richTextBox28.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.richTextBox3_KeyPress);
             // 
             // richTextBox27
             // 
             this.richTextBox27.Location = new System.Drawing.Point(120, 209);
+            this.richTextBox27.MaxLength = 4;
             this.richTextBox27.Name = "richTextBox27";
             this.richTextBox27.Size = new System.Drawing.Size(114, 26);
             this.richTextBox27.TabIndex = 26;
             this.richTextBox27.Text = "";
+            this.richTextBox27.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.richTextBox3_KeyPress);
             // 
             // richTextBox26
             // 
             this.richTextBox26.Location = new System.Drawing.Point(5, 209);
+            this.richTextBox26.MaxLength = 4;
             this.richTextBox26.Name = "richTextBox26";
             this.richTextBox26.Size = new System.Drawing.Size(107, 26);
             this.richTextBox26.TabIndex = 25;
             this.richTextBox26.Text = "";
+            this.richTextBox26.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.richTextBox2_KeyPress);
             // 
             // richTextBox24
             // 
             this.richTextBox24.Location = new System.Drawing.Point(242, 175);
+            this.richTextBox24.MaxLength = 3;
             this.richTextBox24.Name = "richTextBox24";
             this.richTextBox24.Size = new System.Drawing.Size(80, 26);
             this.richTextBox24.TabIndex = 23;
             this.richTextBox24.Text = "";
+            this.richTextBox24.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.richTextBox3_KeyPress);
             // 
             // richTextBox23
             // 
             this.richTextBox23.Location = new System.Drawing.Point(120, 175);
+            this.richTextBox23.MaxLength = 4;
             this.richTextBox23.Name = "richTextBox23";
             this.richTextBox23.Size = new System.Drawing.Size(114, 26);
             this.richTextBox23.TabIndex = 22;
             this.richTextBox23.Text = "";
+            this.richTextBox23.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.richTextBox3_KeyPress);
             // 
             // richTextBox12
             // 
             this.richTextBox12.Location = new System.Drawing.Point(242, 73);
+            this.richTextBox12.MaxLength = 3;
             this.richTextBox12.Name = "richTextBox12";
             this.richTextBox12.Size = new System.Drawing.Size(80, 26);
             this.richTextBox12.TabIndex = 11;
             this.richTextBox12.Text = "";
+            this.richTextBox12.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.richTextBox3_KeyPress);
             // 
             // richTextBox22
             // 
             this.richTextBox22.Location = new System.Drawing.Point(5, 175);
+            this.richTextBox22.MaxLength = 4;
             this.richTextBox22.Name = "richTextBox22";
             this.richTextBox22.Size = new System.Drawing.Size(107, 26);
             this.richTextBox22.TabIndex = 21;
             this.richTextBox22.Text = "";
+            this.richTextBox22.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.richTextBox2_KeyPress);
             // 
             // richTextBox20
             // 
             this.richTextBox20.Location = new System.Drawing.Point(242, 141);
+            this.richTextBox20.MaxLength = 3;
             this.richTextBox20.Name = "richTextBox20";
             this.richTextBox20.Size = new System.Drawing.Size(80, 26);
             this.richTextBox20.TabIndex = 19;
             this.richTextBox20.Text = "";
+            this.richTextBox20.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.richTextBox3_KeyPress);
             // 
             // richTextBox19
             // 
             this.richTextBox19.Location = new System.Drawing.Point(120, 141);
+            this.richTextBox19.MaxLength = 4;
             this.richTextBox19.Name = "richTextBox19";
             this.richTextBox19.Size = new System.Drawing.Size(114, 26);
             this.richTextBox19.TabIndex = 18;
             this.richTextBox19.Text = "";
+            this.richTextBox19.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.richTextBox3_KeyPress);
             // 
             // richTextBox18
             // 
             this.richTextBox18.Location = new System.Drawing.Point(5, 141);
+            this.richTextBox18.MaxLength = 4;
             this.richTextBox18.Name = "richTextBox18";
             this.richTextBox18.Size = new System.Drawing.Size(107, 26);
             this.richTextBox18.TabIndex = 17;
             this.richTextBox18.Text = "";
+            this.richTextBox18.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.richTextBox2_KeyPress);
             // 
             // richTextBox16
             // 
             this.richTextBox16.Location = new System.Drawing.Point(242, 107);
+            this.richTextBox16.MaxLength = 3;
             this.richTextBox16.Name = "richTextBox16";
             this.richTextBox16.Size = new System.Drawing.Size(80, 26);
             this.richTextBox16.TabIndex = 15;
             this.richTextBox16.Text = "";
+            this.richTextBox16.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.richTextBox3_KeyPress);
             // 
             // richTextBox15
             // 
             this.richTextBox15.Location = new System.Drawing.Point(120, 107);
+            this.richTextBox15.MaxLength = 4;
             this.richTextBox15.Name = "richTextBox15";
             this.richTextBox15.Size = new System.Drawing.Size(114, 26);
             this.richTextBox15.TabIndex = 14;
             this.richTextBox15.Text = "";
+            this.richTextBox15.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.richTextBox3_KeyPress);
             // 
             // richTextBox14
             // 
             this.richTextBox14.Location = new System.Drawing.Point(5, 107);
+            this.richTextBox14.MaxLength = 4;
             this.richTextBox14.Name = "richTextBox14";
             this.richTextBox14.Size = new System.Drawing.Size(107, 26);
             this.richTextBox14.TabIndex = 13;
             this.richTextBox14.Text = "";
+            this.richTextBox14.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.richTextBox2_KeyPress);
             // 
             // richTextBox11
             // 
             this.richTextBox11.Location = new System.Drawing.Point(120, 73);
+            this.richTextBox11.MaxLength = 4;
             this.richTextBox11.Name = "richTextBox11";
             this.richTextBox11.Size = new System.Drawing.Size(114, 26);
             this.richTextBox11.TabIndex = 10;
             this.richTextBox11.Text = "";
+            this.richTextBox11.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.richTextBox3_KeyPress);
             // 
             // richTextBox10
             // 
             this.richTextBox10.Location = new System.Drawing.Point(5, 73);
+            this.richTextBox10.MaxLength = 4;
             this.richTextBox10.Name = "richTextBox10";
             this.richTextBox10.Size = new System.Drawing.Size(107, 26);
             this.richTextBox10.TabIndex = 9;
             this.richTextBox10.Text = "";
+            this.richTextBox10.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.richTextBox2_KeyPress);
             // 
             // richTextBox8
             // 
             this.richTextBox8.Location = new System.Drawing.Point(242, 39);
+            this.richTextBox8.MaxLength = 3;
             this.richTextBox8.Name = "richTextBox8";
             this.richTextBox8.Size = new System.Drawing.Size(80, 26);
             this.richTextBox8.TabIndex = 7;
             this.richTextBox8.Text = "";
+            this.richTextBox8.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.richTextBox3_KeyPress);
             // 
             // richTextBox7
             // 
             this.richTextBox7.Location = new System.Drawing.Point(120, 39);
+            this.richTextBox7.MaxLength = 4;
             this.richTextBox7.Name = "richTextBox7";
             this.richTextBox7.Size = new System.Drawing.Size(114, 26);
             this.richTextBox7.TabIndex = 6;
             this.richTextBox7.Text = "";
+            this.richTextBox7.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.richTextBox3_KeyPress);
             // 
             // richTextBox6
             // 
             this.richTextBox6.Location = new System.Drawing.Point(5, 39);
+            this.richTextBox6.MaxLength = 4;
             this.richTextBox6.Name = "richTextBox6";
             this.richTextBox6.Size = new System.Drawing.Size(107, 26);
             this.richTextBox6.TabIndex = 5;
             this.richTextBox6.Text = "";
+            this.richTextBox6.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.richTextBox2_KeyPress);
             // 
             // richTextBox2
             // 
             this.richTextBox2.Location = new System.Drawing.Point(5, 5);
+            this.richTextBox2.MaxLength = 4;
             this.richTextBox2.Name = "richTextBox2";
             this.richTextBox2.Size = new System.Drawing.Size(107, 26);
             this.richTextBox2.TabIndex = 1;
             this.richTextBox2.Text = "";
+            this.richTextBox2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.richTextBox2_KeyPress);
             // 
             // richTextBox3
             // 
             this.richTextBox3.Location = new System.Drawing.Point(120, 5);
+            this.richTextBox3.MaxLength = 4;
             this.richTextBox3.Name = "richTextBox3";
             this.richTextBox3.Size = new System.Drawing.Size(114, 26);
             this.richTextBox3.TabIndex = 2;
             this.richTextBox3.Text = "";
+            this.richTextBox3.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.richTextBox3_KeyPress);
             // 
             // richTextBox4
             // 
             this.richTextBox4.Location = new System.Drawing.Point(242, 5);
+            this.richTextBox4.MaxLength = 3;
             this.richTextBox4.Name = "richTextBox4";
             this.richTextBox4.Size = new System.Drawing.Size(80, 26);
             this.richTextBox4.TabIndex = 3;
             this.richTextBox4.Text = "";
+            this.richTextBox4.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.richTextBox3_KeyPress);
             // 
             // StudentNumber
             // 
             this.StudentNumber.Location = new System.Drawing.Point(140, 12);
+            this.StudentNumber.MaxLength = 7;
             this.StudentNumber.Name = "StudentNumber";
             this.StudentNumber.Size = new System.Drawing.Size(139, 20);
             this.StudentNumber.TabIndex = 19;
+            this.StudentNumber.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.richTextBox3_KeyPress);
             // 
             // label2
             // 

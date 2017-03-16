@@ -34,34 +34,34 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.CourseTable = new System.Windows.Forms.TableLayoutPanel();
-            this.richTextBox28 = new System.Windows.Forms.RichTextBox();
+            this.comboBox7 = new System.Windows.Forms.ComboBox();
+            this.comboBox6 = new System.Windows.Forms.ComboBox();
+            this.comboBox5 = new System.Windows.Forms.ComboBox();
+            this.comboBox4 = new System.Windows.Forms.ComboBox();
+            this.comboBox3 = new System.Windows.Forms.ComboBox();
+            this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.richTextBox27 = new System.Windows.Forms.RichTextBox();
             this.richTextBox26 = new System.Windows.Forms.RichTextBox();
-            this.richTextBox24 = new System.Windows.Forms.RichTextBox();
             this.richTextBox23 = new System.Windows.Forms.RichTextBox();
             this.richTextBox22 = new System.Windows.Forms.RichTextBox();
             this.richTextBox21 = new System.Windows.Forms.RichTextBox();
-            this.richTextBox20 = new System.Windows.Forms.RichTextBox();
             this.richTextBox19 = new System.Windows.Forms.RichTextBox();
             this.richTextBox18 = new System.Windows.Forms.RichTextBox();
             this.richTextBox17 = new System.Windows.Forms.RichTextBox();
-            this.richTextBox16 = new System.Windows.Forms.RichTextBox();
             this.richTextBox15 = new System.Windows.Forms.RichTextBox();
             this.richTextBox14 = new System.Windows.Forms.RichTextBox();
             this.richTextBox13 = new System.Windows.Forms.RichTextBox();
-            this.richTextBox12 = new System.Windows.Forms.RichTextBox();
             this.richTextBox11 = new System.Windows.Forms.RichTextBox();
             this.richTextBox10 = new System.Windows.Forms.RichTextBox();
             this.richTextBox9 = new System.Windows.Forms.RichTextBox();
-            this.richTextBox8 = new System.Windows.Forms.RichTextBox();
             this.richTextBox7 = new System.Windows.Forms.RichTextBox();
             this.richTextBox6 = new System.Windows.Forms.RichTextBox();
             this.richTextBox5 = new System.Windows.Forms.RichTextBox();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.richTextBox2 = new System.Windows.Forms.RichTextBox();
             this.richTextBox3 = new System.Windows.Forms.RichTextBox();
-            this.richTextBox4 = new System.Windows.Forms.RichTextBox();
             this.richTextBox25 = new System.Windows.Forms.RichTextBox();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.CourseTable.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -120,34 +120,34 @@
             this.CourseTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 51.85185F));
             this.CourseTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 204F));
             this.CourseTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 50F));
-            this.CourseTable.Controls.Add(this.richTextBox28, 3, 6);
+            this.CourseTable.Controls.Add(this.comboBox7, 3, 6);
+            this.CourseTable.Controls.Add(this.comboBox6, 3, 5);
+            this.CourseTable.Controls.Add(this.comboBox5, 3, 4);
+            this.CourseTable.Controls.Add(this.comboBox4, 3, 3);
+            this.CourseTable.Controls.Add(this.comboBox3, 3, 2);
+            this.CourseTable.Controls.Add(this.comboBox2, 3, 1);
             this.CourseTable.Controls.Add(this.richTextBox27, 2, 6);
             this.CourseTable.Controls.Add(this.richTextBox26, 1, 6);
-            this.CourseTable.Controls.Add(this.richTextBox24, 3, 5);
             this.CourseTable.Controls.Add(this.richTextBox23, 2, 5);
             this.CourseTable.Controls.Add(this.richTextBox22, 1, 5);
             this.CourseTable.Controls.Add(this.richTextBox21, 0, 5);
-            this.CourseTable.Controls.Add(this.richTextBox20, 3, 4);
             this.CourseTable.Controls.Add(this.richTextBox19, 2, 4);
             this.CourseTable.Controls.Add(this.richTextBox18, 1, 4);
             this.CourseTable.Controls.Add(this.richTextBox17, 0, 4);
-            this.CourseTable.Controls.Add(this.richTextBox16, 3, 3);
             this.CourseTable.Controls.Add(this.richTextBox15, 2, 3);
             this.CourseTable.Controls.Add(this.richTextBox14, 1, 3);
             this.CourseTable.Controls.Add(this.richTextBox13, 0, 3);
-            this.CourseTable.Controls.Add(this.richTextBox12, 3, 2);
             this.CourseTable.Controls.Add(this.richTextBox11, 2, 2);
             this.CourseTable.Controls.Add(this.richTextBox10, 1, 2);
             this.CourseTable.Controls.Add(this.richTextBox9, 0, 2);
-            this.CourseTable.Controls.Add(this.richTextBox8, 3, 1);
             this.CourseTable.Controls.Add(this.richTextBox7, 2, 1);
             this.CourseTable.Controls.Add(this.richTextBox6, 1, 1);
             this.CourseTable.Controls.Add(this.richTextBox5, 0, 1);
             this.CourseTable.Controls.Add(this.richTextBox1, 0, 0);
             this.CourseTable.Controls.Add(this.richTextBox2, 1, 0);
             this.CourseTable.Controls.Add(this.richTextBox3, 2, 0);
-            this.CourseTable.Controls.Add(this.richTextBox4, 3, 0);
             this.CourseTable.Controls.Add(this.richTextBox25, 0, 6);
+            this.CourseTable.Controls.Add(this.comboBox1, 3, 0);
             this.CourseTable.Location = new System.Drawing.Point(21, 37);
             this.CourseTable.Name = "CourseTable";
             this.CourseTable.RowCount = 7;
@@ -162,13 +162,77 @@
             this.CourseTable.Size = new System.Drawing.Size(497, 245);
             this.CourseTable.TabIndex = 17;
             // 
-            // richTextBox28
+            // comboBox7
             // 
-            this.richTextBox28.Location = new System.Drawing.Point(447, 209);
-            this.richTextBox28.Name = "richTextBox28";
-            this.richTextBox28.Size = new System.Drawing.Size(45, 26);
-            this.richTextBox28.TabIndex = 27;
-            this.richTextBox28.Text = "";
+            this.comboBox7.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox7.FormattingEnabled = true;
+            this.comboBox7.Items.AddRange(new object[] {
+            "1",
+            "0.5"});
+            this.comboBox7.Location = new System.Drawing.Point(447, 209);
+            this.comboBox7.Name = "comboBox7";
+            this.comboBox7.Size = new System.Drawing.Size(45, 21);
+            this.comboBox7.TabIndex = 33;
+            // 
+            // comboBox6
+            // 
+            this.comboBox6.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox6.FormattingEnabled = true;
+            this.comboBox6.Items.AddRange(new object[] {
+            "1",
+            "0.5"});
+            this.comboBox6.Location = new System.Drawing.Point(447, 175);
+            this.comboBox6.Name = "comboBox6";
+            this.comboBox6.Size = new System.Drawing.Size(45, 21);
+            this.comboBox6.TabIndex = 32;
+            // 
+            // comboBox5
+            // 
+            this.comboBox5.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox5.FormattingEnabled = true;
+            this.comboBox5.Items.AddRange(new object[] {
+            "1",
+            "0.5"});
+            this.comboBox5.Location = new System.Drawing.Point(447, 141);
+            this.comboBox5.Name = "comboBox5";
+            this.comboBox5.Size = new System.Drawing.Size(45, 21);
+            this.comboBox5.TabIndex = 31;
+            // 
+            // comboBox4
+            // 
+            this.comboBox4.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox4.FormattingEnabled = true;
+            this.comboBox4.Items.AddRange(new object[] {
+            "1",
+            "0.5"});
+            this.comboBox4.Location = new System.Drawing.Point(447, 107);
+            this.comboBox4.Name = "comboBox4";
+            this.comboBox4.Size = new System.Drawing.Size(45, 21);
+            this.comboBox4.TabIndex = 30;
+            // 
+            // comboBox3
+            // 
+            this.comboBox3.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox3.FormattingEnabled = true;
+            this.comboBox3.Items.AddRange(new object[] {
+            "1",
+            "0.5"});
+            this.comboBox3.Location = new System.Drawing.Point(447, 73);
+            this.comboBox3.Name = "comboBox3";
+            this.comboBox3.Size = new System.Drawing.Size(45, 21);
+            this.comboBox3.TabIndex = 29;
+            // 
+            // comboBox2
+            // 
+            this.comboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox2.FormattingEnabled = true;
+            this.comboBox2.Items.AddRange(new object[] {
+            "1",
+            "0.5"});
+            this.comboBox2.Location = new System.Drawing.Point(447, 39);
+            this.comboBox2.Name = "comboBox2";
+            this.comboBox2.Size = new System.Drawing.Size(45, 21);
+            this.comboBox2.TabIndex = 28;
             // 
             // richTextBox27
             // 
@@ -181,18 +245,12 @@
             // richTextBox26
             // 
             this.richTextBox26.Location = new System.Drawing.Point(119, 209);
+            this.richTextBox26.MaxLength = 4;
             this.richTextBox26.Name = "richTextBox26";
             this.richTextBox26.Size = new System.Drawing.Size(114, 26);
             this.richTextBox26.TabIndex = 25;
             this.richTextBox26.Text = "";
-            // 
-            // richTextBox24
-            // 
-            this.richTextBox24.Location = new System.Drawing.Point(447, 175);
-            this.richTextBox24.Name = "richTextBox24";
-            this.richTextBox24.Size = new System.Drawing.Size(45, 26);
-            this.richTextBox24.TabIndex = 23;
-            this.richTextBox24.Text = "";
+            this.richTextBox26.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.richTextBox2_KeyPress);
             // 
             // richTextBox23
             // 
@@ -205,26 +263,22 @@
             // richTextBox22
             // 
             this.richTextBox22.Location = new System.Drawing.Point(119, 175);
+            this.richTextBox22.MaxLength = 4;
             this.richTextBox22.Name = "richTextBox22";
             this.richTextBox22.Size = new System.Drawing.Size(114, 26);
             this.richTextBox22.TabIndex = 21;
             this.richTextBox22.Text = "";
+            this.richTextBox22.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.richTextBox2_KeyPress);
             // 
             // richTextBox21
             // 
             this.richTextBox21.Location = new System.Drawing.Point(5, 175);
+            this.richTextBox21.MaxLength = 4;
             this.richTextBox21.Name = "richTextBox21";
             this.richTextBox21.Size = new System.Drawing.Size(106, 26);
             this.richTextBox21.TabIndex = 20;
             this.richTextBox21.Text = "";
-            // 
-            // richTextBox20
-            // 
-            this.richTextBox20.Location = new System.Drawing.Point(447, 141);
-            this.richTextBox20.Name = "richTextBox20";
-            this.richTextBox20.Size = new System.Drawing.Size(45, 26);
-            this.richTextBox20.TabIndex = 19;
-            this.richTextBox20.Text = "";
+            this.richTextBox21.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.richTextBox1_KeyPress);
             // 
             // richTextBox19
             // 
@@ -237,26 +291,22 @@
             // richTextBox18
             // 
             this.richTextBox18.Location = new System.Drawing.Point(119, 141);
+            this.richTextBox18.MaxLength = 4;
             this.richTextBox18.Name = "richTextBox18";
             this.richTextBox18.Size = new System.Drawing.Size(114, 26);
             this.richTextBox18.TabIndex = 17;
             this.richTextBox18.Text = "";
+            this.richTextBox18.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.richTextBox2_KeyPress);
             // 
             // richTextBox17
             // 
             this.richTextBox17.Location = new System.Drawing.Point(5, 141);
+            this.richTextBox17.MaxLength = 4;
             this.richTextBox17.Name = "richTextBox17";
             this.richTextBox17.Size = new System.Drawing.Size(106, 26);
             this.richTextBox17.TabIndex = 16;
             this.richTextBox17.Text = "";
-            // 
-            // richTextBox16
-            // 
-            this.richTextBox16.Location = new System.Drawing.Point(447, 107);
-            this.richTextBox16.Name = "richTextBox16";
-            this.richTextBox16.Size = new System.Drawing.Size(45, 26);
-            this.richTextBox16.TabIndex = 15;
-            this.richTextBox16.Text = "";
+            this.richTextBox17.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.richTextBox1_KeyPress);
             // 
             // richTextBox15
             // 
@@ -269,26 +319,22 @@
             // richTextBox14
             // 
             this.richTextBox14.Location = new System.Drawing.Point(119, 107);
+            this.richTextBox14.MaxLength = 4;
             this.richTextBox14.Name = "richTextBox14";
             this.richTextBox14.Size = new System.Drawing.Size(114, 26);
             this.richTextBox14.TabIndex = 13;
             this.richTextBox14.Text = "";
+            this.richTextBox14.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.richTextBox2_KeyPress);
             // 
             // richTextBox13
             // 
             this.richTextBox13.Location = new System.Drawing.Point(5, 107);
+            this.richTextBox13.MaxLength = 4;
             this.richTextBox13.Name = "richTextBox13";
             this.richTextBox13.Size = new System.Drawing.Size(106, 26);
             this.richTextBox13.TabIndex = 12;
             this.richTextBox13.Text = "";
-            // 
-            // richTextBox12
-            // 
-            this.richTextBox12.Location = new System.Drawing.Point(447, 73);
-            this.richTextBox12.Name = "richTextBox12";
-            this.richTextBox12.Size = new System.Drawing.Size(45, 26);
-            this.richTextBox12.TabIndex = 11;
-            this.richTextBox12.Text = "";
+            this.richTextBox13.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.richTextBox1_KeyPress);
             // 
             // richTextBox11
             // 
@@ -301,26 +347,22 @@
             // richTextBox10
             // 
             this.richTextBox10.Location = new System.Drawing.Point(119, 73);
+            this.richTextBox10.MaxLength = 4;
             this.richTextBox10.Name = "richTextBox10";
             this.richTextBox10.Size = new System.Drawing.Size(114, 26);
             this.richTextBox10.TabIndex = 9;
             this.richTextBox10.Text = "";
+            this.richTextBox10.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.richTextBox2_KeyPress);
             // 
             // richTextBox9
             // 
             this.richTextBox9.Location = new System.Drawing.Point(5, 73);
+            this.richTextBox9.MaxLength = 4;
             this.richTextBox9.Name = "richTextBox9";
             this.richTextBox9.Size = new System.Drawing.Size(106, 26);
             this.richTextBox9.TabIndex = 8;
             this.richTextBox9.Text = "";
-            // 
-            // richTextBox8
-            // 
-            this.richTextBox8.Location = new System.Drawing.Point(447, 39);
-            this.richTextBox8.Name = "richTextBox8";
-            this.richTextBox8.Size = new System.Drawing.Size(45, 26);
-            this.richTextBox8.TabIndex = 7;
-            this.richTextBox8.Text = "";
+            this.richTextBox9.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.richTextBox1_KeyPress);
             // 
             // richTextBox7
             // 
@@ -333,34 +375,42 @@
             // richTextBox6
             // 
             this.richTextBox6.Location = new System.Drawing.Point(119, 39);
+            this.richTextBox6.MaxLength = 4;
             this.richTextBox6.Name = "richTextBox6";
             this.richTextBox6.Size = new System.Drawing.Size(114, 26);
             this.richTextBox6.TabIndex = 5;
             this.richTextBox6.Text = "";
+            this.richTextBox6.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.richTextBox2_KeyPress);
             // 
             // richTextBox5
             // 
             this.richTextBox5.Location = new System.Drawing.Point(5, 39);
+            this.richTextBox5.MaxLength = 4;
             this.richTextBox5.Name = "richTextBox5";
             this.richTextBox5.Size = new System.Drawing.Size(106, 26);
             this.richTextBox5.TabIndex = 4;
             this.richTextBox5.Text = "";
+            this.richTextBox5.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.richTextBox1_KeyPress);
             // 
             // richTextBox1
             // 
             this.richTextBox1.Location = new System.Drawing.Point(5, 5);
+            this.richTextBox1.MaxLength = 4;
             this.richTextBox1.Name = "richTextBox1";
             this.richTextBox1.Size = new System.Drawing.Size(106, 26);
             this.richTextBox1.TabIndex = 0;
             this.richTextBox1.Text = "";
+            this.richTextBox1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.richTextBox1_KeyPress);
             // 
             // richTextBox2
             // 
             this.richTextBox2.Location = new System.Drawing.Point(119, 5);
+            this.richTextBox2.MaxLength = 4;
             this.richTextBox2.Name = "richTextBox2";
             this.richTextBox2.Size = new System.Drawing.Size(114, 26);
             this.richTextBox2.TabIndex = 1;
             this.richTextBox2.Text = "";
+            this.richTextBox2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.richTextBox2_KeyPress);
             // 
             // richTextBox3
             // 
@@ -370,21 +420,27 @@
             this.richTextBox3.TabIndex = 2;
             this.richTextBox3.Text = "";
             // 
-            // richTextBox4
-            // 
-            this.richTextBox4.Location = new System.Drawing.Point(447, 5);
-            this.richTextBox4.Name = "richTextBox4";
-            this.richTextBox4.Size = new System.Drawing.Size(45, 26);
-            this.richTextBox4.TabIndex = 3;
-            this.richTextBox4.Text = "";
-            // 
             // richTextBox25
             // 
             this.richTextBox25.Location = new System.Drawing.Point(5, 209);
+            this.richTextBox25.MaxLength = 4;
             this.richTextBox25.Name = "richTextBox25";
             this.richTextBox25.Size = new System.Drawing.Size(106, 26);
             this.richTextBox25.TabIndex = 24;
             this.richTextBox25.Text = "";
+            this.richTextBox25.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.richTextBox1_KeyPress);
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Items.AddRange(new object[] {
+            "1",
+            "0.5"});
+            this.comboBox1.Location = new System.Drawing.Point(447, 5);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(45, 21);
+            this.comboBox1.TabIndex = 27;
             // 
             // AddComplementaryCourses
             // 
@@ -414,33 +470,33 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TableLayoutPanel CourseTable;
-        private System.Windows.Forms.RichTextBox richTextBox28;
         private System.Windows.Forms.RichTextBox richTextBox27;
         private System.Windows.Forms.RichTextBox richTextBox26;
-        private System.Windows.Forms.RichTextBox richTextBox24;
         private System.Windows.Forms.RichTextBox richTextBox23;
         private System.Windows.Forms.RichTextBox richTextBox22;
         private System.Windows.Forms.RichTextBox richTextBox21;
-        private System.Windows.Forms.RichTextBox richTextBox20;
         private System.Windows.Forms.RichTextBox richTextBox19;
         private System.Windows.Forms.RichTextBox richTextBox18;
         private System.Windows.Forms.RichTextBox richTextBox17;
-        private System.Windows.Forms.RichTextBox richTextBox16;
         private System.Windows.Forms.RichTextBox richTextBox15;
         private System.Windows.Forms.RichTextBox richTextBox14;
         private System.Windows.Forms.RichTextBox richTextBox13;
-        private System.Windows.Forms.RichTextBox richTextBox12;
         private System.Windows.Forms.RichTextBox richTextBox11;
         private System.Windows.Forms.RichTextBox richTextBox10;
         private System.Windows.Forms.RichTextBox richTextBox9;
-        private System.Windows.Forms.RichTextBox richTextBox8;
         private System.Windows.Forms.RichTextBox richTextBox7;
         private System.Windows.Forms.RichTextBox richTextBox6;
         private System.Windows.Forms.RichTextBox richTextBox5;
         private System.Windows.Forms.RichTextBox richTextBox1;
         private System.Windows.Forms.RichTextBox richTextBox2;
         private System.Windows.Forms.RichTextBox richTextBox3;
-        private System.Windows.Forms.RichTextBox richTextBox4;
         private System.Windows.Forms.RichTextBox richTextBox25;
+        private System.Windows.Forms.ComboBox comboBox7;
+        private System.Windows.Forms.ComboBox comboBox6;
+        private System.Windows.Forms.ComboBox comboBox5;
+        private System.Windows.Forms.ComboBox comboBox4;
+        private System.Windows.Forms.ComboBox comboBox3;
+        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.ComboBox comboBox1;
     }
 }

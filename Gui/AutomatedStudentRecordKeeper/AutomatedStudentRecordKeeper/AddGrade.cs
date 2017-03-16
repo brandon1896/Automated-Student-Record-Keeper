@@ -29,52 +29,77 @@ namespace AutomatedStudentRecordKeeper
 
         private void button1_Click(object sender, EventArgs e)
         {
+            CourseTable.Hide();
             NpgsqlConnection conn = new NpgsqlConnection("Server=Localhost; Port=5432; Database=studentrecordkeeper; User Id=postgres; Password=;");
             //connect to database
             conn.Open();
             if (conn.State == System.Data.ConnectionState.Open)
             {
-                NpgsqlCommand cmd = new NpgsqlCommand("select exists (select true from pg_tables where tablename = '" + StudentNumber.Text + "')", conn);
-                string checknum = "f";
-                NpgsqlDataReader reader = cmd.ExecuteReader();
-                while (reader.Read())
+                if (StudentNumber.Text.Length != 7)
                 {
-                    checknum = reader[0].ToString();
+                    MessageBox.Show("Please enter valid student number");
                 }
-                cmd.Cancel();
-                reader.Close();
-                if (checknum == "False")
+                else if (yeardropbox.SelectedIndex == -1)
                 {
-                    MessageBox.Show("Student Doesnt exist");
+                    MessageBox.Show("Please select a year");
                 }
                 else
                 {
-                    for (int j = 0; j < this.CourseTable.RowCount; j++)
+                    NpgsqlCommand cmd = new NpgsqlCommand("select exists (select true from pg_tables where tablename = '" + StudentNumber.Text + "')", conn);
+                    string checknum = "False";
+                    NpgsqlDataReader reader = cmd.ExecuteReader();
+                    while (reader.Read())
                     {
-                        if (string.IsNullOrWhiteSpace(CourseTable.GetControlFromPosition(0, j).Text) ||
-                            string.IsNullOrWhiteSpace(CourseTable.GetControlFromPosition(1, j).Text) ||
-                            string.IsNullOrWhiteSpace(CourseTable.GetControlFromPosition(2, j).Text))
-                        {
-
-                        }
-                        else
-                        {
-                            cmd = new NpgsqlCommand("insert into \"" + StudentNumber.Text + "\"(coursesubject,coursenumber,coursegrade,yearsection, year) values(:sub, :num, :grade, :yrsec , :yr)", conn);
-                            cmd.Parameters.Add(new NpgsqlParameter("sub", CourseTable.GetControlFromPosition(0, j).Text));
-                            cmd.Parameters.Add(new NpgsqlParameter("num", CourseTable.GetControlFromPosition(1, j).Text));
-                            cmd.Parameters.Add(new NpgsqlParameter("grade", int.Parse(CourseTable.GetControlFromPosition(2, j).Text)));
-                            cmd.Parameters.Add(new NpgsqlParameter("yrsec", yeardropbox.Text));
-                            cmd.Parameters.Add(new NpgsqlParameter("yr", int.Parse(yeardropbox.Text.Substring(0,4))));
-                            cmd.ExecuteNonQuery();
-                        }
+                        checknum = reader[0].ToString();
                     }
-                    conn.Close();
+                    cmd.Cancel();
+                    reader.Close();
+                    if (checknum == "False")
+                    {
+                        MessageBox.Show("Student Doesnt exist");
+                    }
+                    else
+                    {
+                        int count = 0;
+                        for (int j = 0; j < this.CourseTable.RowCount; j++)
+                        {
+                            if (string.IsNullOrWhiteSpace(CourseTable.GetControlFromPosition(0, j).Text) ||
+                                string.IsNullOrWhiteSpace(CourseTable.GetControlFromPosition(1, j).Text) ||
+                                string.IsNullOrWhiteSpace(CourseTable.GetControlFromPosition(2, j).Text))
+                            {
+
+                            }
+                            else if (CourseTable.GetControlFromPosition(0, j).Text.Length != 4 || CourseTable.GetControlFromPosition(1, j).Text.Length != 4
+                                || int.Parse(CourseTable.GetControlFromPosition(2, j).Text) < 0 || int.Parse(CourseTable.GetControlFromPosition(2, j).Text) > 100)
+                            {
+
+                            }
+                            else
+                            {
+
+                                cmd = new NpgsqlCommand("insert into \"" + StudentNumber.Text + "\"(coursesubject,coursenumber,coursegrade,yearsection, year) values(:sub, :num, :grade, :yrsec , :yr)", conn);
+                                cmd.Parameters.Add(new NpgsqlParameter("sub", CourseTable.GetControlFromPosition(0, j).Text));
+                                cmd.Parameters.Add(new NpgsqlParameter("num", CourseTable.GetControlFromPosition(1, j).Text));
+                                cmd.Parameters.Add(new NpgsqlParameter("grade", int.Parse(CourseTable.GetControlFromPosition(2, j).Text)));
+                                cmd.Parameters.Add(new NpgsqlParameter("yrsec", yeardropbox.Text));
+                                cmd.Parameters.Add(new NpgsqlParameter("yr", int.Parse(yeardropbox.Text.Substring(0, 4))));
+                                cmd.ExecuteNonQuery();
+                                CourseTable.GetControlFromPosition(0, j).Text = "";
+                                CourseTable.GetControlFromPosition(1, j).Text = "";
+                                CourseTable.GetControlFromPosition(2, j).Text = "";
+                                count++;
+                            }
+                        }
+                        conn.Close();
+                        MessageBox.Show(count.ToString() + " rows added, if not cleared check formating");
+                    }
                 }
             }
             else
             {
                 MessageBox.Show("Connection error to database");
             }
+            CourseTable.Show();
             }
 
         private void yeardropbox_SelectedIndexChanged(object sender, EventArgs e)
@@ -196,6 +221,27 @@ namespace AutomatedStudentRecordKeeper
             }
         }
 
+        private void richTextBox2_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char ch = e.KeyChar;
+            if (Char.IsDigit(ch))
+            {
+                e.Handled = true;
+            }
+            else
+            {
+                e.KeyChar = Char.ToUpper(ch);
+            }
+        }
+
+        private void richTextBox3_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char ch = e.KeyChar;
+            if (!Char.IsDigit(ch) && ch != 8)
+            {
+                e.Handled = true;
+            }
+        }
     }
     
 }
