@@ -10,13 +10,15 @@ using System.Windows.Forms;
 using Npgsql;
 using NpgsqlTypes;
 using System.Text.RegularExpressions;
+using System.Diagnostics;
 
 namespace AutomatedStudentRecordKeeper
 {
     public partial class AddGrade : Form
     {
         string sSelectedFile;
-        //string sSelectedFolder;
+        NpgsqlCommand cmd = new NpgsqlCommand();
+
         public AddGrade()
         {
             InitializeComponent();
@@ -124,101 +126,120 @@ namespace AutomatedStudentRecordKeeper
                     sSelectedFile = choofdlog.FileName; //sets path
                     string html = System.IO.File.ReadAllText(sSelectedFile); //reads from path
 
+                    //add a check to make sure html is valid file
+                    //for example... if it starts with lakehead? regex.match
+
                     //clean file here//
                     string result = Regex.Replace(html, @" ?\<.*?\>", string.Empty); //removes everything between <>
-
-                    result = result.Substring(result.IndexOf("Name")); //removes irrelevant info at beginning of html file
+                    result = result.Substring(result.IndexOf("Name:")); //removes irrelevant info at beginning of html file
                     result = result.Substring(0, result.LastIndexOf("Term Average:")); //removes irrelevant info at bottom of html file
-                    result = Regex.Replace(result, @"(Term Standing:).*?(>)", string.Empty, RegexOptions.Singleline);
-                    result = Regex.Replace(result, @"(Full Time).*?(>)", string.Empty, RegexOptions.Singleline);
                     result = Regex.Replace(result, @"(Degree/CCD:).*?(?<=END OF)", string.Empty, RegexOptions.Singleline);
-                    result = Regex.Replace(result, @"(Printed on:).*?(\))", string.Empty, RegexOptions.Singleline);
                     result = Regex.Replace(result, @"INTERNAL USE ONLY", string.Empty); //this line causes issues with courseCodeList values because of ONLY
-                    //result = Regex.Replace(result, "[%|+]", string.Empty); //might not be needed
                     result = Regex.Replace(result, "[-]", "\n");
                     result = Regex.Replace(result, @"(MATH Average:)|(ENGI Average:)", string.Empty, RegexOptions.Singleline);
 
+                    result = Regex.Replace(result, @"(Spring/Summer:).*?(?<=CreditGradeRep)", string.Empty, RegexOptions.Singleline);
+
                     result = Regex.Replace(result, @"(name:)\s+", "Name: ", RegexOptions.IgnoreCase); //puts student name on same line
                     result = Regex.Replace(result, @"(student number:)\s+", "Student Number: ", RegexOptions.IgnoreCase); //puts student number on same line
-                    string[] files = result.Split(new string[] { "Term Average:" }, StringSplitOptions.RemoveEmptyEntries);
-                    //splits into multiple files, divided into years --spring/summer causes an extra split
+                    result = Regex.Replace(result, @"(year level:)\s+", "Year Level: ", RegexOptions.IgnoreCase); //puts year level on same line
+                    string[] students = result.Split(new string[] { "Name:" }, StringSplitOptions.RemoveEmptyEntries);
 
-                    int i = 0;
-                    while (i < files.Length)
+                    //grab student names
+                    var studentName = Regex.Matches(result, @"(?<=Name: ).*?(?<=\n)", RegexOptions.Singleline); //extracts student name
+                    var studentNameList = studentName.Cast<Match>().Select(match => match.Value).ToList();
+
+                    //grabs year level
+                    var yearLevel = Regex.Matches(result, @"(?<=Year Level: ).*?(?<=\n)", RegexOptions.Singleline);
+                    var yearLevelList = yearLevel.Cast<Match>().Select(match => match.Value).ToList();
+
+                    for (int j = 0; j < students.Length; j++)
                     {
-                        var studentNumber = Regex.Matches(files[i], @"(?<=Student Number: )\d+"); //extracts student name --needs tweaking--
+                        string[] files = string.Join(string.Empty, students[j]).Split(new string[] { "Fall/Winter" }, StringSplitOptions.RemoveEmptyEntries);
+
+                        var studentNumber = Regex.Matches(students[j], @"(?<=Student Number: )\d+"); //extracts student number --needs tweaking--                       
                         var studentNumberList = studentNumber.Cast<Match>().Select(match => match.Value).ToList();
 
-                        NpgsqlCommand cmd = new NpgsqlCommand("select exists (select true from pg_tables where tablename = '" + studentNumberList + "')", conn);
-                        string checknum = "f";
-                        NpgsqlDataReader reader = cmd.ExecuteReader();
-                        while (reader.Read())
+                        //drops table if exists
+                        try
                         {
-                            checknum = reader[0].ToString();
+                            cmd = new NpgsqlCommand("drop table \"" + studentNumberList[0] + "\"", conn);
+                            cmd.ExecuteNonQuery();
                         }
-                        cmd.Cancel();
-                        reader.Close();
-                        if (checknum == "False")
+                        catch
                         {
-                            //MessageBox.Show("Student Doesnt exist");
-                            //write to dB
-                            var studentName = Regex.Matches(files[i], @"(?<=Name: ).*?(?<=\n)", RegexOptions.Singleline); //extracts student name --needs tweaking--
-                            //this only works if every name ends with a period. Not sure how all students appear in file
-                            var studentNameList = studentName.Cast<Match>().Select(match => match.Value).ToList();
+                        }
 
-                            //trying to grab all uppercase 4 letter words, seems to work as planned --132 is the magic number
-                            var courseCode = Regex.Matches(files[i], @"\s[A-Z]{4}\s");
-                            var courseCodeList = courseCode.Cast<Match>().Select(match => match.Value).ToList();
+                        //recreates table
+                        cmd = new NpgsqlCommand("create table \"" + studentNumberList[0] + "\"(coursesubject text, coursenumber text, coursename text, coursegrade integer, yearsection text, year integer)", conn);
+                        cmd.ExecuteNonQuery();
 
-                            //trying to grab all 4 digit numbers, seems to work as planned --132 is the magic number
-                            var courseNumber = Regex.Matches(files[i], @"\s[0-9]{4}\s");
-                            var courseNumberList = courseNumber.Cast<Match>().Select(match => match.Value).ToList();
+                        // to add student to students table as well
+                        cmd = new NpgsqlCommand("insert into student (name, studentid, yearlevel, yearsection, year) select :name, :num, :yrlvl, :yrsec, :entyear " +
+                            "WHERE NOT EXISTS (SELECT studentid FROM student WHERE studentid = '" + studentNumberList[0] + "') LIMIT 1; ", conn);
+                        cmd.Parameters.Add(new NpgsqlParameter("name", studentNameList[j]));
+                        cmd.Parameters.Add(new NpgsqlParameter("num", studentNumberList[0]));
+                        cmd.Parameters.Add(new NpgsqlParameter("yrlvl", int.Parse(yearLevelList[j])));
+                        cmd.Parameters.Add(new NpgsqlParameter("yrsec", (DateTime.Now.Year - (files.Length - 1)).ToString() + "/" + (DateTime.Now.Year - (files.Length - 2)).ToString()));
+                        cmd.Parameters.Add(new NpgsqlParameter("entyear", DateTime.Now.Year - (files.Length - 1)));
+                        cmd.ExecuteNonQuery();
 
-                            //some dates snuck through, 2014/2015, 2016/2017 possibly only in my half of the file? didnt seem to happen before
-                            //possibly a non issue
+                        for (int i = 0; i < files.Length; i++) //doesnt seem to be going through all files (possibly fixed)
+                        {
 
-                            //consider breaking up into more files to seperate by year??????
+                            Debug.Write("Number of Students: j: " + j);
 
-                            //trying to grab all grades, -- 132 is the magic number
-                            var studentGrade = Regex.Matches(files[i], @"\s[0-9]{2,3}\s|\s(IP)\s");
-                            var studentGradeList = studentGrade.Cast<Match>().Select(match => match.Value).ToList();
-
-                            //if (courseCodeList.Count == courseNumberList.Count && courseCodeList.Count == studentGradeList.Count)
-                            int count = courseCodeList.Count;
-
-                            System.IO.File.WriteAllLines(@"C:\Users\Shawn\Documents\WriteLines" + i + ".txt", studentNameList); //writes to text file
-                            string year = files[i]; //need to convert to date? spring and summer courses cause an issue here
-
-                            for (int n = 0; n < count; n++) //need the list size
                             {
-                                /*
-                                //write to dB --this is questionable--
-                                cmd = new NpgsqlCommand("insert into \"" + studentNumberList + "\"(coursesubject,coursenumber,coursegrade,yearsection, year) values(:sub, :num, :grade, :yrsec, :yr)", conn);
-                                cmd.Parameters.Add(new NpgsqlParameter("sub", courseCodeList[n]));
-                                cmd.Parameters.Add(new NpgsqlParameter("num", courseNumberList[n]));
-                                cmd.Parameters.Add(new NpgsqlParameter("grade", studentGradeList[n]));
-                                cmd.Parameters.Add(new NpgsqlParameter("yrsec", "NULL"));
-                                cmd.Parameters.Add(new NpgsqlParameter("yr", "NULL"));
-                                cmd.ExecuteNonQuery(); //currently broken!!!!!!!!!!!!!!!
-                                */
-                                //--testing testing 123 testing testing--
-                                
-                                System.IO.File.AppendAllText(@"C:\Users\Shawn\Documents\WriteLines" + i + ".txt", "\nEntry: " + n + " ");
-                                System.IO.File.AppendAllText(@"C:\Users\Shawn\Documents\WriteLines" + i + ".txt", studentGradeList[n]); //writes to text file
-                                System.Diagnostics.Process.Start(@"C:\Users\Shawn\Documents\WriteLines" + i + ".txt"); //opens file
+                                //trying to grab all uppercase 4 letter words, seems to work as planned --132 is the magic number
+                                var courseCode = Regex.Matches(files[i], @"\s[A-Z]{4}\s");
+                                var courseCodeList = courseCode.Cast<Match>().Select(match => match.Value).ToList();
 
+                                //trying to grab all 4 digit numbers, seems to work as planned --132 is the magic number
+                                var courseNumber = Regex.Matches(files[i], @"\s[0-9]{4}\s");
+                                var courseNumberList = courseNumber.Cast<Match>().Select(match => match.Value).ToList();
+
+                                //trying to grab all grades, -- 132 is the magic number
+                                var studentGrade = Regex.Matches(files[i], @"\s[0-9]{2,3}\s|\s(IP)\s");
+                                var studentGradeList = studentGrade.Cast<Match>().Select(match => match.Value).ToList();
+
+                                int count = courseCodeList.Count;
+
+                                for (int n = 0; n < count; n++) //need the list size
+                                {
+                                    string cSubject = courseCodeList[n];
+                                    cSubject = Regex.Replace(cSubject, @"\s", string.Empty);
+                                    string cNumber = courseNumberList[n];
+                                    cNumber = Regex.Replace(cNumber, @"\s", string.Empty);
+
+                                    int sGrade = 0;
+                                    int.TryParse(studentGradeList[n], out sGrade); //trys to convert list values to integers
+
+                                    Debug.Write("Attempting to write to DB");
+
+                                    //write to dB
+                                    cmd = new NpgsqlCommand("insert into \"" + studentNumberList[0] + "\"(coursesubject,coursenumber,coursegrade, yearsection, year) values(:sub, :num, :grade, :yrsec, :yr)", conn);
+                                    cmd.Parameters.Add(new NpgsqlParameter("sub", cSubject));
+                                    cmd.Parameters.Add(new NpgsqlParameter("num", cNumber));
+                                    if (sGrade == 0)
+                                        cmd.Parameters.Add(new NpgsqlParameter("grade", DBNull.Value));
+                                    else
+                                        cmd.Parameters.Add(new NpgsqlParameter("grade", sGrade));
+
+                                    cmd.Parameters.Add(new NpgsqlParameter("yrsec", (DateTime.Now.Year - ((files.Length - i))).ToString() + "/" + (DateTime.Now.Year - (files.Length - i) + 1).ToString()));
+                                    cmd.Parameters.Add(new NpgsqlParameter("yr", DateTime.Now.Year - (files.Length - i)));
+
+                                    cmd.ExecuteNonQuery();
+
+                                }
                             }
                         }
-
-                        //System.IO.File.WriteAllLines(@"C:\Users\Shawn\Documents\WriteLines" + i + ".txt", studentGradeList); //writes to text file
-                        //System.Diagnostics.Process.Start(@"C:\Users\Shawn\Documents\WriteLines" + i + ".txt"); //opens file
-
-                        i++;
                     }
+                    MessageBox.Show("All students Added Succesfully. Import Complete.");
                 }
                 else
                     sSelectedFile = string.Empty;
             }
+            conn.Close();
         }
 
         private void richTextBox2_KeyPress(object sender, KeyPressEventArgs e)
