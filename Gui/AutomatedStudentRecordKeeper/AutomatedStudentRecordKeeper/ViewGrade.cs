@@ -68,15 +68,20 @@ namespace AutomatedStudentRecordKeeper
                         Fulltable5.Hide();
                         Fulltable6.Hide();
 
+                        MessageBox.Show(years.Count.ToString());
+
                         switch (years.Count)
                         {
                             case 1:
                                 date1.Text = years[0];
+                                Loadtable(table1, date1, SCA1);
                                 Fulltable1.Show();
                                 break;
                             case 2:
                                 date1.Text = years[0];
                                 date2.Text = years[1];
+                                Loadtable(table1, date1, SCA1);
+                                Loadtable(table2, date2, SCA2);
                                 Fulltable1.Show();
                                 Fulltable2.Show();
                                 break;
@@ -96,6 +101,10 @@ namespace AutomatedStudentRecordKeeper
                                 date2.Text = years[1];
                                 date3.Text = years[2];
                                 date4.Text = years[3];
+                                Loadtable(table1, date1, SCA1);
+                                Loadtable(table2, date2, SCA2);
+                                Loadtable(table3, date3, SCA3);
+                                Loadtable(table4, date4, SCA4);
                                 Fulltable1.Show();
                                 Fulltable2.Show();
                                 Fulltable3.Show();
@@ -107,6 +116,11 @@ namespace AutomatedStudentRecordKeeper
                                 date3.Text = years[2];
                                 date4.Text = years[3];
                                 date5.Text = years[4];
+                                Loadtable(table1, date1, SCA1);
+                                Loadtable(table2, date2, SCA2);
+                                Loadtable(table3, date3, SCA3);
+                                Loadtable(table4, date4, SCA4);
+                                Loadtable(table5, date5, SCA5);
                                 Fulltable1.Show();
                                 Fulltable2.Show();
                                 Fulltable3.Show();
@@ -120,6 +134,12 @@ namespace AutomatedStudentRecordKeeper
                                 date4.Text = years[3];
                                 date5.Text = years[4];
                                 date6.Text = years[5];
+                                Loadtable(table1, date1, SCA1);
+                                Loadtable(table2, date2, SCA2);
+                                Loadtable(table3, date3, SCA3);
+                                Loadtable(table4, date4, SCA4);
+                                Loadtable(table5, date5, SCA5);
+                                Loadtable(table6, date6, SCA6);
                                 Fulltable1.Show();
                                 Fulltable2.Show();
                                 Fulltable3.Show();
