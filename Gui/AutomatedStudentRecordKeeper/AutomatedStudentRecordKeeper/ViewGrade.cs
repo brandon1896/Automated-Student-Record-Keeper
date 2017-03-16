@@ -61,6 +61,17 @@ namespace AutomatedStudentRecordKeeper
                     }
                     else
                     {
+                        cmd = new NpgsqlCommand("select distinct yearsection from \"" + StudentBox.Text + "\" order by yearsection asc", conn);
+                        reader = cmd.ExecuteReader();
+                        while (reader.Read())
+                        {
+                            years.Add(reader[0].ToString());
+                            yearbox.Items.Add(reader[0].ToString());
+                            MessageBox.Show("Please enter valid student number");
+                        }
+                        cmd.Cancel();
+                        reader.Close();
+
                         Fulltable1.Hide();
                         Fulltable2.Hide();
                         Fulltable3.Hide();
