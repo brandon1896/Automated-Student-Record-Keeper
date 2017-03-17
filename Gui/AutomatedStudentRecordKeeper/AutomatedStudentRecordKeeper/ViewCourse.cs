@@ -40,6 +40,7 @@ namespace AutomatedStudentRecordKeeper
             Thread threadcomp = new Thread(new ThreadStart(loadcomptable));
             waitScreen waitscrn = new waitScreen();
             waitscrn.Show();
+            Application.DoEvents();
             threadcomp.Start();
             threadfall1.Start();
             threadfall2.Start();
@@ -192,469 +193,599 @@ namespace AutomatedStudentRecordKeeper
 
         private void fall1prev_Click(object sender, EventArgs e)
         {
+            year1falltable.SuspendLayout();
             if(fall1page > 1) {
+                int j = 1;
                 fall1page--;
-                for (int i = (fall1page - 1 * 7) + 1; i <= (7*fall1page); i++)
+                for (int i = ((fall1page - 1) * 7) + 1; i <= (7*fall1page); i++)
                 {
                     if (fall1list.Count >= i)
                     {
-                        year1falltable.GetControlFromPosition(0, i).Text = fall1list[i - 1].Subject;
-                        year1falltable.GetControlFromPosition(1, i).Text = fall1list[i - 1].Number;
-                        year1falltable.GetControlFromPosition(2, i).Text = fall1list[i - 1].Name;
-                        year1falltable.GetControlFromPosition(3, i).Text = fall1list[i - 1].Credits;
+                        year1falltable.GetControlFromPosition(0, j).Text = fall1list[i - 1].Subject;
+                        year1falltable.GetControlFromPosition(1, j).Text = fall1list[i - 1].Number;
+                        year1falltable.GetControlFromPosition(2, j).Text = fall1list[i - 1].Name;
+                        year1falltable.GetControlFromPosition(3, j).Text = fall1list[i - 1].Credits;
                     }
                     else
                     {
-                        year1falltable.GetControlFromPosition(0, i).Text = "";
-                        year1falltable.GetControlFromPosition(1, i).Text = "";
-                        year1falltable.GetControlFromPosition(2, i).Text = "";
-                        year1falltable.GetControlFromPosition(3, i).Text = "";
+                        year1falltable.GetControlFromPosition(0, j).Text = "";
+                        year1falltable.GetControlFromPosition(1, j).Text = "";
+                        year1falltable.GetControlFromPosition(2, j).Text = "";
+                        year1falltable.GetControlFromPosition(3, j).Text = "";
                     }
+                    j++;
                 }
             }
             else { }
+            year1falltable.ResumeLayout();
         }
 
         private void fall1next_Click(object sender, EventArgs e)
         {
+            year1falltable.SuspendLayout();
             if (fall1list.Count > (fall1page*7))
             {
+                int j = 1;
                 fall1page++;
-                for (int i = (fall1page - 1 * 7) + 1; i <= (7 * fall1page); i++)
+                for (int i = ((fall1page - 1 )* 7) + 1; i <= (7 * fall1page); i++)
                 {
                     if (fall1list.Count >= i)
                     {
-                        year1falltable.GetControlFromPosition(0, i).Text = fall1list[i - 1].Subject;
-                        year1falltable.GetControlFromPosition(1, i).Text = fall1list[i - 1].Number;
-                        year1falltable.GetControlFromPosition(2, i).Text = fall1list[i - 1].Name;
-                        year1falltable.GetControlFromPosition(3, i).Text = fall1list[i - 1].Credits;
+                        year1falltable.GetControlFromPosition(0, j).Text = fall1list[i - 1].Subject;
+                        year1falltable.GetControlFromPosition(1, j).Text = fall1list[i - 1].Number;
+                        year1falltable.GetControlFromPosition(2, j).Text = fall1list[i - 1].Name;
+                        year1falltable.GetControlFromPosition(3, j).Text = fall1list[i - 1].Credits;
                     }
                     else
                     {
-                        year1falltable.GetControlFromPosition(0, i).Text = "";
-                        year1falltable.GetControlFromPosition(1, i).Text = "";
-                        year1falltable.GetControlFromPosition(2, i).Text = "";
-                        year1falltable.GetControlFromPosition(3, i).Text = "";
+                        year1falltable.GetControlFromPosition(0, j).Text = "";
+                        year1falltable.GetControlFromPosition(1, j).Text = "";
+                        year1falltable.GetControlFromPosition(2, j).Text = "";
+                        year1falltable.GetControlFromPosition(3, j).Text = "";
                     }
+
+                    j++;
                 }
             }
             else { }
+            year1falltable.ResumeLayout();
         }
 
         private void wint1prev_Click(object sender, EventArgs e)
         {
+            year1wintertable.SuspendLayout();
             if (wint1page > 1)
             {
+                int j = 1;
                 wint1page--;
-                for (int i = (wint1page - 1 * 7) + 1; i <= (7 * wint1page); i++)
+                for (int i = ((wint1page - 1 )* 7) + 1; i <= (7 * wint1page); i++)
                 {
                     if (wint1list.Count >= i)
                     {
-                        year1wintertable.GetControlFromPosition(0, i).Text = wint1list[i - 1].Subject;
-                        year1wintertable.GetControlFromPosition(1, i).Text = wint1list[i - 1].Number;
-                        year1wintertable.GetControlFromPosition(2, i).Text = wint1list[i - 1].Name;
-                        year1wintertable.GetControlFromPosition(3, i).Text = wint1list[i - 1].Credits;
+                        year1wintertable.GetControlFromPosition(0, j).Text = wint1list[i - 1].Subject;
+                        year1wintertable.GetControlFromPosition(1, j).Text = wint1list[i - 1].Number;
+                        year1wintertable.GetControlFromPosition(2, j).Text = wint1list[i - 1].Name;
+                        year1wintertable.GetControlFromPosition(3, j).Text = wint1list[i - 1].Credits;
                     }
                     else
                     {
-                        year1wintertable.GetControlFromPosition(0, i).Text = "";
-                        year1wintertable.GetControlFromPosition(1, i).Text = "";
-                        year1wintertable.GetControlFromPosition(2, i).Text = "";
-                        year1wintertable.GetControlFromPosition(3, i).Text = "";
+                        year1wintertable.GetControlFromPosition(0, j).Text = "";
+                        year1wintertable.GetControlFromPosition(1, j).Text = "";
+                        year1wintertable.GetControlFromPosition(2, j).Text = "";
+                        year1wintertable.GetControlFromPosition(3, j).Text = "";
                     }
+                    j++;
                 }
             }
             else { }
+            year1wintertable.ResumeLayout();
         }
 
         private void wint1next_Click(object sender, EventArgs e)
         {
+            year1wintertable.SuspendLayout();
             if (wint1list.Count > wint1page*7)
             {
+                int j = 1;
                 wint1page++;
-                for (int i = (wint1page - 1 * 7) + 1; i <= (7 * wint1page); i++)
+                for (int i = ((wint1page - 1 )* 7) + 1; i <= (7 * wint1page); i++)
                 {
                     if (wint1list.Count >= i)
                     {
-                        year1wintertable.GetControlFromPosition(0, i).Text = wint1list[i - 1].Subject;
-                        year1wintertable.GetControlFromPosition(1, i).Text = wint1list[i - 1].Number;
-                        year1wintertable.GetControlFromPosition(2, i).Text = wint1list[i - 1].Name;
-                        year1wintertable.GetControlFromPosition(3, i).Text = wint1list[i - 1].Credits;
+                        year1wintertable.GetControlFromPosition(0, j).Text = wint1list[i - 1].Subject;
+                        year1wintertable.GetControlFromPosition(1, j).Text = wint1list[i - 1].Number;
+                        year1wintertable.GetControlFromPosition(2, j).Text = wint1list[i - 1].Name;
+                        year1wintertable.GetControlFromPosition(3, j).Text = wint1list[i - 1].Credits;
                     }
                     else
                     {
-                        year1wintertable.GetControlFromPosition(0, i).Text = "";
-                        year1wintertable.GetControlFromPosition(1, i).Text = "";
-                        year1wintertable.GetControlFromPosition(2, i).Text = "";
-                        year1wintertable.GetControlFromPosition(3, i).Text = "";
+                        year1wintertable.GetControlFromPosition(0, j).Text = "";
+                        year1wintertable.GetControlFromPosition(1, j).Text = "";
+                        year1wintertable.GetControlFromPosition(2, j).Text = "";
+                        year1wintertable.GetControlFromPosition(3, j).Text = "";
                     }
+                    j++;
                 }
             }
             else { }
+            year1wintertable.ResumeLayout();
         }
 
         private void fall2prev_Click(object sender, EventArgs e)
         {
+            year2falltable.SuspendLayout();
             if (fall2page > 1)
             {
+                int j = 1;
                 fall2page--;
-                for (int i = (fall2page - 1 * 7) + 1; i <= (7 * fall2page); i++)
+                for (int i = ((fall2page - 1 )* 7) + 1; i <= (7 * fall2page); i++)
                 {
                     if (fall2list.Count >= i)
                     {
-                        year2falltable.GetControlFromPosition(0, i).Text = fall2list[i - 1].Subject;
-                        year2falltable.GetControlFromPosition(1, i).Text = fall2list[i - 1].Number;
-                        year2falltable.GetControlFromPosition(2, i).Text = fall2list[i - 1].Name;
-                        year2falltable.GetControlFromPosition(3, i).Text = fall2list[i - 1].Credits;
+                        year2falltable.GetControlFromPosition(0, j).Text = fall2list[i - 1].Subject;
+                        year2falltable.GetControlFromPosition(1, j).Text = fall2list[i - 1].Number;
+                        year2falltable.GetControlFromPosition(2, j).Text = fall2list[i - 1].Name;
+                        year2falltable.GetControlFromPosition(3, j).Text = fall2list[i - 1].Credits;
                     }
                     else
                     {
-                        year2falltable.GetControlFromPosition(0, i).Text = "";
-                        year2falltable.GetControlFromPosition(1, i).Text = "";
-                        year2falltable.GetControlFromPosition(2, i).Text = "";
-                        year2falltable.GetControlFromPosition(3, i).Text = "";
+                        year2falltable.GetControlFromPosition(0, j).Text = "";
+                        year2falltable.GetControlFromPosition(1, j).Text = "";
+                        year2falltable.GetControlFromPosition(2, j).Text = "";
+                        year2falltable.GetControlFromPosition(3, j).Text = "";
                     }
+                    j++;
+           
                 }
             }
             else { }
+            year2falltable.ResumeLayout();
         }
 
         private void fall2next_Click(object sender, EventArgs e)
         {
+            year2falltable.SuspendLayout();
             if (fall2list.Count > fall2page*7)
             {
+                int j = 1;
                 fall2page++;
-                for (int i = (fall2page - 1 * 7) + 1; i <= (7 * fall2page); i++)
+                for (int i = ((fall2page - 1 )* 7) + 1; i <= (7 * fall2page); i++)
                 {
                     if (fall2list.Count >= i)
                     {
-                        year2falltable.GetControlFromPosition(0, i).Text = fall2list[i - 1].Subject;
-                        year2falltable.GetControlFromPosition(1, i).Text = fall2list[i - 1].Number;
-                        year2falltable.GetControlFromPosition(2, i).Text = fall2list[i - 1].Name;
-                        year2falltable.GetControlFromPosition(3, i).Text = fall2list[i - 1].Credits;
+                        year2falltable.GetControlFromPosition(0, j).Text = fall2list[i - 1].Subject;
+                        year2falltable.GetControlFromPosition(1, j).Text = fall2list[i - 1].Number;
+                        year2falltable.GetControlFromPosition(2, j).Text = fall2list[i - 1].Name;
+                        year2falltable.GetControlFromPosition(3, j).Text = fall2list[i - 1].Credits;
                     }
                     else
                     {
-                        year2falltable.GetControlFromPosition(0, i).Text = "";
-                        year2falltable.GetControlFromPosition(1, i).Text = "";
-                        year2falltable.GetControlFromPosition(2, i).Text = "";
-                        year2falltable.GetControlFromPosition(3, i).Text = "";
+                        year2falltable.GetControlFromPosition(0, j).Text = "";
+                        year2falltable.GetControlFromPosition(1, j).Text = "";
+                        year2falltable.GetControlFromPosition(2, j).Text = "";
+                        year2falltable.GetControlFromPosition(3, j).Text = "";
                     }
+                    j++;
                 }
             }
             else { }
+            year2falltable.ResumeLayout();
         }
 
         private void wint2prev_Click(object sender, EventArgs e)
         {
+            year2wintertable.SuspendLayout();
             if (wint2page > 1)
             {
+                int j = 1;
                 wint2page--;
-                for (int i = (wint2page - 1 * 7) + 1; i <= (7 * wint2page); i++)
+                for (int i = ((wint2page - 1 )* 7) + 1; i <= (7 * wint2page); i++)
                 {
                     if (wint2list.Count >= i)
                     {
-                        year2wintertable.GetControlFromPosition(0, i).Text = wint2list[i - 1].Subject;
-                        year2wintertable.GetControlFromPosition(1, i).Text = wint2list[i - 1].Number;
-                        year2wintertable.GetControlFromPosition(2, i).Text = wint2list[i - 1].Name;
-                        year2wintertable.GetControlFromPosition(3, i).Text = wint2list[i - 1].Credits;
+                        year2wintertable.GetControlFromPosition(0, j).Text = wint2list[i - 1].Subject;
+                        year2wintertable.GetControlFromPosition(1, j).Text = wint2list[i - 1].Number;
+                        year2wintertable.GetControlFromPosition(2, j).Text = wint2list[i - 1].Name;
+                        year2wintertable.GetControlFromPosition(3, j).Text = wint2list[i - 1].Credits;
                     }
                     else
                     {
-                        year2wintertable.GetControlFromPosition(0, i).Text = "";
-                        year2wintertable.GetControlFromPosition(1, i).Text = "";
-                        year2wintertable.GetControlFromPosition(2, i).Text = "";
-                        year2wintertable.GetControlFromPosition(3, i).Text = "";
+                        year2wintertable.GetControlFromPosition(0, j).Text = "";
+                        year2wintertable.GetControlFromPosition(1, j).Text = "";
+                        year2wintertable.GetControlFromPosition(2, j).Text = "";
+                        year2wintertable.GetControlFromPosition(3, j).Text = "";
                     }
+                    j++;
                 }
             }
             else { }
+            year2wintertable.ResumeLayout();
         }
 
         private void prevcomp_Click(object sender, EventArgs e)
         {
+            complementtable.SuspendLayout();
             if (comppage > 1)
             {
+                int j = 1;
                 comppage--;
-                for (int i = (comppage - 1 * 7) + 1; i <= (7 * comppage); i++)
+                for (int i = ((comppage - 1 )* 18) + 1; i <= (18 * comppage); i++)
                 {
                     if (complist.Count >= i)
                     {
-                        complementtable.GetControlFromPosition(0, i).Text = complist[i - 1].Subject;
-                        complementtable.GetControlFromPosition(1, i).Text = complist[i - 1].Number;
-                        complementtable.GetControlFromPosition(2, i).Text = complist[i - 1].Name;
-                        complementtable.GetControlFromPosition(3, i).Text = complist[i - 1].Credits;
+                        complementtable.GetControlFromPosition(0, j).Text = complist[i - 1].Subject;
+                        complementtable.GetControlFromPosition(1, j).Text = complist[i - 1].Number;
+                        complementtable.GetControlFromPosition(2, j).Text = complist[i - 1].Name;
+                        complementtable.GetControlFromPosition(3, j).Text = complist[i - 1].Credits;
                     }
                     else
                     {
-                        complementtable.GetControlFromPosition(0, i).Text = "";
-                        complementtable.GetControlFromPosition(1, i).Text = "";
-                        complementtable.GetControlFromPosition(2, i).Text = "";
-                        complementtable.GetControlFromPosition(3, i).Text = "";
+                        complementtable.GetControlFromPosition(0, j).Text = "";
+                        complementtable.GetControlFromPosition(1, j).Text = "";
+                        complementtable.GetControlFromPosition(2, j).Text = "";
+                        complementtable.GetControlFromPosition(3, j).Text = "";
                     }
+                    j++;
                 }
             }
             else { }
+            complementtable.ResumeLayout();
         }
 
         private void nextcomp_Click(object sender, EventArgs e)
         {
-            if (complist.Count > comppage * 7)
+            complementtable.SuspendLayout();
+            if (complist.Count > comppage * 18)
             {
+                int j = 1;
                 comppage++;
-                for (int i = (comppage - 1 * 7) + 1; i <= (7 * comppage); i++)
+                for (int i = ((comppage - 1) * 18) + 1; i <= (18 * comppage); i++)
                 {
                     if (complist.Count >= i)
                     {
-                        complementtable.GetControlFromPosition(0, i).Text = complist[i - 1].Subject;
-                        complementtable.GetControlFromPosition(1, i).Text = complist[i - 1].Number;
-                        complementtable.GetControlFromPosition(2, i).Text = complist[i - 1].Name;
-                        complementtable.GetControlFromPosition(3, i).Text = complist[i - 1].Credits;
+                        complementtable.GetControlFromPosition(0, j).Text = complist[i - 1].Subject;
+                        complementtable.GetControlFromPosition(1, j).Text = complist[i - 1].Number;
+                        complementtable.GetControlFromPosition(2, j).Text = complist[i - 1].Name;
+                        complementtable.GetControlFromPosition(3, j).Text = complist[i - 1].Credits;
                     }
                     else
                     {
-                        complementtable.GetControlFromPosition(0, i).Text = "";
-                        complementtable.GetControlFromPosition(1, i).Text = "";
-                        complementtable.GetControlFromPosition(2, i).Text = "";
-                        complementtable.GetControlFromPosition(3, i).Text = "";
+                        complementtable.GetControlFromPosition(0, j).Text = "";
+                        complementtable.GetControlFromPosition(1, j).Text = "";
+                        complementtable.GetControlFromPosition(2, j).Text = "";
+                        complementtable.GetControlFromPosition(3, j).Text = "";
                     }
+                    j++;
                 }
             }
             else { }
+            complementtable.ResumeLayout();
+        }
+
+        private void removebutton_Click(object sender, EventArgs e)
+        {
+            NpgsqlConnection conn = new NpgsqlConnection("Server=Localhost; Port=5432; Database=studentrecordkeeper; User Id=postgres; Password=;");
+            //connect to database
+            conn.Open();
+            if (conn.State == System.Data.ConnectionState.Open)
+            {
+                if (coursenumber.Text.Length != 4)
+                {
+                    MessageBox.Show("Please enter valid course number");
+                }
+                else if (coursesubject.Text.Length != 4)
+                {
+                    MessageBox.Show("Please enter valid course subject");
+                }
+                else
+                {
+                    NpgsqlCommand cmd;
+                    cmd = new NpgsqlCommand("update courses set lastusedyear = " + DateTime.Now.Year + " where coursesubject = '" + coursesubject.Text + "' and coursenumber = '" + coursenumber.Text + "'", conn);
+                    cmd.ExecuteNonQuery();
+                    cmd = new NpgsqlCommand("update complementarycourses set lastusedyear = " + DateTime.Now.Year + " where coursesubject = '" + coursesubject.Text + "' and coursenumber = '" + coursenumber.Text + "'", conn);
+                    cmd.ExecuteNonQuery();
+                    MessageBox.Show("Successfully Removed");
+                    coursesubject.Text = "";
+                    coursenumber.Text = "";
+                }
+                conn.Close();
+            }
+            else
+            {
+                MessageBox.Show("Connection error to database");
+            }
+        }
+
+        private void coursesubject_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char ch = e.KeyChar;
+            if (Char.IsDigit(ch))
+            {
+                e.Handled = true;
+            }
+            else
+            {
+                e.KeyChar = Char.ToUpper(ch);
+            }
+        }
+
+        private void coursenumber_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char ch = e.KeyChar;
+            if (!Char.IsDigit(ch) && ch != 8)
+            {
+                e.Handled = true;
+            }
         }
 
         private void wint2next_Click(object sender, EventArgs e)
         {
+            year2wintertable.SuspendLayout();
             if (wint2list.Count > wint2page * 7)
             {
+                int j = 1;
                 wint2page++;
-                for (int i = (wint2page - 1 * 7) + 1; i <= (7 * wint2page); i++)
+                for (int i = ((wint2page - 1) * 7) + 1; i <= (7 * wint2page); i++)
                 {
                     if (wint2list.Count >= i)
                     {
-                        year2wintertable.GetControlFromPosition(0, i).Text = wint2list[i - 1].Subject;
-                        year2wintertable.GetControlFromPosition(1, i).Text = wint2list[i - 1].Number;
-                        year2wintertable.GetControlFromPosition(2, i).Text = wint2list[i - 1].Name;
-                        year2wintertable.GetControlFromPosition(3, i).Text = wint2list[i - 1].Credits;
+                        year2wintertable.GetControlFromPosition(0, j).Text = wint2list[i - 1].Subject;
+                        year2wintertable.GetControlFromPosition(1, j).Text = wint2list[i - 1].Number;
+                        year2wintertable.GetControlFromPosition(2, j).Text = wint2list[i - 1].Name;
+                        year2wintertable.GetControlFromPosition(3, j).Text = wint2list[i - 1].Credits;
                     }
                     else
                     {
-                        year2wintertable.GetControlFromPosition(0, i).Text = "";
-                        year2wintertable.GetControlFromPosition(1, i).Text = "";
-                        year2wintertable.GetControlFromPosition(2, i).Text = "";
-                        year2wintertable.GetControlFromPosition(3, i).Text = "";
+                        year2wintertable.GetControlFromPosition(0, j).Text = "";
+                        year2wintertable.GetControlFromPosition(1, j).Text = "";
+                        year2wintertable.GetControlFromPosition(2, j).Text = "";
+                        year2wintertable.GetControlFromPosition(3, j).Text = "";
                     }
+                    j++;
                 }
             }
             else { }
+            year2wintertable.ResumeLayout();
         }
 
         private void fall3prev_Click(object sender, EventArgs e)
         {
+            year3falltable.SuspendLayout();
             if (fall3page > 1)
             {
+                int j = 1;
                 fall3page--;
-                for (int i = (fall3page - 1 * 7) + 1; i <= (7 * fall3page); i++)
+                for (int i = ((fall3page - 1) * 7) + 1; i <= (7 * fall3page); i++)
                 {
                     if (fall3list.Count >= i)
                     {
-                        year3falltable.GetControlFromPosition(0, i).Text = fall3list[i - 1].Subject;
-                        year3falltable.GetControlFromPosition(1, i).Text = fall3list[i - 1].Number;
-                        year3falltable.GetControlFromPosition(2, i).Text = fall3list[i - 1].Name;
-                        year3falltable.GetControlFromPosition(3, i).Text = fall3list[i - 1].Credits;
+                        year3falltable.GetControlFromPosition(0, j).Text = fall3list[i - 1].Subject;
+                        year3falltable.GetControlFromPosition(1, j).Text = fall3list[i - 1].Number;
+                        year3falltable.GetControlFromPosition(2, j).Text = fall3list[i - 1].Name;
+                        year3falltable.GetControlFromPosition(3, j).Text = fall3list[i - 1].Credits;
                     }
                     else
                     {
-                        year3falltable.GetControlFromPosition(0, i).Text = "";
-                        year3falltable.GetControlFromPosition(1, i).Text = "";
-                        year3falltable.GetControlFromPosition(2, i).Text = "";
-                        year3falltable.GetControlFromPosition(3, i).Text = "";
+                        year3falltable.GetControlFromPosition(0, j).Text = "";
+                        year3falltable.GetControlFromPosition(1, j).Text = "";
+                        year3falltable.GetControlFromPosition(2, j).Text = "";
+                        year3falltable.GetControlFromPosition(3, j).Text = "";
                     }
+                    j++;
                 }
             }
             else { }
+            year3falltable.ResumeLayout();
         }
 
         private void fall3next_Click(object sender, EventArgs e)
         {
+            year3falltable.SuspendLayout();
             if (fall3list.Count > (fall3page * 7))
             {
+                int j = 1;
                 fall3page++;
-                for (int i = (fall3page - 1 * 7) + 1; i <= (7 * fall3page); i++)
+                for (int i = ((fall3page - 1) * 7) + 1; i <= (7 * fall3page); i++)
                 {
                     if (fall3list.Count >= i)
                     {
-                        year3falltable.GetControlFromPosition(0, i).Text = fall3list[i - 1].Subject;
-                        year3falltable.GetControlFromPosition(1, i).Text = fall3list[i - 1].Number;
-                        year3falltable.GetControlFromPosition(2, i).Text = fall3list[i - 1].Name;
-                        year3falltable.GetControlFromPosition(3, i).Text = fall3list[i - 1].Credits;
+                        year3falltable.GetControlFromPosition(0, j).Text = fall3list[i - 1].Subject;
+                        year3falltable.GetControlFromPosition(1, j).Text = fall3list[i - 1].Number;
+                        year3falltable.GetControlFromPosition(2, j).Text = fall3list[i - 1].Name;
+                        year3falltable.GetControlFromPosition(3, j).Text = fall3list[i - 1].Credits;
                     }
                     else
                     {
-                        year3falltable.GetControlFromPosition(0, i).Text = "";
-                        year3falltable.GetControlFromPosition(1, i).Text = "";
-                        year3falltable.GetControlFromPosition(2, i).Text = "";
-                        year3falltable.GetControlFromPosition(3, i).Text = "";
+                        year3falltable.GetControlFromPosition(0, j).Text = "";
+                        year3falltable.GetControlFromPosition(1, j).Text = "";
+                        year3falltable.GetControlFromPosition(2, j).Text = "";
+                        year3falltable.GetControlFromPosition(3, j).Text = "";
                     }
+                    j++;
                 }
             }
             else { }
+            year3falltable.ResumeLayout();
         }
 
         private void wint3prev_Click(object sender, EventArgs e)
         {
+            year3wintertable.SuspendLayout();
             if (wint3page > 1)
             {
+                int j = 1;
                 wint3page--;
-                for (int i = (wint3page - 1 * 7) + 1; i <= (7 * wint3page); i++)
+                for (int i = ((wint3page - 1) * 7) + 1; i <= (7 * wint3page); i++)
                 {
                     if (wint3list.Count >= i)
                     {
-                        year3wintertable.GetControlFromPosition(0, i).Text = wint3list[i - 1].Subject;
-                        year3wintertable.GetControlFromPosition(1, i).Text = wint3list[i - 1].Number;
-                        year3wintertable.GetControlFromPosition(2, i).Text = wint3list[i - 1].Name;
-                        year3wintertable.GetControlFromPosition(3, i).Text = wint3list[i - 1].Credits;
+                        year3wintertable.GetControlFromPosition(0, j).Text = wint3list[i - 1].Subject;
+                        year3wintertable.GetControlFromPosition(1, j).Text = wint3list[i - 1].Number;
+                        year3wintertable.GetControlFromPosition(2, j).Text = wint3list[i - 1].Name;
+                        year3wintertable.GetControlFromPosition(3, j).Text = wint3list[i - 1].Credits;
                     }
                     else
                     {
-                        year3wintertable.GetControlFromPosition(0, i).Text = "";
-                        year3wintertable.GetControlFromPosition(1, i).Text = "";
-                        year3wintertable.GetControlFromPosition(2, i).Text = "";
-                        year3wintertable.GetControlFromPosition(3, i).Text = "";
+                        year3wintertable.GetControlFromPosition(0, j).Text = "";
+                        year3wintertable.GetControlFromPosition(1, j).Text = "";
+                        year3wintertable.GetControlFromPosition(2, j).Text = "";
+                        year3wintertable.GetControlFromPosition(3, j).Text = "";
                     }
+                    j++;
                 }
             }
             else { }
+            year3wintertable.ResumeLayout();
         }
 
         private void wint3next_Click(object sender, EventArgs e)
         {
+            year3wintertable.SuspendLayout();
             if (wint3list.Count > wint3page * 7)
             {
+                int j = 1;
                 wint3page++;
-                for (int i = (wint3page - 1 * 7) + 1; i <= (7 * wint3page); i++)
+                for (int i = ((wint3page - 1) * 7) + 1; i <= (7 * wint3page); i++)
                 {
                     if (wint3list.Count >= i)
                     {
-                        year3wintertable.GetControlFromPosition(0, i).Text = wint3list[i - 1].Subject;
-                        year3wintertable.GetControlFromPosition(1, i).Text = wint3list[i - 1].Number;
-                        year3wintertable.GetControlFromPosition(2, i).Text = wint3list[i - 1].Name;
-                        year3wintertable.GetControlFromPosition(3, i).Text = wint3list[i - 1].Credits;
+                        year3wintertable.GetControlFromPosition(0, j).Text = wint3list[i - 1].Subject;
+                        year3wintertable.GetControlFromPosition(1, j).Text = wint3list[i - 1].Number;
+                        year3wintertable.GetControlFromPosition(2, j).Text = wint3list[i - 1].Name;
+                        year3wintertable.GetControlFromPosition(3, j).Text = wint3list[i - 1].Credits;
                     }
                     else
                     {
-                        year3wintertable.GetControlFromPosition(0, i).Text = "";
-                        year3wintertable.GetControlFromPosition(1, i).Text = "";
-                        year3wintertable.GetControlFromPosition(2, i).Text = "";
-                        year3wintertable.GetControlFromPosition(3, i).Text = "";
+                        year3wintertable.GetControlFromPosition(0, j).Text = "";
+                        year3wintertable.GetControlFromPosition(1, j).Text = "";
+                        year3wintertable.GetControlFromPosition(2, j).Text = "";
+                        year3wintertable.GetControlFromPosition(3, j).Text = "";
                     }
+                    j++;
                 }
             }
             else { }
+            year3wintertable.ResumeLayout();
         }
 
         private void fall4prev_Click(object sender, EventArgs e)
         {
+            year4falltable.SuspendLayout();
             if (fall4page > 1)
             {
+                int j = 1;
                 fall4page--;
-                for (int i = (fall4page - 1 * 7) + 1; i <= (7 * fall4page); i++)
+                for (int i = ((fall4page - 1) * 7) + 1; i <= (7 * fall4page); i++)
                 {
                     if (fall4list.Count >= i)
                     {
-                        year4falltable.GetControlFromPosition(0, i).Text = fall4list[i - 1].Subject;
-                        year4falltable.GetControlFromPosition(1, i).Text = fall4list[i - 1].Number;
-                        year4falltable.GetControlFromPosition(2, i).Text = fall4list[i - 1].Name;
-                        year4falltable.GetControlFromPosition(3, i).Text = fall4list[i - 1].Credits;
+                        year4falltable.GetControlFromPosition(0, j).Text = fall4list[i - 1].Subject;
+                        year4falltable.GetControlFromPosition(1, j).Text = fall4list[i - 1].Number;
+                        year4falltable.GetControlFromPosition(2, j).Text = fall4list[i - 1].Name;
+                        year4falltable.GetControlFromPosition(3, j).Text = fall4list[i - 1].Credits;
                     }
                     else
                     {
-                        year4falltable.GetControlFromPosition(0, i).Text = "";
-                        year4falltable.GetControlFromPosition(1, i).Text = "";
-                        year4falltable.GetControlFromPosition(2, i).Text = "";
-                        year4falltable.GetControlFromPosition(3, i).Text = "";
+                        year4falltable.GetControlFromPosition(0, j).Text = "";
+                        year4falltable.GetControlFromPosition(1, j).Text = "";
+                        year4falltable.GetControlFromPosition(2, j).Text = "";
+                        year4falltable.GetControlFromPosition(3, j).Text = "";
                     }
+                    j++;
                 }
             }
             else { }
+            year4falltable.ResumeLayout();
         }
 
         private void fall4next_Click(object sender, EventArgs e)
         {
+            year4falltable.SuspendLayout();
             if (fall4list.Count > (fall4page * 7))
             {
+                int j = 1;
                 fall4page++;
-                for (int i = (fall4page - 1 * 7) + 1; i <= (7 * fall4page); i++)
+                for (int i = ((fall4page - 1) * 7) + 1; i <= (7 * fall4page); i++)
                 {
                     if (fall4list.Count >= i)
                     {
-                        year4falltable.GetControlFromPosition(0, i).Text = fall4list[i - 1].Subject;
-                        year4falltable.GetControlFromPosition(1, i).Text = fall4list[i - 1].Number;
-                        year4falltable.GetControlFromPosition(2, i).Text = fall4list[i - 1].Name;
-                        year4falltable.GetControlFromPosition(3, i).Text = fall4list[i - 1].Credits;
+                        year4falltable.GetControlFromPosition(0, j).Text = fall4list[i - 1].Subject;
+                        year4falltable.GetControlFromPosition(1, j).Text = fall4list[i - 1].Number;
+                        year4falltable.GetControlFromPosition(2, j).Text = fall4list[i - 1].Name;
+                        year4falltable.GetControlFromPosition(3, j).Text = fall4list[i - 1].Credits;
                     }
                     else
                     {
-                        year4falltable.GetControlFromPosition(0, i).Text = "";
-                        year4falltable.GetControlFromPosition(1, i).Text = "";
-                        year4falltable.GetControlFromPosition(2, i).Text = "";
-                        year4falltable.GetControlFromPosition(3, i).Text = "";
+                        year4falltable.GetControlFromPosition(0, j).Text = "";
+                        year4falltable.GetControlFromPosition(1, j).Text = "";
+                        year4falltable.GetControlFromPosition(2, j).Text = "";
+                        year4falltable.GetControlFromPosition(3, j).Text = "";
                     }
+                    j++;
                 }
             }
             else { }
+            year4falltable.ResumeLayout();
         }
 
         private void wint4prev_Click(object sender, EventArgs e)
         {
+            year4wintertable.SuspendLayout();
             if (wint4page > 1)
             {
+                int j = 1;
                 wint4page--;
-                for (int i = (wint4page - 1 * 7) + 1; i <= (7 * wint4page); i++)
+                for (int i = ((wint4page - 1) * 7) + 1; i <= (7 * wint4page); i++)
                 {
                     if (wint4list.Count >= i)
                     {
-                        year4wintertable.GetControlFromPosition(0, i).Text = wint4list[i - 1].Subject;
-                        year4wintertable.GetControlFromPosition(1, i).Text = wint4list[i - 1].Number;
-                        year4wintertable.GetControlFromPosition(2, i).Text = wint4list[i - 1].Name;
-                        year4wintertable.GetControlFromPosition(3, i).Text = wint4list[i - 1].Credits;
+                        year4wintertable.GetControlFromPosition(0, j).Text = wint4list[i - 1].Subject;
+                        year4wintertable.GetControlFromPosition(1, j).Text = wint4list[i - 1].Number;
+                        year4wintertable.GetControlFromPosition(2, j).Text = wint4list[i - 1].Name;
+                        year4wintertable.GetControlFromPosition(3, j).Text = wint4list[i - 1].Credits;
                     }
                     else
                     {
-                        year4wintertable.GetControlFromPosition(0, i).Text = "";
-                        year4wintertable.GetControlFromPosition(1, i).Text = "";
-                        year4wintertable.GetControlFromPosition(2, i).Text = "";
-                        year4wintertable.GetControlFromPosition(3, i).Text = "";
+                        year4wintertable.GetControlFromPosition(0, j).Text = "";
+                        year4wintertable.GetControlFromPosition(1, j).Text = "";
+                        year4wintertable.GetControlFromPosition(2, j).Text = "";
+                        year4wintertable.GetControlFromPosition(3, j).Text = "";
                     }
+                    j++;
                 }
             }
             else { }
+            year4wintertable.ResumeLayout();
         }
 
         private void wint4next_Click(object sender, EventArgs e)
         {
+            year4wintertable.SuspendLayout();
             if (wint4list.Count > wint4page * 7)
             {
+                int j = 1;
                 wint4page++;
-                for (int i = (wint4page - 1 * 7) + 1; i <= (7 * wint4page); i++)
+                for (int i = ((wint4page - 1) * 7) + 1; i <= (7 * wint4page); i++)
                 {
                     if (wint4list.Count >= i)
                     {
-                        year4wintertable.GetControlFromPosition(0, i).Text = wint4list[i - 1].Subject;
-                        year4wintertable.GetControlFromPosition(1, i).Text = wint4list[i - 1].Number;
-                        year4wintertable.GetControlFromPosition(2, i).Text = wint4list[i - 1].Name;
-                        year4wintertable.GetControlFromPosition(3, i).Text = wint4list[i - 1].Credits;
+                        year4wintertable.GetControlFromPosition(0, j).Text = wint4list[i - 1].Subject;
+                        year4wintertable.GetControlFromPosition(1, j).Text = wint4list[i - 1].Number;
+                        year4wintertable.GetControlFromPosition(2, j).Text = wint4list[i - 1].Name;
+                        year4wintertable.GetControlFromPosition(3, j).Text = wint4list[i - 1].Credits;
                     }
                     else
                     {
-                        year4wintertable.GetControlFromPosition(0, i).Text = "";
-                        year4wintertable.GetControlFromPosition(1, i).Text = "";
-                        year4wintertable.GetControlFromPosition(2, i).Text = "";
-                        year4wintertable.GetControlFromPosition(3, i).Text = "";
+                        year4wintertable.GetControlFromPosition(0, j).Text = "";
+                        year4wintertable.GetControlFromPosition(1, j).Text = "";
+                        year4wintertable.GetControlFromPosition(2, j).Text = "";
+                        year4wintertable.GetControlFromPosition(3, j).Text = "";
                     }
+                    j++;
                 }
             }
             else { }
+            year4wintertable.ResumeLayout();
         }
 
         public void loadtablefall2()

@@ -32,10 +32,13 @@ namespace AutomatedStudentRecordKeeper
         private void AddRowMakeup_Click(object sender, EventArgs e)
         {
             RowStyle temp = MakeupCourseTable.RowStyles[MakeupCourseTable.RowCount - 1];
+            
             MakeupCourseTable.RowCount++;
             MakeupCourseTable.RowStyles.Add(new RowStyle(temp.SizeType, temp.Height));
-            MakeupCourseTable.Controls.Add(new RichTextBox() { Width = 46, Height = 21 }, 0, MakeupCourseTable.RowCount - 1);
-            MakeupCourseTable.Controls.Add(new RichTextBox() { Width = 53, Height = 21 }, 1, MakeupCourseTable.RowCount - 1);
+            MakeupCourseTable.Controls.Add(new RichTextBox() { Width = 46, Height = 21,MaxLength = 4 }, 0, MakeupCourseTable.RowCount - 1);
+            MakeupCourseTable.GetControlFromPosition(0,MakeupCourseTable.RowCount - 1).KeyPress+= new System.Windows.Forms.KeyPressEventHandler(this.richTextBox1_KeyPress);
+            MakeupCourseTable.Controls.Add(new RichTextBox() { Width = 53, Height = 21, MaxLength = 4 }, 1, MakeupCourseTable.RowCount - 1);
+            MakeupCourseTable.GetControlFromPosition(1, MakeupCourseTable.RowCount - 1).KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.StudentNumberBox_KeyPress);
             MakeupCourseTable.Controls.Add(new RichTextBox() { Width = 233, Height = 21 }, 2, MakeupCourseTable.RowCount - 1);
         }
 
@@ -45,7 +48,9 @@ namespace AutomatedStudentRecordKeeper
             CourseCredTable.RowCount++;
             CourseCredTable.RowStyles.Add(new RowStyle(temp.SizeType, temp.Height));
             CourseCredTable.Controls.Add(new RichTextBox() { Width = 46, Height = 21 }, 0, CourseCredTable.RowCount - 1);
+            CourseCredTable.GetControlFromPosition(0, CourseCredTable.RowCount - 1).KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.richTextBox1_KeyPress);
             CourseCredTable.Controls.Add(new RichTextBox() { Width = 53, Height = 21 }, 1, CourseCredTable.RowCount - 1);
+            CourseCredTable.GetControlFromPosition(1, CourseCredTable.RowCount - 1).KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.StudentNumberBox_KeyPress);
             CourseCredTable.Controls.Add(new RichTextBox() { Width = 233, Height = 21 }, 2, CourseCredTable.RowCount - 1);
         }
 
@@ -62,82 +67,182 @@ namespace AutomatedStudentRecordKeeper
             if (conn.State == System.Data.ConnectionState.Open)
             {
 
-
-
-
-                if (string.IsNullOrWhiteSpace(Namebox.Text) ||
-                     string.IsNullOrWhiteSpace(StudentNumberBox.Text) ||
-                     string.IsNullOrWhiteSpace(PrevSchoolBox.Text) ||
-                     string.IsNullOrWhiteSpace(PrevProgramBox.Text) ||
-                     Yeardropbox.SelectedIndex == -1)
+                if (StudentNumberBox.Text.Length != 7)
                 {
-
+                    MessageBox.Show("Please input valid student number");
+                }
+                else if (Yeardropbox.SelectedIndex == -1)
+                {
+                    MessageBox.Show("Please select year");
+                }
+                else if (string.IsNullOrWhiteSpace(Namebox.Text))
+                {
+                    MessageBox.Show("Please input a name");
                 }
                 else
                 {
-                    NpgsqlCommand cmd = new NpgsqlCommand("insert into student values(:name, :num, :prevsc, :prevprog, :yrlvl,:yrsec ,:entyear)", conn);
-                    cmd.Parameters.Add(new NpgsqlParameter("name", Namebox.Text));
-                    cmd.Parameters.Add(new NpgsqlParameter("num", StudentNumberBox.Text));
-                    cmd.Parameters.Add(new NpgsqlParameter("prevsc", PrevSchoolBox.Text));
-                    cmd.Parameters.Add(new NpgsqlParameter("prevprog", PrevProgramBox.Text));
-                    cmd.Parameters.Add(new NpgsqlParameter("yrlvl", int.Parse(Yeardropbox.Text)));
-                    cmd.Parameters.Add(new NpgsqlParameter("yrsec", DateTime.Now.Year.ToString()+"/"+ (DateTime.Now.Year+1).ToString()));
-                    cmd.Parameters.Add(new NpgsqlParameter("entyear", DateTime.Now.Year));
-                    cmd.ExecuteNonQuery();
-
-                    cmd.Cancel();
-                    cmd = new NpgsqlCommand("create table \"" + StudentNumberBox.Text + "\"(coursesubject text, coursenumber text, coursename text, coursegrade integer, yearsection text, year integer)", conn);
-                    cmd.ExecuteNonQuery();
-
-                    cmd.Cancel();
-                    for (int j = 0; j < this.MakeupCourseTable.RowCount; j++)
+                    NpgsqlCommand cmd = new NpgsqlCommand("select exists (select true from pg_tables where tablename = '" + StudentNumberBox.Text + "')", conn);
+                    string checknum = "False";
+                    NpgsqlDataReader reader = cmd.ExecuteReader();
+                    while (reader.Read())
                     {
-                        if (string.IsNullOrWhiteSpace(MakeupCourseTable.GetControlFromPosition(0, j).Text) ||
-                            string.IsNullOrWhiteSpace(MakeupCourseTable.GetControlFromPosition(1, j).Text))
-                        {
-
-                        }
-                        else
-                        {
-                            cmd = new NpgsqlCommand("insert into makeupcourses values(:student, :sub, :num, :name, :cred)", conn);
-                            cmd.Parameters.Add(new NpgsqlParameter("student", StudentNumberBox.Text));
-                            cmd.Parameters.Add(new NpgsqlParameter("sub", MakeupCourseTable.GetControlFromPosition(0, j).Text));
-                            cmd.Parameters.Add(new NpgsqlParameter("num", MakeupCourseTable.GetControlFromPosition(1, j).Text));
-                            cmd.Parameters.Add(new NpgsqlParameter("name", MakeupCourseTable.GetControlFromPosition(2, j).Text));
-                            cmd.Parameters.Add(new NpgsqlParameter("cred", 0.5 ));
-                            cmd.ExecuteNonQuery();
-                        }
+                        checknum = reader[0].ToString();
                     }
-
                     cmd.Cancel();
-                    for (int j = 0; j < this.CourseCredTable.RowCount; j++)
+                    reader.Close();
+                    if (checknum != "False")
                     {
-                        if (string.IsNullOrWhiteSpace(CourseCredTable.GetControlFromPosition(0, j).Text) ||
-                            string.IsNullOrWhiteSpace(CourseCredTable.GetControlFromPosition(1, j).Text))
-                        {
-
-                        }
-                        else
-                        {
-                            cmd = new NpgsqlCommand("insert into \"" + StudentNumberBox.Text + "\"(coursesubject, coursenumber, coursename, yearsection, year) values( :sub, :num, :name, :yrsec, :yr)", conn);
-                            cmd.Parameters.Add(new NpgsqlParameter("sub", CourseCredTable.GetControlFromPosition(0, j).Text));
-                            cmd.Parameters.Add(new NpgsqlParameter("num", CourseCredTable.GetControlFromPosition(1, j).Text));
-                            cmd.Parameters.Add(new NpgsqlParameter("name", CourseCredTable.GetControlFromPosition(2, j).Text));
-                            cmd.Parameters.Add(new NpgsqlParameter("yrsec", DateTime.Now.Year.ToString() + "/" + (DateTime.Now.Year + 1).ToString()));
-                            cmd.Parameters.Add(new NpgsqlParameter("yr", DateTime.Now.Year));
-                            cmd.ExecuteNonQuery();
-                        }
+                        MessageBox.Show("Student Already exists");
                     }
+                    else if (checkcredit())
+                    {
+                        MessageBox.Show("Please check formating of rows of Course Credit Table");
+                    }
+                    else if (checkmakeup())
+                    {
+                        MessageBox.Show("Please check formating of rows of Make Up Course Table");
+                    }
+                    else
+                    {
 
+                        cmd = new NpgsqlCommand("insert into student values(:name, :num, :prevsc, :prevprog, :yrlvl,:yrsec ,:entyear)", conn);
+                        cmd.Parameters.Add(new NpgsqlParameter("name", Namebox.Text));
+                        cmd.Parameters.Add(new NpgsqlParameter("num", StudentNumberBox.Text));
+                        cmd.Parameters.Add(new NpgsqlParameter("prevsc", PrevSchoolBox.Text));
+                        cmd.Parameters.Add(new NpgsqlParameter("prevprog", PrevProgramBox.Text));
+                        cmd.Parameters.Add(new NpgsqlParameter("yrlvl", int.Parse(Yeardropbox.Text)));
+                        cmd.Parameters.Add(new NpgsqlParameter("yrsec", DateTime.Now.Year.ToString() + "/" + (DateTime.Now.Year + 1).ToString()));
+                        cmd.Parameters.Add(new NpgsqlParameter("entyear", DateTime.Now.Year));
+                        cmd.ExecuteNonQuery();
+
+                        cmd.Cancel();
+                        cmd = new NpgsqlCommand("create table \"" + StudentNumberBox.Text + "\"(coursesubject text, coursenumber text, coursename text, coursegrade integer, yearsection text, year integer)", conn);
+                        cmd.ExecuteNonQuery();
+
+                        cmd.Cancel();
+                        for (int j = 0; j < this.MakeupCourseTable.RowCount; j++)
+                        {
+                            if (string.IsNullOrWhiteSpace(MakeupCourseTable.GetControlFromPosition(0, j).Text) ||
+                                string.IsNullOrWhiteSpace(MakeupCourseTable.GetControlFromPosition(1, j).Text))
+                            {
+
+                            }
+                            else
+                            {
+                                cmd = new NpgsqlCommand("insert into makeupcourses values(:student, :sub, :num, :name, :cred)", conn);
+                                cmd.Parameters.Add(new NpgsqlParameter("student", StudentNumberBox.Text));
+                                cmd.Parameters.Add(new NpgsqlParameter("sub", MakeupCourseTable.GetControlFromPosition(0, j).Text));
+                                cmd.Parameters.Add(new NpgsqlParameter("num", MakeupCourseTable.GetControlFromPosition(1, j).Text));
+                                cmd.Parameters.Add(new NpgsqlParameter("name", MakeupCourseTable.GetControlFromPosition(2, j).Text));
+                                cmd.Parameters.Add(new NpgsqlParameter("cred", 0.5));
+                                cmd.ExecuteNonQuery();
+                            }
+                        }
+
+                        cmd.Cancel();
+                        for (int j = 0; j < this.CourseCredTable.RowCount; j++)
+                        {
+                            if (string.IsNullOrWhiteSpace(CourseCredTable.GetControlFromPosition(0, j).Text) ||
+                                string.IsNullOrWhiteSpace(CourseCredTable.GetControlFromPosition(1, j).Text))
+                            {
+
+                            }
+                            else
+                            {
+                                cmd = new NpgsqlCommand("insert into \"" + StudentNumberBox.Text + "\"(coursesubject, coursenumber, coursename, yearsection, year) values( :sub, :num, :name, :yrsec, :yr)", conn);
+                                cmd.Parameters.Add(new NpgsqlParameter("sub", CourseCredTable.GetControlFromPosition(0, j).Text));
+                                cmd.Parameters.Add(new NpgsqlParameter("num", CourseCredTable.GetControlFromPosition(1, j).Text));
+                                cmd.Parameters.Add(new NpgsqlParameter("name", CourseCredTable.GetControlFromPosition(2, j).Text));
+                                cmd.Parameters.Add(new NpgsqlParameter("yrsec", DateTime.Now.Year.ToString() + "/" + (DateTime.Now.Year + 1).ToString()));
+                                cmd.Parameters.Add(new NpgsqlParameter("yr", DateTime.Now.Year));
+                                cmd.ExecuteNonQuery();
+                            }
+                        }
+                        conn.Close();
+                        MessageBox.Show("Student Successfully Added");
+                        this.Close();
+                    }
+                    conn.Close();
                 }
-                conn.Close();
+
             }
             else
             {
                 MessageBox.Show("Connection error to database");
             }
             }
+
+        private void Namebox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char ch = e.KeyChar;
+            if (Char.IsDigit(ch))
+            {
+                e.Handled = true;
+            }
         }
+
+        private void StudentNumberBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char ch = e.KeyChar;
+            if (!Char.IsDigit(ch) && ch != 8)
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void richTextBox1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char ch = e.KeyChar;
+            if (Char.IsDigit(ch))
+            {
+                e.Handled = true;
+            }
+            else
+            {
+                e.KeyChar = Char.ToUpper(ch);
+            }
+        }
+        public bool checkmakeup()
+        {
+            bool check = false;
+            for (int i = 0; i < MakeupCourseTable.RowCount; i++)
+            {
+                if(MakeupCourseTable.GetControlFromPosition(0,i).Text.Length!=4 
+                    || MakeupCourseTable.GetControlFromPosition(1, i).Text.Length != 4)
+                {
+                    if (string.IsNullOrWhiteSpace(MakeupCourseTable.GetControlFromPosition(0, i).Text) && string.IsNullOrWhiteSpace(MakeupCourseTable.GetControlFromPosition(1, i).Text))
+                    {
+
+                    }
+                    else
+                    {
+                        check = true;
+                    }
+                }
+            }
+            return check;
+        }
+        public bool checkcredit()
+        {
+            bool check = false;
+            for (int i = 0; i < CourseCredTable.RowCount; i++)
+            {
+                if (CourseCredTable.GetControlFromPosition(0, i).Text.Length != 4
+                    || CourseCredTable.GetControlFromPosition(1, i).Text.Length != 4)
+                {
+                    if (string.IsNullOrWhiteSpace(CourseCredTable.GetControlFromPosition(0, i).Text) && string.IsNullOrWhiteSpace(CourseCredTable.GetControlFromPosition(1, i).Text))
+                    {
+
+                    }
+                    else
+                    {
+                        check = true;
+                    }
+                }
+            }
+            return check;
+        }
+    }
     } 
    
 

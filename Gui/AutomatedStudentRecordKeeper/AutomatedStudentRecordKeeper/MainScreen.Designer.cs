@@ -32,9 +32,9 @@
             this.viewstudentsbutton = new System.Windows.Forms.Button();
             this.AddCoursesButton = new System.Windows.Forms.Button();
             this.ViewCoursesButton = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.AddButton = new System.Windows.Forms.Button();
+            this.ViewButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // addstudentbutton
@@ -69,22 +69,13 @@
             // 
             // ViewCoursesButton
             // 
-            this.ViewCoursesButton.Location = new System.Drawing.Point(12, 128);
+            this.ViewCoursesButton.Location = new System.Drawing.Point(73, 128);
             this.ViewCoursesButton.Name = "ViewCoursesButton";
             this.ViewCoursesButton.Size = new System.Drawing.Size(116, 52);
             this.ViewCoursesButton.TabIndex = 4;
             this.ViewCoursesButton.Text = "View Courses";
             this.ViewCoursesButton.UseVisualStyleBackColor = true;
             this.ViewCoursesButton.Click += new System.EventHandler(this.ViewCoursesButton_Click);
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(134, 128);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(116, 52);
-            this.button1.TabIndex = 6;
-            this.button1.Text = "Export Database";
-            this.button1.UseVisualStyleBackColor = true;
             // 
             // button2
             // 
@@ -106,18 +97,29 @@
             this.AddButton.UseVisualStyleBackColor = true;
             this.AddButton.Click += new System.EventHandler(this.AddButton_Click);
             // 
+            // ViewButton
+            // 
+            this.ViewButton.Location = new System.Drawing.Point(134, 188);
+            this.ViewButton.Name = "ViewButton";
+            this.ViewButton.Size = new System.Drawing.Size(125, 50);
+            this.ViewButton.TabIndex = 9;
+            this.ViewButton.Text = "View Grades";
+            this.ViewButton.UseVisualStyleBackColor = true;
+            this.ViewButton.Click += new System.EventHandler(this.ViewButton_Click);
+            // 
             // MainScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(284, 323);
+            this.Controls.Add(this.ViewButton);
             this.Controls.Add(this.AddButton);
             this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.ViewCoursesButton);
             this.Controls.Add(this.AddCoursesButton);
             this.Controls.Add(this.viewstudentsbutton);
             this.Controls.Add(this.addstudentbutton);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "MainScreen";
             this.Text = "Automated Student Record Keeper";
             this.ResumeLayout(false);
@@ -129,9 +131,9 @@
         private System.Windows.Forms.Button viewstudentsbutton;
         private System.Windows.Forms.Button AddCoursesButton;
         private System.Windows.Forms.Button ViewCoursesButton;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button AddButton;
+        private System.Windows.Forms.Button ViewButton;
     }
 }
 
