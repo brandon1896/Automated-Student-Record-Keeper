@@ -33,6 +33,8 @@ namespace AutomatedStudentRecordKeeper
         }
         private void Calculate_Click(object sender, EventArgs e)
         {
+            tableviewlist.Clear();
+            yearbox.Items.Clear();
             dataloaded = false;
             List<string> years = new List<string>();
             NpgsqlConnection conn = new NpgsqlConnection("Server=Localhost; Port=5432; Database=studentrecordkeeper; User Id=postgres; Password=;");
@@ -67,7 +69,6 @@ namespace AutomatedStudentRecordKeeper
                         {
                             years.Add(reader[0].ToString());
                             yearbox.Items.Add(reader[0].ToString());
-                            MessageBox.Show("Please enter valid student number");
                         }
                         cmd.Cancel();
                         reader.Close();
@@ -78,9 +79,7 @@ namespace AutomatedStudentRecordKeeper
                         Fulltable4.Hide();
                         Fulltable5.Hide();
                         Fulltable6.Hide();
-
-                        MessageBox.Show(years.Count.ToString());
-
+                        
                         switch (years.Count)
                         {
                             case 1:
@@ -229,7 +228,7 @@ namespace AutomatedStudentRecordKeeper
                 reader = cmd.ExecuteReader();
                 while (reader.Read())
                 {
-                    table.GetControlFromPosition(2, 0).Text = (int.Parse(reader[0].ToString())).ToString();
+                    table.GetControlFromPosition(2, 0).Text = reader[0].ToString();
                 }
                 cmd.Cancel();
                 reader.Close();
