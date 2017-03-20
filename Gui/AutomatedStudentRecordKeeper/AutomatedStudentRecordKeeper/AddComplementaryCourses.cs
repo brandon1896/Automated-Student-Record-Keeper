@@ -122,7 +122,8 @@ namespace AutomatedStudentRecordKeeper
             if (conn.State == System.Data.ConnectionState.Open)
             {
                 OpenFileDialog choofdlog = new OpenFileDialog(); //opens file viewer
-                choofdlog.Filter = "html Files (*.csv*)|*.csv"; //only shows html files
+                choofdlog.Filter = "csv Files (*.csv*)|*.csv"; //only shows html files
+                choofdlog.Title = "Select a CSV File";
                 choofdlog.FilterIndex = 1;
                 choofdlog.Multiselect = false; //one file at a time
 
@@ -171,6 +172,7 @@ namespace AutomatedStudentRecordKeeper
                     html = Regex.Replace(html, @"\s�\s", "~"); //setting up delimiter
                     html = Regex.Replace(html, @"OR", "\n"); //rare case of two courses on same line
                     html = Regex.Replace(html, @"\(credit weight 1.0\)|\(credit weight 1.0 \)", "~1.0"); //setting up delimiter
+                    html = Regex.Replace(html, @"\(.*?\n", "\n");
                     html = Regex.Replace(html, @"\""", string.Empty); //removes remaining quotations
 
                     //creating list to prepare data for entering into dB
@@ -194,11 +196,22 @@ namespace AutomatedStudentRecordKeeper
                     //creates file for bulk insert data into dB
                     System.IO.File.WriteAllLines(@"C:\Users\Public\csvtestCOURSE.txt", courseCodeList); //writes to text file
 
+
                     //bulk insert into dB
-                    cmd = new NpgsqlCommand("COPY complementarycourses (coursesubject, coursenumber, coursename, credits, firstusedyear) FROM "
-                    + @"'C:\Users\Public\csvtestCOURSE.txt' DELIMITER '~' CSV", conn);
-                    cmd.Parameters.Add(new NpgsqlParameter("endyear", DateTime.Now.Year + 6));
-                    cmd.ExecuteNonQuery();
+                    try
+                    {
+                        cmd = new NpgsqlCommand("COPY complementarycourses (coursesubject, coursenumber, coursename, credits, firstusedyear) FROM "
+                        + @"'C:\Users\Public\csvtestCOURSE.txt' DELIMITER '~' CSV", conn);
+                        cmd.ExecuteNonQuery();
+                    }
+                    catch
+                    {
+                        MessageBox.Show("Error importing courses.");
+                        Application.Exit();
+                    }
+
+                    MessageBox.Show("Complementary Courses Import Successful.");
+
                 }
                 else
                     sSelectedFile = string.Empty;

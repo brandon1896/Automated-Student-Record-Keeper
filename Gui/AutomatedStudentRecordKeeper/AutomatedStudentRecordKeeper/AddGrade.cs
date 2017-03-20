@@ -118,6 +118,7 @@ namespace AutomatedStudentRecordKeeper
             {
                 OpenFileDialog choofdlog = new OpenFileDialog(); //opens file viewer
                 choofdlog.Filter = "html Files (*.html*)|*.html"; //only shows html files
+                choofdlog.Title = "Select an HTML File";
                 choofdlog.FilterIndex = 1;
                 choofdlog.Multiselect = false; //one file at a time
 
