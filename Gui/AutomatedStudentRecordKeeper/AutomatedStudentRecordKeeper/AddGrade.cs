@@ -16,7 +16,7 @@ namespace AutomatedStudentRecordKeeper
 {
     public partial class AddGrade : Form
     {
-        string sSelectedFile;
+        string selectedInputFile;
         NpgsqlCommand cmd = new NpgsqlCommand();
 
         public AddGrade()
@@ -102,11 +102,11 @@ namespace AutomatedStudentRecordKeeper
                 MessageBox.Show("Connection error to database");
             }
             CourseTable.Show();
-            }
+        }
 
         private void yeardropbox_SelectedIndexChanged(object sender, EventArgs e)
         {
-        
+
         }
 
         private void importHTML_Click(object sender, EventArgs e)
@@ -124,8 +124,8 @@ namespace AutomatedStudentRecordKeeper
 
                 if (choofdlog.ShowDialog() == DialogResult.OK)
                 {
-                    sSelectedFile = choofdlog.FileName; //sets path
-                    string html = System.IO.File.ReadAllText(sSelectedFile); //reads from path
+                    selectedInputFile = choofdlog.FileName; //sets path
+                    string html = System.IO.File.ReadAllText(selectedInputFile); //reads from path
 
                     //add a check to make sure html is valid file
                     //for example... if it starts with lakehead? regex.match
@@ -169,6 +169,7 @@ namespace AutomatedStudentRecordKeeper
                         }
                         catch
                         {
+                            Debug.Write("Drop Table Failed, Table already Exists");
                         }
 
                         //recreates table
@@ -187,9 +188,6 @@ namespace AutomatedStudentRecordKeeper
 
                         for (int i = 0; i < files.Length; i++) //doesnt seem to be going through all files (possibly fixed)
                         {
-
-                            Debug.Write("Number of Students: j: " + j);
-
                             {
                                 //trying to grab all uppercase 4 letter words, seems to work as planned --132 is the magic number
                                 var courseCode = Regex.Matches(files[i], @"\s[A-Z]{4}\s");
@@ -215,7 +213,7 @@ namespace AutomatedStudentRecordKeeper
                                     int sGrade = 0;
                                     int.TryParse(studentGradeList[n], out sGrade); //trys to convert list values to integers
 
-                                    Debug.Write("Attempting to write to DB");
+                                    //Debug.Write("Attempting to write to DB");
 
                                     //write to dB
                                     cmd = new NpgsqlCommand("insert into \"" + studentNumberList[0] + "\"(coursesubject,coursenumber,coursegrade, yearsection, year) values(:sub, :num, :grade, :yrsec, :yr)", conn);
@@ -238,7 +236,7 @@ namespace AutomatedStudentRecordKeeper
                     MessageBox.Show("All students Added Succesfully. Import Complete.");
                 }
                 else
-                    sSelectedFile = string.Empty;
+                    selectedInputFile = string.Empty;
             }
             conn.Close();
         }
@@ -265,6 +263,6 @@ namespace AutomatedStudentRecordKeeper
             }
         }
     }
-    
+
 }
 

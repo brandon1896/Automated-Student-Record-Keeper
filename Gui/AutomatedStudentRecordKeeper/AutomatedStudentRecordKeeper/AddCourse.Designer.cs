@@ -105,8 +105,8 @@ namespace AutomatedStudentRecordKeeper
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(187, 439);
-            this.button1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button1.Location = new System.Drawing.Point(220, 439);
+            this.button1.Margin = new System.Windows.Forms.Padding(4);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(100, 28);
             this.button1.TabIndex = 4;
@@ -134,7 +134,7 @@ namespace AutomatedStudentRecordKeeper
             "3",
             "4"});
             this.Yearleveldropbox.Location = new System.Drawing.Point(137, 44);
-            this.Yearleveldropbox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Yearleveldropbox.Margin = new System.Windows.Forms.Padding(4);
             this.Yearleveldropbox.Name = "Yearleveldropbox";
             this.Yearleveldropbox.Size = new System.Drawing.Size(71, 24);
             this.Yearleveldropbox.TabIndex = 11;
@@ -158,7 +158,7 @@ namespace AutomatedStudentRecordKeeper
             "Winter",
             "Spring/Summer"});
             this.sectiondropbox.Location = new System.Drawing.Point(281, 44);
-            this.sectiondropbox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.sectiondropbox.Margin = new System.Windows.Forms.Padding(4);
             this.sectiondropbox.Name = "sectiondropbox";
             this.sectiondropbox.Size = new System.Drawing.Size(141, 24);
             this.sectiondropbox.TabIndex = 13;
@@ -181,7 +181,7 @@ namespace AutomatedStudentRecordKeeper
             this.AddCourseTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 48.14815F));
             this.AddCourseTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 51.85185F));
             this.AddCourseTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 272F));
-            this.AddCourseTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 87F));
+            this.AddCourseTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 90F));
             this.AddCourseTable.Controls.Add(this.comboBox7, 3, 6);
             this.AddCourseTable.Controls.Add(this.comboBox6, 3, 5);
             this.AddCourseTable.Controls.Add(this.comboBox5, 3, 4);
@@ -211,7 +211,7 @@ namespace AutomatedStudentRecordKeeper
             this.AddCourseTable.Controls.Add(this.richTextBox25, 0, 6);
             this.AddCourseTable.Controls.Add(this.richTextBox14, 1, 3);
             this.AddCourseTable.Location = new System.Drawing.Point(16, 121);
-            this.AddCourseTable.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.AddCourseTable.Margin = new System.Windows.Forms.Padding(4);
             this.AddCourseTable.Name = "AddCourseTable";
             this.AddCourseTable.RowCount = 7;
             this.AddCourseTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
@@ -232,8 +232,8 @@ namespace AutomatedStudentRecordKeeper
             this.comboBox7.Items.AddRange(new object[] {
             "1",
             "0.5"});
-            this.comboBox7.Location = new System.Drawing.Point(577, 258);
-            this.comboBox7.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.comboBox7.Location = new System.Drawing.Point(574, 258);
+            this.comboBox7.Margin = new System.Windows.Forms.Padding(4);
             this.comboBox7.Name = "comboBox7";
             this.comboBox7.Size = new System.Drawing.Size(59, 24);
             this.comboBox7.TabIndex = 34;
@@ -245,8 +245,8 @@ namespace AutomatedStudentRecordKeeper
             this.comboBox6.Items.AddRange(new object[] {
             "1",
             "0.5"});
-            this.comboBox6.Location = new System.Drawing.Point(577, 216);
-            this.comboBox6.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.comboBox6.Location = new System.Drawing.Point(574, 216);
+            this.comboBox6.Margin = new System.Windows.Forms.Padding(4);
             this.comboBox6.Name = "comboBox6";
             this.comboBox6.Size = new System.Drawing.Size(59, 24);
             this.comboBox6.TabIndex = 33;
@@ -258,8 +258,8 @@ namespace AutomatedStudentRecordKeeper
             this.comboBox5.Items.AddRange(new object[] {
             "1",
             "0.5"});
-            this.comboBox5.Location = new System.Drawing.Point(577, 174);
-            this.comboBox5.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.comboBox5.Location = new System.Drawing.Point(574, 174);
+            this.comboBox5.Margin = new System.Windows.Forms.Padding(4);
             this.comboBox5.Name = "comboBox5";
             this.comboBox5.Size = new System.Drawing.Size(59, 24);
             this.comboBox5.TabIndex = 32;
@@ -271,8 +271,8 @@ namespace AutomatedStudentRecordKeeper
             this.comboBox4.Items.AddRange(new object[] {
             "1",
             "0.5"});
-            this.comboBox4.Location = new System.Drawing.Point(577, 132);
-            this.comboBox4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.comboBox4.Location = new System.Drawing.Point(574, 132);
+            this.comboBox4.Margin = new System.Windows.Forms.Padding(4);
             this.comboBox4.Name = "comboBox4";
             this.comboBox4.Size = new System.Drawing.Size(59, 24);
             this.comboBox4.TabIndex = 31;
@@ -284,8 +284,8 @@ namespace AutomatedStudentRecordKeeper
             this.comboBox3.Items.AddRange(new object[] {
             "1",
             "0.5"});
-            this.comboBox3.Location = new System.Drawing.Point(577, 90);
-            this.comboBox3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.comboBox3.Location = new System.Drawing.Point(574, 90);
+            this.comboBox3.Margin = new System.Windows.Forms.Padding(4);
             this.comboBox3.Name = "comboBox3";
             this.comboBox3.Size = new System.Drawing.Size(59, 24);
             this.comboBox3.TabIndex = 30;
@@ -297,8 +297,8 @@ namespace AutomatedStudentRecordKeeper
             this.comboBox2.Items.AddRange(new object[] {
             "1",
             "0.5"});
-            this.comboBox2.Location = new System.Drawing.Point(577, 48);
-            this.comboBox2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.comboBox2.Location = new System.Drawing.Point(574, 48);
+            this.comboBox2.Margin = new System.Windows.Forms.Padding(4);
             this.comboBox2.Name = "comboBox2";
             this.comboBox2.Size = new System.Drawing.Size(59, 24);
             this.comboBox2.TabIndex = 29;
@@ -310,16 +310,16 @@ namespace AutomatedStudentRecordKeeper
             this.comboBox1.Items.AddRange(new object[] {
             "1",
             "0.5"});
-            this.comboBox1.Location = new System.Drawing.Point(577, 6);
-            this.comboBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.comboBox1.Location = new System.Drawing.Point(574, 6);
+            this.comboBox1.Margin = new System.Windows.Forms.Padding(4);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(59, 24);
             this.comboBox1.TabIndex = 28;
             // 
             // richTextBox27
             // 
-            this.richTextBox27.Location = new System.Drawing.Point(303, 258);
-            this.richTextBox27.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.richTextBox27.Location = new System.Drawing.Point(300, 258);
+            this.richTextBox27.Margin = new System.Windows.Forms.Padding(4);
             this.richTextBox27.Name = "richTextBox27";
             this.richTextBox27.Size = new System.Drawing.Size(263, 31);
             this.richTextBox27.TabIndex = 26;
@@ -327,19 +327,19 @@ namespace AutomatedStudentRecordKeeper
             // 
             // richTextBox26
             // 
-            this.richTextBox26.Location = new System.Drawing.Point(149, 258);
-            this.richTextBox26.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.richTextBox26.Location = new System.Drawing.Point(148, 258);
+            this.richTextBox26.Margin = new System.Windows.Forms.Padding(4);
             this.richTextBox26.MaxLength = 4;
             this.richTextBox26.Name = "richTextBox26";
-            this.richTextBox26.Size = new System.Drawing.Size(143, 31);
+            this.richTextBox26.Size = new System.Drawing.Size(142, 31);
             this.richTextBox26.TabIndex = 25;
             this.richTextBox26.Text = "";
             this.richTextBox26.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.richTextBox2_KeyPress);
             // 
             // richTextBox23
             // 
-            this.richTextBox23.Location = new System.Drawing.Point(303, 216);
-            this.richTextBox23.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.richTextBox23.Location = new System.Drawing.Point(300, 216);
+            this.richTextBox23.Margin = new System.Windows.Forms.Padding(4);
             this.richTextBox23.Name = "richTextBox23";
             this.richTextBox23.Size = new System.Drawing.Size(263, 31);
             this.richTextBox23.TabIndex = 22;
@@ -347,11 +347,11 @@ namespace AutomatedStudentRecordKeeper
             // 
             // richTextBox22
             // 
-            this.richTextBox22.Location = new System.Drawing.Point(149, 216);
-            this.richTextBox22.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.richTextBox22.Location = new System.Drawing.Point(148, 216);
+            this.richTextBox22.Margin = new System.Windows.Forms.Padding(4);
             this.richTextBox22.MaxLength = 4;
             this.richTextBox22.Name = "richTextBox22";
-            this.richTextBox22.Size = new System.Drawing.Size(143, 31);
+            this.richTextBox22.Size = new System.Drawing.Size(142, 31);
             this.richTextBox22.TabIndex = 21;
             this.richTextBox22.Text = "";
             this.richTextBox22.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.richTextBox2_KeyPress);
@@ -359,7 +359,7 @@ namespace AutomatedStudentRecordKeeper
             // richTextBox21
             // 
             this.richTextBox21.Location = new System.Drawing.Point(6, 216);
-            this.richTextBox21.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.richTextBox21.Margin = new System.Windows.Forms.Padding(4);
             this.richTextBox21.MaxLength = 4;
             this.richTextBox21.Name = "richTextBox21";
             this.richTextBox21.Size = new System.Drawing.Size(132, 31);
@@ -369,8 +369,8 @@ namespace AutomatedStudentRecordKeeper
             // 
             // richTextBox19
             // 
-            this.richTextBox19.Location = new System.Drawing.Point(303, 174);
-            this.richTextBox19.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.richTextBox19.Location = new System.Drawing.Point(300, 174);
+            this.richTextBox19.Margin = new System.Windows.Forms.Padding(4);
             this.richTextBox19.Name = "richTextBox19";
             this.richTextBox19.Size = new System.Drawing.Size(263, 31);
             this.richTextBox19.TabIndex = 18;
@@ -378,11 +378,11 @@ namespace AutomatedStudentRecordKeeper
             // 
             // richTextBox18
             // 
-            this.richTextBox18.Location = new System.Drawing.Point(149, 174);
-            this.richTextBox18.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.richTextBox18.Location = new System.Drawing.Point(148, 174);
+            this.richTextBox18.Margin = new System.Windows.Forms.Padding(4);
             this.richTextBox18.MaxLength = 4;
             this.richTextBox18.Name = "richTextBox18";
-            this.richTextBox18.Size = new System.Drawing.Size(143, 31);
+            this.richTextBox18.Size = new System.Drawing.Size(142, 31);
             this.richTextBox18.TabIndex = 17;
             this.richTextBox18.Text = "";
             this.richTextBox18.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.richTextBox2_KeyPress);
@@ -390,7 +390,7 @@ namespace AutomatedStudentRecordKeeper
             // richTextBox17
             // 
             this.richTextBox17.Location = new System.Drawing.Point(6, 174);
-            this.richTextBox17.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.richTextBox17.Margin = new System.Windows.Forms.Padding(4);
             this.richTextBox17.MaxLength = 4;
             this.richTextBox17.Name = "richTextBox17";
             this.richTextBox17.Size = new System.Drawing.Size(132, 31);
@@ -400,8 +400,8 @@ namespace AutomatedStudentRecordKeeper
             // 
             // richTextBox15
             // 
-            this.richTextBox15.Location = new System.Drawing.Point(303, 132);
-            this.richTextBox15.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.richTextBox15.Location = new System.Drawing.Point(300, 132);
+            this.richTextBox15.Margin = new System.Windows.Forms.Padding(4);
             this.richTextBox15.Name = "richTextBox15";
             this.richTextBox15.Size = new System.Drawing.Size(263, 31);
             this.richTextBox15.TabIndex = 14;
@@ -410,7 +410,7 @@ namespace AutomatedStudentRecordKeeper
             // richTextBox13
             // 
             this.richTextBox13.Location = new System.Drawing.Point(6, 132);
-            this.richTextBox13.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.richTextBox13.Margin = new System.Windows.Forms.Padding(4);
             this.richTextBox13.MaxLength = 4;
             this.richTextBox13.Name = "richTextBox13";
             this.richTextBox13.Size = new System.Drawing.Size(132, 31);
@@ -420,8 +420,8 @@ namespace AutomatedStudentRecordKeeper
             // 
             // richTextBox11
             // 
-            this.richTextBox11.Location = new System.Drawing.Point(303, 90);
-            this.richTextBox11.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.richTextBox11.Location = new System.Drawing.Point(300, 90);
+            this.richTextBox11.Margin = new System.Windows.Forms.Padding(4);
             this.richTextBox11.Name = "richTextBox11";
             this.richTextBox11.Size = new System.Drawing.Size(263, 31);
             this.richTextBox11.TabIndex = 10;
@@ -429,11 +429,11 @@ namespace AutomatedStudentRecordKeeper
             // 
             // richTextBox10
             // 
-            this.richTextBox10.Location = new System.Drawing.Point(149, 90);
-            this.richTextBox10.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.richTextBox10.Location = new System.Drawing.Point(148, 90);
+            this.richTextBox10.Margin = new System.Windows.Forms.Padding(4);
             this.richTextBox10.MaxLength = 4;
             this.richTextBox10.Name = "richTextBox10";
-            this.richTextBox10.Size = new System.Drawing.Size(143, 31);
+            this.richTextBox10.Size = new System.Drawing.Size(142, 31);
             this.richTextBox10.TabIndex = 9;
             this.richTextBox10.Text = "";
             this.richTextBox10.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.richTextBox2_KeyPress);
@@ -441,7 +441,7 @@ namespace AutomatedStudentRecordKeeper
             // richTextBox9
             // 
             this.richTextBox9.Location = new System.Drawing.Point(6, 90);
-            this.richTextBox9.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.richTextBox9.Margin = new System.Windows.Forms.Padding(4);
             this.richTextBox9.MaxLength = 4;
             this.richTextBox9.Name = "richTextBox9";
             this.richTextBox9.Size = new System.Drawing.Size(132, 31);
@@ -451,8 +451,8 @@ namespace AutomatedStudentRecordKeeper
             // 
             // richTextBox7
             // 
-            this.richTextBox7.Location = new System.Drawing.Point(303, 48);
-            this.richTextBox7.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.richTextBox7.Location = new System.Drawing.Point(300, 48);
+            this.richTextBox7.Margin = new System.Windows.Forms.Padding(4);
             this.richTextBox7.Name = "richTextBox7";
             this.richTextBox7.Size = new System.Drawing.Size(263, 31);
             this.richTextBox7.TabIndex = 6;
@@ -460,11 +460,11 @@ namespace AutomatedStudentRecordKeeper
             // 
             // richTextBox6
             // 
-            this.richTextBox6.Location = new System.Drawing.Point(149, 48);
-            this.richTextBox6.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.richTextBox6.Location = new System.Drawing.Point(148, 48);
+            this.richTextBox6.Margin = new System.Windows.Forms.Padding(4);
             this.richTextBox6.MaxLength = 4;
             this.richTextBox6.Name = "richTextBox6";
-            this.richTextBox6.Size = new System.Drawing.Size(143, 31);
+            this.richTextBox6.Size = new System.Drawing.Size(142, 31);
             this.richTextBox6.TabIndex = 5;
             this.richTextBox6.Text = "";
             this.richTextBox6.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.richTextBox2_KeyPress);
@@ -472,7 +472,7 @@ namespace AutomatedStudentRecordKeeper
             // richTextBox5
             // 
             this.richTextBox5.Location = new System.Drawing.Point(6, 48);
-            this.richTextBox5.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.richTextBox5.Margin = new System.Windows.Forms.Padding(4);
             this.richTextBox5.MaxLength = 4;
             this.richTextBox5.Name = "richTextBox5";
             this.richTextBox5.Size = new System.Drawing.Size(132, 31);
@@ -483,7 +483,7 @@ namespace AutomatedStudentRecordKeeper
             // richTextBox1
             // 
             this.richTextBox1.Location = new System.Drawing.Point(6, 6);
-            this.richTextBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.richTextBox1.Margin = new System.Windows.Forms.Padding(4);
             this.richTextBox1.MaxLength = 4;
             this.richTextBox1.Name = "richTextBox1";
             this.richTextBox1.Size = new System.Drawing.Size(132, 31);
@@ -493,19 +493,19 @@ namespace AutomatedStudentRecordKeeper
             // 
             // richTextBox2
             // 
-            this.richTextBox2.Location = new System.Drawing.Point(149, 6);
-            this.richTextBox2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.richTextBox2.Location = new System.Drawing.Point(148, 6);
+            this.richTextBox2.Margin = new System.Windows.Forms.Padding(4);
             this.richTextBox2.MaxLength = 4;
             this.richTextBox2.Name = "richTextBox2";
-            this.richTextBox2.Size = new System.Drawing.Size(143, 31);
+            this.richTextBox2.Size = new System.Drawing.Size(142, 31);
             this.richTextBox2.TabIndex = 1;
             this.richTextBox2.Text = "";
             this.richTextBox2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.richTextBox2_KeyPress);
             // 
             // richTextBox3
             // 
-            this.richTextBox3.Location = new System.Drawing.Point(303, 6);
-            this.richTextBox3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.richTextBox3.Location = new System.Drawing.Point(300, 6);
+            this.richTextBox3.Margin = new System.Windows.Forms.Padding(4);
             this.richTextBox3.Name = "richTextBox3";
             this.richTextBox3.Size = new System.Drawing.Size(263, 31);
             this.richTextBox3.TabIndex = 2;
@@ -514,7 +514,7 @@ namespace AutomatedStudentRecordKeeper
             // richTextBox25
             // 
             this.richTextBox25.Location = new System.Drawing.Point(6, 258);
-            this.richTextBox25.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.richTextBox25.Margin = new System.Windows.Forms.Padding(4);
             this.richTextBox25.MaxLength = 4;
             this.richTextBox25.Name = "richTextBox25";
             this.richTextBox25.Size = new System.Drawing.Size(132, 31);
@@ -524,11 +524,11 @@ namespace AutomatedStudentRecordKeeper
             // 
             // richTextBox14
             // 
-            this.richTextBox14.Location = new System.Drawing.Point(149, 132);
-            this.richTextBox14.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.richTextBox14.Location = new System.Drawing.Point(148, 132);
+            this.richTextBox14.Margin = new System.Windows.Forms.Padding(4);
             this.richTextBox14.MaxLength = 4;
             this.richTextBox14.Name = "richTextBox14";
-            this.richTextBox14.Size = new System.Drawing.Size(143, 31);
+            this.richTextBox14.Size = new System.Drawing.Size(142, 31);
             this.richTextBox14.TabIndex = 13;
             this.richTextBox14.Text = "";
             this.richTextBox14.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.richTextBox2_KeyPress);
@@ -548,14 +548,14 @@ namespace AutomatedStudentRecordKeeper
             this.yeardropbox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.yeardropbox.FormattingEnabled = true;
             this.yeardropbox.Location = new System.Drawing.Point(512, 44);
-            this.yeardropbox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.yeardropbox.Margin = new System.Windows.Forms.Padding(4);
             this.yeardropbox.Name = "yeardropbox";
             this.yeardropbox.Size = new System.Drawing.Size(71, 24);
             this.yeardropbox.TabIndex = 19;
             // 
             // import_courses
             // 
-            this.import_courses.Location = new System.Drawing.Point(333, 440);
+            this.import_courses.Location = new System.Drawing.Point(366, 439);
             this.import_courses.Name = "import_courses";
             this.import_courses.Size = new System.Drawing.Size(100, 28);
             this.import_courses.TabIndex = 21;
@@ -582,7 +582,7 @@ namespace AutomatedStudentRecordKeeper
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "AddCourse";
             this.Text = "AddCourse";
             this.AddCourseTable.ResumeLayout(false);

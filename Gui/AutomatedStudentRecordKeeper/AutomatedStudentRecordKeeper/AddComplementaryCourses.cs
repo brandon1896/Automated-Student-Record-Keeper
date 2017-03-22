@@ -16,7 +16,7 @@ namespace AutomatedStudentRecordKeeper
 {
     public partial class AddComplementaryCourses : Form
     {
-        string sSelectedFile;
+        string selectedInputFile;
         NpgsqlCommand cmd = new NpgsqlCommand();
 
         public AddComplementaryCourses()
@@ -129,8 +129,8 @@ namespace AutomatedStudentRecordKeeper
 
                 if (choofdlog.ShowDialog() == DialogResult.OK)
                 {
-                    sSelectedFile = choofdlog.FileName; //sets path
-                    string html = System.IO.File.ReadAllText(sSelectedFile); //reads from path
+                    selectedInputFile = choofdlog.FileName; //sets path
+                    string html = System.IO.File.ReadAllText(selectedInputFile); //reads from path
 
                     //clean file here//
                     //Change names to coursecode
@@ -206,15 +206,15 @@ namespace AutomatedStudentRecordKeeper
                     }
                     catch
                     {
-                        MessageBox.Show("Error importing courses.");
-                        Application.Exit();
+                        MessageBox.Show("Error Adding Complementary Courses to DataBase");
+                        this.Close();
                     }
 
                     MessageBox.Show("Complementary Courses Import Successful.");
 
                 }
                 else
-                    sSelectedFile = string.Empty;
+                    selectedInputFile = string.Empty;
             }
         }
 

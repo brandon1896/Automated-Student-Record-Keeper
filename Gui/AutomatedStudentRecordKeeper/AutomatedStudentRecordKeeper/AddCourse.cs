@@ -18,8 +18,12 @@ namespace AutomatedStudentRecordKeeper
 {
     public partial class AddCourse : Form
     {
-        string sSelectedFile;
+        string selectedInputFile;
         NpgsqlCommand cmd = new NpgsqlCommand();
+        string courseSection = string.Empty;
+        string yearSection = string.Empty;
+        int yearLevel = 0;
+        int firstUsedYear = DateTime.Now.Year;
 
         public AddCourse()
         {
@@ -153,13 +157,13 @@ namespace AutomatedStudentRecordKeeper
 
                 if (choofdlog.ShowDialog() == DialogResult.OK)
                 {
-                    sSelectedFile = choofdlog.FileName; //sets path
+                    selectedInputFile = choofdlog.FileName; //sets path
 
                     //work in progress.... almost done i think..
                     Debug.Write("START");
                     List<string> data = new List<string>();
                     Microsoft.Office.Interop.Word.Application word = new Microsoft.Office.Interop.Word.Application();
-                    Document document = word.Documents.Open(sSelectedFile, ReadOnly: true);
+                    Document document = word.Documents.Open(selectedInputFile, ReadOnly: true);
 
                     foreach (Paragraph objParagraph in document.Paragraphs)
                         data.Add(objParagraph.Range.Text.Trim());
@@ -174,7 +178,7 @@ namespace AutomatedStudentRecordKeeper
                     totaltext = Regex.Replace(totaltext, @"(Lab)\r|(Lec)\r", string.Empty);
                     totaltext = Regex.Replace(totaltext, @"\d\.\d", string.Empty);
                     totaltext = Regex.Replace(totaltext, @"\b\d{1}\s|\b\d{2}\s", Environment.NewLine);
-                    totaltext = Regex.Replace(totaltext, @"YEAR|FALL|WINTER", string.Empty, RegexOptions.Singleline);
+                    totaltext = Regex.Replace(totaltext, @"YEAR|FALL |WINTER ", string.Empty, RegexOptions.Singleline);
                     totaltext = Regex.Replace(totaltext, @"SECOND|THIRD|FOURTH", string.Empty);
                     totaltext = Regex.Replace(totaltext, @"(Total).*?(Hours)", string.Empty);
                     totaltext = Regex.Replace(totaltext, @"(Sociology 2755).*?\n", string.Empty);
@@ -185,44 +189,66 @@ namespace AutomatedStudentRecordKeeper
                     totaltext = Regex.Replace(totaltext, @"(One half course from Engineering Elective Course List).*?\n", string.Empty, RegexOptions.Singleline);
                     totaltext = Regex.Replace(totaltext, @"(One complementary).*?\n", string.Empty, RegexOptions.Singleline);
 
-                    string[] year = totaltext.Split(new string[] { " TERM " }, StringSplitOptions.RemoveEmptyEntries);
+                    System.IO.File.WriteAllText(@"C:\Users\Public\totaltext.txt", totaltext);
 
-                    for (int j = 0; j < year.Length; j++)
+                    string[] term = totaltext.Split(new string[] { "TERM " }, StringSplitOptions.RemoveEmptyEntries);
+
+                    Console.Write(term.Length);
+
+                    for (int j = 0; j < term.Length; j++)
                     {
-                        year[j] = Regex.Replace(year[j], @"(?<=([A-Z]{4}))\s+", "~");
-                        year[j] = Regex.Replace(year[j], @"(- ).*?(Year\n)", string.Empty);
+                        term[j] = Regex.Replace(term[j], @"(?<=([A-Z]{4}))\s+", "~");
+                        term[j] = Regex.Replace(term[j], @"(- ).*?(term\n)", string.Empty);
 
-                        var lines = year[j].Split('\n')
+                        //Fixed Earlier errors that seem to be a non issue now
+                        /*
+                        var lines = term[j].Split('\n')
                             .Where(s => !string.IsNullOrWhiteSpace(s));
 
-                        year[j] = string.Join("\n", lines);
-
-                        var courseNumber = Regex.Matches(year[j], @"[A-Z]{4}.*?\n", RegexOptions.Singleline);
-                        var courseNumberList = courseNumber.Cast<Match>().Select(match => match.Value).ToList();
-                        /*
-                        for (int i = 0; i < courseNumberList.Count; i++)
-                        {
-                                courseNumberList[i] += "~0.5~" + j + DateTime.Now.Year;
-                                courseNumberList[i] = Regex.Replace(courseNumberList[i], @"[\n\r]+", string.Empty);
-                        }
+                        term[j] = string.Join("\n", lines);
                         */
 
-                        System.IO.File.WriteAllText(@"C:\Users\Public\COURSESyear" + j + ".txt", year[j]);
+                        var courseNumber = Regex.Matches(term[j], @"[A-Z]{4}.*?\n", RegexOptions.Singleline);
+                        var courseNumberList = courseNumber.Cast<Match>().Select(match => match.Value).ToList();
 
-                        cmd = new NpgsqlCommand("COPY courses (coursesubject, coursenumber, coursename) FROM "
+                        //look into getting rid of the empty first file to fix this and have j % 2 == 0 instead
+                        //may save from future errors if something in the original file changes later on?
+                        if (j % 2 == 1)
+                        {
+                            courseSection = "~Fall";
+                            yearLevel++;
+                        }
+                        else
+                            courseSection = "~Winter";
+
+                        yearSection = ((firstUsedYear + yearLevel - 1).ToString()) + "/" + ((firstUsedYear + yearLevel).ToString());
+
+                        for (int i = 0; i < courseNumberList.Count; i++)
+                        {
+                            courseNumberList[i] += courseSection + "~0.5~" + yearLevel + "~" + yearSection + "~" + firstUsedYear;
+                            courseNumberList[i] = Regex.Replace(courseNumberList[i], @"[\n\r]+", string.Empty);
+                        }
+
+                        System.IO.File.WriteAllLines(@"C:\Users\Public\COURSESyear" + j + ".txt", courseNumberList);
+                        try
+                        {
+                            cmd = new NpgsqlCommand("COPY courses (coursesubject, coursenumber, coursename, coursesection,"
+                            + @"credits, yearlevel, yearsection, firstusedyear ) FROM"
                             + @"'C:\Users\Public\COURSESyear" + j + ".txt' DELIMITER '~' CSV", conn);
-
-                        //cmd = new NpgsqlCommand("COPY courses (coursesubject, coursenumber, coursename, credits, yearLevel, firstusedyear) FROM "
-                        //    + @"'C:\Users\Public\COURSESyear" + j + ".txt' DELIMITER '~' CSV", conn);
-                        cmd.ExecuteNonQuery();
+                            cmd.ExecuteNonQuery();
+                        }
+                        catch
+                        {
+                            MessageBox.Show("Error Adding Courses to DataBase");
+                            this.Close();
+                        }
 
                     }
+                    MessageBox.Show("Courses Added to Database Succesfully");
                     Debug.Write("FINISH");
-                    //System.IO.File.WriteAllLines(@"C:\Users\Shawn\Documents\COURSES.txt", courseNumberList);
-                    //System.IO.File.WriteAllText(@"C:\Users\Shawn\Documents\COURSES.txt", html); //writes to text file
                 }
                 else
-                    sSelectedFile = string.Empty;
+                    selectedInputFile = string.Empty;
             }
         }
     }
