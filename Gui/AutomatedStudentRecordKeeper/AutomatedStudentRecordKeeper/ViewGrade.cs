@@ -63,6 +63,9 @@ namespace AutomatedStudentRecordKeeper
                     }
                     else
                     {
+                        waitScreen waitscrn = new waitScreen();
+                        waitscrn.Show();
+                        Application.DoEvents();
                         cmd = new NpgsqlCommand("select distinct yearsection from \"" + StudentBox.Text + "\" order by yearsection asc", conn);
                         reader = cmd.ExecuteReader();
                         while (reader.Read())
@@ -165,6 +168,7 @@ namespace AutomatedStudentRecordKeeper
                         dataloaded = true;
                         studentnumber = StudentBox.Text;
                         conn.Close();
+                        waitscrn.Hide();
                     }
                 }
             }
