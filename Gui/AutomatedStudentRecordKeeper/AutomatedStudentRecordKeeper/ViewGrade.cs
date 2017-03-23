@@ -33,6 +33,8 @@ namespace AutomatedStudentRecordKeeper
         }
         private void Calculate_Click(object sender, EventArgs e)
         {
+            tableviewlist.Clear();
+            yearbox.Items.Clear();
             dataloaded = false;
             List<string> years = new List<string>();
             NpgsqlConnection conn = new NpgsqlConnection("Server=Localhost; Port=5432; Database=studentrecordkeeper; User Id=postgres; Password=;");
@@ -67,7 +69,6 @@ namespace AutomatedStudentRecordKeeper
                         {
                             years.Add(reader[0].ToString());
                             yearbox.Items.Add(reader[0].ToString());
-                            MessageBox.Show("Please enter valid student number");
                         }
                         cmd.Cancel();
                         reader.Close();
@@ -78,16 +79,19 @@ namespace AutomatedStudentRecordKeeper
                         Fulltable4.Hide();
                         Fulltable5.Hide();
                         Fulltable6.Hide();
-
+                        
                         switch (years.Count)
                         {
                             case 1:
                                 date1.Text = years[0];
+                                Loadtable(table1, date1, SCA1);
                                 Fulltable1.Show();
                                 break;
                             case 2:
                                 date1.Text = years[0];
                                 date2.Text = years[1];
+                                Loadtable(table1, date1, SCA1);
+                                Loadtable(table2, date2, SCA2);
                                 Fulltable1.Show();
                                 Fulltable2.Show();
                                 break;
@@ -107,6 +111,10 @@ namespace AutomatedStudentRecordKeeper
                                 date2.Text = years[1];
                                 date3.Text = years[2];
                                 date4.Text = years[3];
+                                Loadtable(table1, date1, SCA1);
+                                Loadtable(table2, date2, SCA2);
+                                Loadtable(table3, date3, SCA3);
+                                Loadtable(table4, date4, SCA4);
                                 Fulltable1.Show();
                                 Fulltable2.Show();
                                 Fulltable3.Show();
@@ -118,6 +126,11 @@ namespace AutomatedStudentRecordKeeper
                                 date3.Text = years[2];
                                 date4.Text = years[3];
                                 date5.Text = years[4];
+                                Loadtable(table1, date1, SCA1);
+                                Loadtable(table2, date2, SCA2);
+                                Loadtable(table3, date3, SCA3);
+                                Loadtable(table4, date4, SCA4);
+                                Loadtable(table5, date5, SCA5);
                                 Fulltable1.Show();
                                 Fulltable2.Show();
                                 Fulltable3.Show();
@@ -131,6 +144,12 @@ namespace AutomatedStudentRecordKeeper
                                 date4.Text = years[3];
                                 date5.Text = years[4];
                                 date6.Text = years[5];
+                                Loadtable(table1, date1, SCA1);
+                                Loadtable(table2, date2, SCA2);
+                                Loadtable(table3, date3, SCA3);
+                                Loadtable(table4, date4, SCA4);
+                                Loadtable(table5, date5, SCA5);
+                                Loadtable(table6, date6, SCA6);
                                 Fulltable1.Show();
                                 Fulltable2.Show();
                                 Fulltable3.Show();
@@ -209,7 +228,7 @@ namespace AutomatedStudentRecordKeeper
                 reader = cmd.ExecuteReader();
                 while (reader.Read())
                 {
-                    table.GetControlFromPosition(2, 0).Text = (int.Parse(reader[0].ToString())).ToString();
+                    table.GetControlFromPosition(2, 0).Text = reader[0].ToString();
                 }
                 cmd.Cancel();
                 reader.Close();
