@@ -64,5 +64,11 @@ namespace AutomatedStudentRecordKeeper
             ViewGrade view_grade = new ViewGrade();
             view_grade.ShowDialog();
         }
+
+        private void addmakeup_Click(object sender, EventArgs e)
+        {
+            AddMakeupCourse add_makeup = new AddMakeupCourse();
+            add_makeup.ShowDialog();
+        }
     }
 }

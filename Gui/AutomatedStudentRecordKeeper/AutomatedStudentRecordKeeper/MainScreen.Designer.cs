@@ -35,11 +35,12 @@
             this.button2 = new System.Windows.Forms.Button();
             this.AddButton = new System.Windows.Forms.Button();
             this.ViewButton = new System.Windows.Forms.Button();
+            this.addmakeup = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // addstudentbutton
             // 
-            this.addstudentbutton.Location = new System.Drawing.Point(12, 12);
+            this.addstudentbutton.Location = new System.Drawing.Point(21, 12);
             this.addstudentbutton.Name = "addstudentbutton";
             this.addstudentbutton.Size = new System.Drawing.Size(116, 52);
             this.addstudentbutton.TabIndex = 1;
@@ -49,7 +50,7 @@
             // 
             // viewstudentsbutton
             // 
-            this.viewstudentsbutton.Location = new System.Drawing.Point(134, 12);
+            this.viewstudentsbutton.Location = new System.Drawing.Point(143, 128);
             this.viewstudentsbutton.Name = "viewstudentsbutton";
             this.viewstudentsbutton.Size = new System.Drawing.Size(116, 52);
             this.viewstudentsbutton.TabIndex = 2;
@@ -59,7 +60,7 @@
             // 
             // AddCoursesButton
             // 
-            this.AddCoursesButton.Location = new System.Drawing.Point(12, 70);
+            this.AddCoursesButton.Location = new System.Drawing.Point(143, 12);
             this.AddCoursesButton.Name = "AddCoursesButton";
             this.AddCoursesButton.Size = new System.Drawing.Size(116, 52);
             this.AddCoursesButton.TabIndex = 3;
@@ -69,7 +70,7 @@
             // 
             // ViewCoursesButton
             // 
-            this.ViewCoursesButton.Location = new System.Drawing.Point(73, 128);
+            this.ViewCoursesButton.Location = new System.Drawing.Point(21, 186);
             this.ViewCoursesButton.Name = "ViewCoursesButton";
             this.ViewCoursesButton.Size = new System.Drawing.Size(116, 52);
             this.ViewCoursesButton.TabIndex = 4;
@@ -79,7 +80,7 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(134, 70);
+            this.button2.Location = new System.Drawing.Point(21, 70);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(116, 52);
             this.button2.TabIndex = 7;
@@ -89,7 +90,7 @@
             // 
             // AddButton
             // 
-            this.AddButton.Location = new System.Drawing.Point(12, 186);
+            this.AddButton.Location = new System.Drawing.Point(143, 70);
             this.AddButton.Name = "AddButton";
             this.AddButton.Size = new System.Drawing.Size(116, 52);
             this.AddButton.TabIndex = 8;
@@ -99,19 +100,30 @@
             // 
             // ViewButton
             // 
-            this.ViewButton.Location = new System.Drawing.Point(134, 188);
+            this.ViewButton.Location = new System.Drawing.Point(143, 186);
             this.ViewButton.Name = "ViewButton";
-            this.ViewButton.Size = new System.Drawing.Size(125, 50);
+            this.ViewButton.Size = new System.Drawing.Size(116, 50);
             this.ViewButton.TabIndex = 9;
             this.ViewButton.Text = "View Grades";
             this.ViewButton.UseVisualStyleBackColor = true;
             this.ViewButton.Click += new System.EventHandler(this.ViewButton_Click);
+            // 
+            // addmakeup
+            // 
+            this.addmakeup.Location = new System.Drawing.Point(21, 128);
+            this.addmakeup.Name = "addmakeup";
+            this.addmakeup.Size = new System.Drawing.Size(116, 50);
+            this.addmakeup.TabIndex = 10;
+            this.addmakeup.Text = "Add Make-Up Courses";
+            this.addmakeup.UseVisualStyleBackColor = true;
+            this.addmakeup.Click += new System.EventHandler(this.addmakeup_Click);
             // 
             // MainScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(284, 323);
+            this.Controls.Add(this.addmakeup);
             this.Controls.Add(this.ViewButton);
             this.Controls.Add(this.AddButton);
             this.Controls.Add(this.button2);
@@ -134,6 +146,7 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button AddButton;
         private System.Windows.Forms.Button ViewButton;
+        private System.Windows.Forms.Button addmakeup;
     }
 }
 
