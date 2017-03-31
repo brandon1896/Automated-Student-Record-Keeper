@@ -233,7 +233,8 @@ namespace AutomatedStudentRecordKeeper
                             }
                         }
                     }
-                    MessageBox.Show("All students Added Succesfully. Import Complete.");
+                    MessageBox.Show("Importing of student grades transcript to the database was successful", "SUCCESS");
+                    this.Close();
                 }
                 else
                     selectedInputFile = string.Empty;

@@ -39,3 +39,4 @@ C:\Users\bjcri\Desktop\Degree Project\Automated-Student-Record-Keeper\Gui\Automa
 C:\Users\bjcri\Desktop\Degree Project\Automated-Student-Record-Keeper\Gui\AutomatedStudentRecordKeeper\AutomatedStudentRecordKeeper\obj\Debug\AutomatedStudentRecordKeeper.ViewStudents.resources
 C:\Users\bjcri\Desktop\Degree Project\Automated-Student-Record-Keeper\Gui\AutomatedStudentRecordKeeper\AutomatedStudentRecordKeeper\obj\Debug\AutomatedStudentRecordKeeper.waitScreen.resources
 C:\Users\bjcri\Desktop\Degree Project\Automated-Student-Record-Keeper\Gui\AutomatedStudentRecordKeeper\AutomatedStudentRecordKeeper\obj\Debug\AutomatedStudentRecordKeeper.csproj.GenerateResource.Cache
+C:\Users\Shawn\Documents\GitHub\Automated-Student-Record-Keeper\Gui\AutomatedStudentRecordKeeper\AutomatedStudentRecordKeeper\obj\Debug\AutomatedStudentRecordKeeper.AddMakeupCourse.resources

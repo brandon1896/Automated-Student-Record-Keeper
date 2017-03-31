@@ -63,6 +63,8 @@
             this.richTextBox25 = new System.Windows.Forms.RichTextBox();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.importCSV = new System.Windows.Forms.Button();
+            this.label7 = new System.Windows.Forms.Label();
+            this.yeardropbox = new System.Windows.Forms.ComboBox();
             this.CourseTable.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -79,7 +81,7 @@
             // submittable
             // 
             this.submittable.Location = new System.Drawing.Point(226, 361);
-            this.submittable.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.submittable.Margin = new System.Windows.Forms.Padding(4);
             this.submittable.Name = "submittable";
             this.submittable.Size = new System.Drawing.Size(100, 28);
             this.submittable.TabIndex = 20;
@@ -125,7 +127,7 @@
             this.CourseTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 48.14815F));
             this.CourseTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 51.85185F));
             this.CourseTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 272F));
-            this.CourseTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 67F));
+            this.CourseTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 70F));
             this.CourseTable.Controls.Add(this.comboBox7, 3, 6);
             this.CourseTable.Controls.Add(this.comboBox6, 3, 5);
             this.CourseTable.Controls.Add(this.comboBox5, 3, 4);
@@ -155,7 +157,7 @@
             this.CourseTable.Controls.Add(this.richTextBox25, 0, 6);
             this.CourseTable.Controls.Add(this.comboBox1, 3, 0);
             this.CourseTable.Location = new System.Drawing.Point(28, 46);
-            this.CourseTable.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.CourseTable.Margin = new System.Windows.Forms.Padding(4);
             this.CourseTable.Name = "CourseTable";
             this.CourseTable.RowCount = 7;
             this.CourseTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
@@ -176,8 +178,8 @@
             this.comboBox7.Items.AddRange(new object[] {
             "1",
             "0.5"});
-            this.comboBox7.Location = new System.Drawing.Point(597, 258);
-            this.comboBox7.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.comboBox7.Location = new System.Drawing.Point(594, 258);
+            this.comboBox7.Margin = new System.Windows.Forms.Padding(4);
             this.comboBox7.Name = "comboBox7";
             this.comboBox7.Size = new System.Drawing.Size(59, 24);
             this.comboBox7.TabIndex = 33;
@@ -189,8 +191,8 @@
             this.comboBox6.Items.AddRange(new object[] {
             "1",
             "0.5"});
-            this.comboBox6.Location = new System.Drawing.Point(597, 216);
-            this.comboBox6.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.comboBox6.Location = new System.Drawing.Point(594, 216);
+            this.comboBox6.Margin = new System.Windows.Forms.Padding(4);
             this.comboBox6.Name = "comboBox6";
             this.comboBox6.Size = new System.Drawing.Size(59, 24);
             this.comboBox6.TabIndex = 32;
@@ -202,8 +204,8 @@
             this.comboBox5.Items.AddRange(new object[] {
             "1",
             "0.5"});
-            this.comboBox5.Location = new System.Drawing.Point(597, 174);
-            this.comboBox5.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.comboBox5.Location = new System.Drawing.Point(594, 174);
+            this.comboBox5.Margin = new System.Windows.Forms.Padding(4);
             this.comboBox5.Name = "comboBox5";
             this.comboBox5.Size = new System.Drawing.Size(59, 24);
             this.comboBox5.TabIndex = 31;
@@ -215,8 +217,8 @@
             this.comboBox4.Items.AddRange(new object[] {
             "1",
             "0.5"});
-            this.comboBox4.Location = new System.Drawing.Point(597, 132);
-            this.comboBox4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.comboBox4.Location = new System.Drawing.Point(594, 132);
+            this.comboBox4.Margin = new System.Windows.Forms.Padding(4);
             this.comboBox4.Name = "comboBox4";
             this.comboBox4.Size = new System.Drawing.Size(59, 24);
             this.comboBox4.TabIndex = 30;
@@ -228,8 +230,8 @@
             this.comboBox3.Items.AddRange(new object[] {
             "1",
             "0.5"});
-            this.comboBox3.Location = new System.Drawing.Point(597, 90);
-            this.comboBox3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.comboBox3.Location = new System.Drawing.Point(594, 90);
+            this.comboBox3.Margin = new System.Windows.Forms.Padding(4);
             this.comboBox3.Name = "comboBox3";
             this.comboBox3.Size = new System.Drawing.Size(59, 24);
             this.comboBox3.TabIndex = 29;
@@ -241,16 +243,16 @@
             this.comboBox2.Items.AddRange(new object[] {
             "1",
             "0.5"});
-            this.comboBox2.Location = new System.Drawing.Point(597, 48);
-            this.comboBox2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.comboBox2.Location = new System.Drawing.Point(594, 48);
+            this.comboBox2.Margin = new System.Windows.Forms.Padding(4);
             this.comboBox2.Name = "comboBox2";
             this.comboBox2.Size = new System.Drawing.Size(59, 24);
             this.comboBox2.TabIndex = 28;
             // 
             // richTextBox27
             // 
-            this.richTextBox27.Location = new System.Drawing.Point(323, 258);
-            this.richTextBox27.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.richTextBox27.Location = new System.Drawing.Point(320, 258);
+            this.richTextBox27.Margin = new System.Windows.Forms.Padding(4);
             this.richTextBox27.Name = "richTextBox27";
             this.richTextBox27.Size = new System.Drawing.Size(263, 31);
             this.richTextBox27.TabIndex = 26;
@@ -258,8 +260,8 @@
             // 
             // richTextBox26
             // 
-            this.richTextBox26.Location = new System.Drawing.Point(159, 258);
-            this.richTextBox26.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.richTextBox26.Location = new System.Drawing.Point(157, 258);
+            this.richTextBox26.Margin = new System.Windows.Forms.Padding(4);
             this.richTextBox26.MaxLength = 4;
             this.richTextBox26.Name = "richTextBox26";
             this.richTextBox26.Size = new System.Drawing.Size(151, 31);
@@ -269,8 +271,8 @@
             // 
             // richTextBox23
             // 
-            this.richTextBox23.Location = new System.Drawing.Point(323, 216);
-            this.richTextBox23.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.richTextBox23.Location = new System.Drawing.Point(320, 216);
+            this.richTextBox23.Margin = new System.Windows.Forms.Padding(4);
             this.richTextBox23.Name = "richTextBox23";
             this.richTextBox23.Size = new System.Drawing.Size(263, 31);
             this.richTextBox23.TabIndex = 22;
@@ -278,8 +280,8 @@
             // 
             // richTextBox22
             // 
-            this.richTextBox22.Location = new System.Drawing.Point(159, 216);
-            this.richTextBox22.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.richTextBox22.Location = new System.Drawing.Point(157, 216);
+            this.richTextBox22.Margin = new System.Windows.Forms.Padding(4);
             this.richTextBox22.MaxLength = 4;
             this.richTextBox22.Name = "richTextBox22";
             this.richTextBox22.Size = new System.Drawing.Size(151, 31);
@@ -290,7 +292,7 @@
             // richTextBox21
             // 
             this.richTextBox21.Location = new System.Drawing.Point(6, 216);
-            this.richTextBox21.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.richTextBox21.Margin = new System.Windows.Forms.Padding(4);
             this.richTextBox21.MaxLength = 4;
             this.richTextBox21.Name = "richTextBox21";
             this.richTextBox21.Size = new System.Drawing.Size(140, 31);
@@ -300,8 +302,8 @@
             // 
             // richTextBox19
             // 
-            this.richTextBox19.Location = new System.Drawing.Point(323, 174);
-            this.richTextBox19.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.richTextBox19.Location = new System.Drawing.Point(320, 174);
+            this.richTextBox19.Margin = new System.Windows.Forms.Padding(4);
             this.richTextBox19.Name = "richTextBox19";
             this.richTextBox19.Size = new System.Drawing.Size(263, 31);
             this.richTextBox19.TabIndex = 18;
@@ -309,8 +311,8 @@
             // 
             // richTextBox18
             // 
-            this.richTextBox18.Location = new System.Drawing.Point(159, 174);
-            this.richTextBox18.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.richTextBox18.Location = new System.Drawing.Point(157, 174);
+            this.richTextBox18.Margin = new System.Windows.Forms.Padding(4);
             this.richTextBox18.MaxLength = 4;
             this.richTextBox18.Name = "richTextBox18";
             this.richTextBox18.Size = new System.Drawing.Size(151, 31);
@@ -321,7 +323,7 @@
             // richTextBox17
             // 
             this.richTextBox17.Location = new System.Drawing.Point(6, 174);
-            this.richTextBox17.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.richTextBox17.Margin = new System.Windows.Forms.Padding(4);
             this.richTextBox17.MaxLength = 4;
             this.richTextBox17.Name = "richTextBox17";
             this.richTextBox17.Size = new System.Drawing.Size(140, 31);
@@ -331,8 +333,8 @@
             // 
             // richTextBox15
             // 
-            this.richTextBox15.Location = new System.Drawing.Point(323, 132);
-            this.richTextBox15.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.richTextBox15.Location = new System.Drawing.Point(320, 132);
+            this.richTextBox15.Margin = new System.Windows.Forms.Padding(4);
             this.richTextBox15.Name = "richTextBox15";
             this.richTextBox15.Size = new System.Drawing.Size(263, 31);
             this.richTextBox15.TabIndex = 14;
@@ -340,8 +342,8 @@
             // 
             // richTextBox14
             // 
-            this.richTextBox14.Location = new System.Drawing.Point(159, 132);
-            this.richTextBox14.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.richTextBox14.Location = new System.Drawing.Point(157, 132);
+            this.richTextBox14.Margin = new System.Windows.Forms.Padding(4);
             this.richTextBox14.MaxLength = 4;
             this.richTextBox14.Name = "richTextBox14";
             this.richTextBox14.Size = new System.Drawing.Size(151, 31);
@@ -352,7 +354,7 @@
             // richTextBox13
             // 
             this.richTextBox13.Location = new System.Drawing.Point(6, 132);
-            this.richTextBox13.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.richTextBox13.Margin = new System.Windows.Forms.Padding(4);
             this.richTextBox13.MaxLength = 4;
             this.richTextBox13.Name = "richTextBox13";
             this.richTextBox13.Size = new System.Drawing.Size(140, 31);
@@ -362,8 +364,8 @@
             // 
             // richTextBox11
             // 
-            this.richTextBox11.Location = new System.Drawing.Point(323, 90);
-            this.richTextBox11.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.richTextBox11.Location = new System.Drawing.Point(320, 90);
+            this.richTextBox11.Margin = new System.Windows.Forms.Padding(4);
             this.richTextBox11.Name = "richTextBox11";
             this.richTextBox11.Size = new System.Drawing.Size(263, 31);
             this.richTextBox11.TabIndex = 10;
@@ -371,8 +373,8 @@
             // 
             // richTextBox10
             // 
-            this.richTextBox10.Location = new System.Drawing.Point(159, 90);
-            this.richTextBox10.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.richTextBox10.Location = new System.Drawing.Point(157, 90);
+            this.richTextBox10.Margin = new System.Windows.Forms.Padding(4);
             this.richTextBox10.MaxLength = 4;
             this.richTextBox10.Name = "richTextBox10";
             this.richTextBox10.Size = new System.Drawing.Size(151, 31);
@@ -383,7 +385,7 @@
             // richTextBox9
             // 
             this.richTextBox9.Location = new System.Drawing.Point(6, 90);
-            this.richTextBox9.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.richTextBox9.Margin = new System.Windows.Forms.Padding(4);
             this.richTextBox9.MaxLength = 4;
             this.richTextBox9.Name = "richTextBox9";
             this.richTextBox9.Size = new System.Drawing.Size(140, 31);
@@ -393,8 +395,8 @@
             // 
             // richTextBox7
             // 
-            this.richTextBox7.Location = new System.Drawing.Point(323, 48);
-            this.richTextBox7.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.richTextBox7.Location = new System.Drawing.Point(320, 48);
+            this.richTextBox7.Margin = new System.Windows.Forms.Padding(4);
             this.richTextBox7.Name = "richTextBox7";
             this.richTextBox7.Size = new System.Drawing.Size(263, 31);
             this.richTextBox7.TabIndex = 6;
@@ -402,8 +404,8 @@
             // 
             // richTextBox6
             // 
-            this.richTextBox6.Location = new System.Drawing.Point(159, 48);
-            this.richTextBox6.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.richTextBox6.Location = new System.Drawing.Point(157, 48);
+            this.richTextBox6.Margin = new System.Windows.Forms.Padding(4);
             this.richTextBox6.MaxLength = 4;
             this.richTextBox6.Name = "richTextBox6";
             this.richTextBox6.Size = new System.Drawing.Size(151, 31);
@@ -414,7 +416,7 @@
             // richTextBox5
             // 
             this.richTextBox5.Location = new System.Drawing.Point(6, 48);
-            this.richTextBox5.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.richTextBox5.Margin = new System.Windows.Forms.Padding(4);
             this.richTextBox5.MaxLength = 4;
             this.richTextBox5.Name = "richTextBox5";
             this.richTextBox5.Size = new System.Drawing.Size(140, 31);
@@ -425,7 +427,7 @@
             // richTextBox1
             // 
             this.richTextBox1.Location = new System.Drawing.Point(6, 6);
-            this.richTextBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.richTextBox1.Margin = new System.Windows.Forms.Padding(4);
             this.richTextBox1.MaxLength = 4;
             this.richTextBox1.Name = "richTextBox1";
             this.richTextBox1.Size = new System.Drawing.Size(140, 31);
@@ -435,8 +437,8 @@
             // 
             // richTextBox2
             // 
-            this.richTextBox2.Location = new System.Drawing.Point(159, 6);
-            this.richTextBox2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.richTextBox2.Location = new System.Drawing.Point(157, 6);
+            this.richTextBox2.Margin = new System.Windows.Forms.Padding(4);
             this.richTextBox2.MaxLength = 4;
             this.richTextBox2.Name = "richTextBox2";
             this.richTextBox2.Size = new System.Drawing.Size(151, 31);
@@ -446,8 +448,8 @@
             // 
             // richTextBox3
             // 
-            this.richTextBox3.Location = new System.Drawing.Point(323, 6);
-            this.richTextBox3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.richTextBox3.Location = new System.Drawing.Point(320, 6);
+            this.richTextBox3.Margin = new System.Windows.Forms.Padding(4);
             this.richTextBox3.Name = "richTextBox3";
             this.richTextBox3.Size = new System.Drawing.Size(263, 31);
             this.richTextBox3.TabIndex = 2;
@@ -456,7 +458,7 @@
             // richTextBox25
             // 
             this.richTextBox25.Location = new System.Drawing.Point(6, 258);
-            this.richTextBox25.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.richTextBox25.Margin = new System.Windows.Forms.Padding(4);
             this.richTextBox25.MaxLength = 4;
             this.richTextBox25.Name = "richTextBox25";
             this.richTextBox25.Size = new System.Drawing.Size(140, 31);
@@ -471,8 +473,8 @@
             this.comboBox1.Items.AddRange(new object[] {
             "1",
             "0.5"});
-            this.comboBox1.Location = new System.Drawing.Point(597, 6);
-            this.comboBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.comboBox1.Location = new System.Drawing.Point(594, 6);
+            this.comboBox1.Margin = new System.Windows.Forms.Padding(4);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(59, 24);
             this.comboBox1.TabIndex = 27;
@@ -487,11 +489,33 @@
             this.importCSV.UseVisualStyleBackColor = true;
             this.importCSV.Click += new System.EventHandler(this.importCSV_Click);
             // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(288, 6);
+            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(38, 17);
+            this.label7.TabIndex = 26;
+            this.label7.Text = "Year";
+            // 
+            // yeardropbox
+            // 
+            this.yeardropbox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.yeardropbox.FormattingEnabled = true;
+            this.yeardropbox.Location = new System.Drawing.Point(335, 2);
+            this.yeardropbox.Margin = new System.Windows.Forms.Padding(4);
+            this.yeardropbox.Name = "yeardropbox";
+            this.yeardropbox.Size = new System.Drawing.Size(81, 24);
+            this.yeardropbox.TabIndex = 25;
+            // 
             // AddComplementaryCourses
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(707, 395);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.yeardropbox);
             this.Controls.Add(this.importCSV);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.submittable);
@@ -500,7 +524,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.CourseTable);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "AddComplementaryCourses";
             this.Text = "Form1";
             this.CourseTable.ResumeLayout(false);
@@ -546,5 +570,7 @@
         private System.Windows.Forms.ComboBox comboBox2;
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Button importCSV;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.ComboBox yeardropbox;
     }
 }
