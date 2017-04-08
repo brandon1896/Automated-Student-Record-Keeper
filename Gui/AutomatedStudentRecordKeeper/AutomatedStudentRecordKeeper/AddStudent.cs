@@ -81,7 +81,7 @@ namespace AutomatedStudentRecordKeeper
                 }
                 else
                 {
-                    NpgsqlCommand cmd = new NpgsqlCommand("select exists (select true from pg_tables where tablename = '" + StudentNumberBox.Text + "')", conn);
+                    NpgsqlCommand cmd = new NpgsqlCommand("select exists (select true from student where studentnumber = '" + StudentNumberBox.Text + "')", conn);
                     string checknum = "False";
                     NpgsqlDataReader reader = cmd.ExecuteReader();
                     while (reader.Read())
@@ -111,15 +111,18 @@ namespace AutomatedStudentRecordKeeper
                         cmd.Parameters.Add(new NpgsqlParameter("prevsc", PrevSchoolBox.Text));
                         cmd.Parameters.Add(new NpgsqlParameter("prevprog", PrevProgramBox.Text));
                         cmd.Parameters.Add(new NpgsqlParameter("yrlvl", int.Parse(Yeardropbox.Text)));
-                        cmd.Parameters.Add(new NpgsqlParameter("yrsec", DateTime.Now.Year.ToString() + "/" + (DateTime.Now.Year + 1).ToString()));
-                        cmd.Parameters.Add(new NpgsqlParameter("entyear", DateTime.Now.Year));
-                        cmd.ExecuteNonQuery();
+                        cmd.Parameters.Add(new NpgsqlParameter("yrsec", (DateTime.Now.Year -1 ).ToString() + "/" + (DateTime.Now.Year).ToString()));
+                        cmd.Parameters.Add(new NpgsqlParameter("entyear", DateTime.Now.Year -1));
+                        try
+                        {
+                            cmd.ExecuteNonQuery();
+                        }
+                        catch (NpgsqlException ex)
+                        {
 
+                        }
                         cmd.Cancel();
-                        cmd = new NpgsqlCommand("create table \"" + StudentNumberBox.Text + "\"(coursesubject text, coursenumber text, coursename text, coursegrade integer, yearsection text, year integer)", conn);
-                        cmd.ExecuteNonQuery();
-
-                        cmd.Cancel();
+                        
                         for (int j = 0; j < this.MakeupCourseTable.RowCount; j++)
                         {
                             if (string.IsNullOrWhiteSpace(MakeupCourseTable.GetControlFromPosition(0, j).Text) ||
@@ -129,13 +132,20 @@ namespace AutomatedStudentRecordKeeper
                             }
                             else
                             {
-                                cmd = new NpgsqlCommand("insert into makeupcourses values(:student, :sub, :num, :name, :cred)", conn);
-                                cmd.Parameters.Add(new NpgsqlParameter("student", StudentNumberBox.Text));
+                                cmd = new NpgsqlCommand("insert into courses values(:sub, :num, NULL,:name,:cred,NULL,NULL,:year,'makeup')", conn);
                                 cmd.Parameters.Add(new NpgsqlParameter("sub", MakeupCourseTable.GetControlFromPosition(0, j).Text));
                                 cmd.Parameters.Add(new NpgsqlParameter("num", MakeupCourseTable.GetControlFromPosition(1, j).Text));
                                 cmd.Parameters.Add(new NpgsqlParameter("name", MakeupCourseTable.GetControlFromPosition(2, j).Text));
                                 cmd.Parameters.Add(new NpgsqlParameter("cred", 0.5));
-                                cmd.ExecuteNonQuery();
+                                cmd.Parameters.Add(new NpgsqlParameter("year", DateTime.Now.Year-1));
+                                try
+                                {
+                                    cmd.ExecuteNonQuery();
+                                }
+                                catch (NpgsqlException ex)
+                                {
+
+                                }
                             }
                         }
 
@@ -149,13 +159,19 @@ namespace AutomatedStudentRecordKeeper
                             }
                             else
                             {
-                                cmd = new NpgsqlCommand("insert into \"" + StudentNumberBox.Text + "\"(coursesubject, coursenumber, coursename, yearsection, year) values( :sub, :num, :name, :yrsec, :yr)", conn);
+                                cmd = new NpgsqlCommand("insert into grades values(:stnum, :sub, :num, NULL, :yr)", conn);
+                                cmd.Parameters.Add(new NpgsqlParameter("stnum", StudentNumberBox.Text));
                                 cmd.Parameters.Add(new NpgsqlParameter("sub", CourseCredTable.GetControlFromPosition(0, j).Text));
                                 cmd.Parameters.Add(new NpgsqlParameter("num", CourseCredTable.GetControlFromPosition(1, j).Text));
-                                cmd.Parameters.Add(new NpgsqlParameter("name", CourseCredTable.GetControlFromPosition(2, j).Text));
-                                cmd.Parameters.Add(new NpgsqlParameter("yrsec", DateTime.Now.Year.ToString() + "/" + (DateTime.Now.Year + 1).ToString()));
                                 cmd.Parameters.Add(new NpgsqlParameter("yr", DateTime.Now.Year));
-                                cmd.ExecuteNonQuery();
+                                try
+                                {
+                                    cmd.ExecuteNonQuery();
+                                }
+                                catch (NpgsqlException ex)
+                                {
+
+                                }
                             }
                         }
                         conn.Close();

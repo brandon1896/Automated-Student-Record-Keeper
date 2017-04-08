@@ -49,7 +49,7 @@ namespace AutomatedStudentRecordKeeper
             conn.Open();
             if (conn.State == System.Data.ConnectionState.Open)
             {
-                NpgsqlCommand cmd = new NpgsqlCommand("select exists (select true from pg_tables where tablename = '" + studentnumber.Text + "')", conn);
+                NpgsqlCommand cmd = new NpgsqlCommand("select exists (select true from student where studentnumber = '" + studentnumber.Text + "')", conn);
                 string checknum = "False";
                 NpgsqlDataReader reader = cmd.ExecuteReader();
                 while (reader.Read())
@@ -58,6 +58,7 @@ namespace AutomatedStudentRecordKeeper
                 }
                 cmd.Cancel();
                 reader.Close();
+
                 if (studentnumber.Text.Length!=7)
                 {
                     MessageBox.Show("Please enter valid student number");
@@ -82,13 +83,30 @@ namespace AutomatedStudentRecordKeeper
                         }
                         else    
                         {
-                            cmd = new NpgsqlCommand("insert into makeupcourses values(:student, :sub, :num, :name, :cred)", conn);
-                            cmd.Parameters.Add(new NpgsqlParameter("student", studentnumber.Text));
+                            string studyear="";
+                            cmd = new NpgsqlCommand("select year from student where studentnumber = '" + studentnumber.Text + "'", conn);
+                            reader = cmd.ExecuteReader();
+                            while (reader.Read())
+                            {
+                                studyear = reader[0].ToString();
+                            }
+                            cmd.Cancel();
+                            reader.Close();
+
+                            cmd = new NpgsqlCommand("insert into courses values(:sub, :num, NULL,:name,:cred,NULL,NULL,:year,'makeup')", conn);
                             cmd.Parameters.Add(new NpgsqlParameter("sub", CourseTable.GetControlFromPosition(0, j).Text));
                             cmd.Parameters.Add(new NpgsqlParameter("num", CourseTable.GetControlFromPosition(1, j).Text));
                             cmd.Parameters.Add(new NpgsqlParameter("name", CourseTable.GetControlFromPosition(2, j).Text));
                             cmd.Parameters.Add(new NpgsqlParameter("cred", 0.5));
-                            cmd.ExecuteNonQuery();
+                            cmd.Parameters.Add(new NpgsqlParameter("year", int.Parse(studyear)));
+                            try
+                            {
+                                cmd.ExecuteNonQuery();
+                            }
+                            catch (NpgsqlException ex)
+                            {
+
+                            }
                             cmd.Cancel();
                             count++;
                             CourseTable.GetControlFromPosition(0, j).Text = "";

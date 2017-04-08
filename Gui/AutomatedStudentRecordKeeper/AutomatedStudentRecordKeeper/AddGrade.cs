@@ -47,7 +47,7 @@ namespace AutomatedStudentRecordKeeper
                 }
                 else
                 {
-                    NpgsqlCommand cmd = new NpgsqlCommand("select exists (select true from pg_tables where tablename = '" + StudentNumber.Text + "')", conn);
+                    NpgsqlCommand cmd = new NpgsqlCommand("select exists (select true from student where studentnumber = '" + StudentNumber.Text + "')", conn);
                     string checknum = "False";
                     NpgsqlDataReader reader = cmd.ExecuteReader();
                     while (reader.Read())
@@ -79,13 +79,20 @@ namespace AutomatedStudentRecordKeeper
                             else
                             {
 
-                                cmd = new NpgsqlCommand("insert into \"" + StudentNumber.Text + "\"(coursesubject,coursenumber,coursegrade,yearsection, year) values(:sub, :num, :grade, :yrsec , :yr)", conn);
+                                cmd = new NpgsqlCommand("insert into grades values(:stnum, :sub, :num, :grade, :yr)", conn);
+                                cmd.Parameters.Add(new NpgsqlParameter("stnum",StudentNumber.Text));
                                 cmd.Parameters.Add(new NpgsqlParameter("sub", CourseTable.GetControlFromPosition(0, j).Text));
                                 cmd.Parameters.Add(new NpgsqlParameter("num", CourseTable.GetControlFromPosition(1, j).Text));
                                 cmd.Parameters.Add(new NpgsqlParameter("grade", int.Parse(CourseTable.GetControlFromPosition(2, j).Text)));
-                                cmd.Parameters.Add(new NpgsqlParameter("yrsec", yeardropbox.Text));
                                 cmd.Parameters.Add(new NpgsqlParameter("yr", int.Parse(yeardropbox.Text.Substring(0, 4))));
-                                cmd.ExecuteNonQuery();
+                                try
+                                {
+                                    cmd.ExecuteNonQuery();
+                                }
+                                catch (NpgsqlException ex)
+                                {
+
+                                }
                                 CourseTable.GetControlFromPosition(0, j).Text = "";
                                 CourseTable.GetControlFromPosition(1, j).Text = "";
                                 CourseTable.GetControlFromPosition(2, j).Text = "";
@@ -233,7 +240,8 @@ namespace AutomatedStudentRecordKeeper
                             }
                         }
                     }
-                    MessageBox.Show("All students Added Succesfully. Import Complete.");
+                    MessageBox.Show("Importing of student grades transcript to the database was successful", "SUCCESS");
+                    this.Close();
                 }
                 else
                     selectedInputFile = string.Empty;

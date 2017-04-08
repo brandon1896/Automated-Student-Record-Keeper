@@ -11,7 +11,7 @@ namespace AutomatedStudentRecordKeeper
         private string name;
         private string number;
        
-        public string Name
+        public string StudentName
         {
             get
             {
@@ -23,7 +23,7 @@ namespace AutomatedStudentRecordKeeper
                 name = value;
             }
         }
-        public string Number
+        public string StudentNumber
         {
             get
             {

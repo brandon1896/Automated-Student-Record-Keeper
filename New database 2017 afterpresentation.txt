@@ -11,7 +11,7 @@ CREATE TABLE courses
   yearsection text,  
   yearused integer,
   type text,  
-  PRIMARY KEY (coursesubject,coursenumber)
+  PRIMARY KEY(coursesubject,coursenumber,yearused)
 );
 
 CREATE TABLE student
@@ -32,6 +32,5 @@ CREATE TABLE grades
 	coursenumber text,
 	grade integer,
 	yeartaken integer,
-	FOREIGN KEY(coursesubject, coursenumber) REFERENCES courses(coursesubject, coursenumber) ON DELETE RESTRICT,
 	PRIMARY KEY(studentnumber,coursenumber,coursesubject,yeartaken)
 );

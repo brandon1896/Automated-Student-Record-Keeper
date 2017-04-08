@@ -10,7 +10,7 @@ namespace AutomatedStudentRecordKeeper
     {
         private string subject;
         private string number;
-        private string name;
+        private string title;
         private string credits;
 
         public string Subject
@@ -37,16 +37,16 @@ namespace AutomatedStudentRecordKeeper
                 number = value;
             }
         }
-        public string Name
+        public string Title
         {
             get
             {
-                return name;
+                return title;
             }
 
             set
             {
-                name = value;
+                title = value;
             }
         }
         public string Credits

@@ -17,7 +17,6 @@ namespace AutomatedStudentRecordKeeper
         string studentnumber="";
         bool dataloaded= false;
         List<viewgradetableinfo> tableviewlist = new List<viewgradetableinfo>();
-        int tablepage = 1;
         public ViewGrade()
         {
             InitializeComponent();
@@ -27,7 +26,6 @@ namespace AutomatedStudentRecordKeeper
             Fulltable4.Hide();
             Fulltable5.Hide();
             Fulltable6.Hide();
-            tableviewtable.Hide();
 
 
         }
@@ -337,36 +335,20 @@ namespace AutomatedStudentRecordKeeper
                 
                 NpgsqlCommand cmd;
                 NpgsqlDataReader reader;
-                cmd = new NpgsqlCommand("select * from (select distinct on (final.coursesubject,final.coursenumber) final.coursesubject,final.coursenumber,final.coursename,final.coursegrade , final.credits from ((select distinct on (n.coursesubject,n.coursenumber) n.coursesubject,n.coursenumber,c.coursename,n.coursegrade ,c.credits from \""+studentnumber+"\" as n,student as s,(select coursesubject, coursenumber ,coursename,firstusedyear,lastusedyear ,credits from courses union select coursesubject, coursenumber,coursename ,firstusedyear,lastusedyear ,credits from complementarycourses union (select distinct m.coursesubject, m.coursenumber ,m.coursename,s.year,null::int,m.credits from makeupcourses as m,student as s where m.studentid = '"+studentnumber+"') ) as c where c.coursesubject=n.coursesubject and c.coursenumber = n.coursenumber and n.yearsection = '"+yearsection+"' and(c.firstusedyear<=s.year and (c.lastusedyear>=s.year or c.lastusedyear is null)) order by n.coursesubject, n.coursenumber, n.year desc ))as final group by final.coursesubject, final.coursenumber,final.coursename,final.credits,final.coursegrade order by final.coursesubject,final.coursenumber,final.credits desc) as z", conn);
+                cmd = new NpgsqlCommand("select g.coursesubject, g.coursenumber, c.coursename, g.grade, c.credits from courses as c, grades as g where c.coursesubject = g.coursesubject and c.coursenumber = g.coursenumber and g.studentnumber = :snum and g.yeartaken = :year ", conn);
+                cmd.Parameters.Add(new NpgsqlParameter("snum", studentnumber));
+                cmd.Parameters.Add(new NpgsqlParameter("year", int.Parse(yearsection.Substring(0, 4))));
                 reader = cmd.ExecuteReader();
                 tableviewlist.Clear();
-                tablepage = 1;
                 while (reader.Read())
                 {
                     tableviewlist.Add(new viewgradetableinfo { Subject = reader[0].ToString(), Number = reader[1].ToString(), Name = reader[2].ToString(),Grade = reader[3].ToString(), Credits = reader[4].ToString() });
                 }
                 cmd.Cancel();
                 reader.Close();
-                for (int i = 1; i <= 8; i++)
-                {
-                    if (tableviewlist.Count >= i)
-                    {
-                        tableviewtable.GetControlFromPosition(0, i).Text = tableviewlist[i-1].Subject;
-                        tableviewtable.GetControlFromPosition(1, i).Text = tableviewlist[i-1].Number;
-                        tableviewtable.GetControlFromPosition(2, i).Text = tableviewlist[i-1].Name;
-                        tableviewtable.GetControlFromPosition(3, i).Text = tableviewlist[i-1].Grade;
-                        tableviewtable.GetControlFromPosition(4, i).Text = tableviewlist[i-1].Credits;
+                gradetable.DataSource = tableviewlist;
+                gradetable.Refresh();
 
-                    }
-                    else
-                    {
-                        tableviewtable.GetControlFromPosition(0, i).Text = " ";
-                        tableviewtable.GetControlFromPosition(1, i).Text = " ";
-                        tableviewtable.GetControlFromPosition(2, i).Text = " ";
-                        tableviewtable.GetControlFromPosition(3, i).Text = " ";
-                        tableviewtable.GetControlFromPosition(4, i).Text = " ";
-                    }
-                }
 
                 conn.Close();
             }
@@ -386,80 +368,10 @@ namespace AutomatedStudentRecordKeeper
         {
             if (dataloaded == true)
             {
-                tableviewtable.Hide();
                 Loadtablebyyear(yearbox.Text);
-                tableviewtable.Show();
             }
         }
-
-        private void tabelviewprev_Click(object sender, EventArgs e)
-        {
-            if (tablepage > 1)
-            {
-                tablepage--;
-                tableviewtable.Hide();
-                int j = 1;
-                for (int i = ((tablepage - 1) * 8) + 1; i <= (8 * tablepage); i++)
-                {
-                    if (tableviewlist.Count >= i)
-                    {
-                        tableviewtable.GetControlFromPosition(0, j).Text = tableviewlist[i - 1].Subject;
-                        tableviewtable.GetControlFromPosition(1, j).Text = tableviewlist[i - 1].Number;
-                        tableviewtable.GetControlFromPosition(2, j).Text = tableviewlist[i - 1].Name;
-                        tableviewtable.GetControlFromPosition(3, j).Text = tableviewlist[i - 1].Grade;
-                        tableviewtable.GetControlFromPosition(4, j).Text = tableviewlist[i - 1].Credits;
-
-                    }
-                    else
-                    {
-                        tableviewtable.GetControlFromPosition(0, j).Text = " ";
-                        tableviewtable.GetControlFromPosition(1, j).Text = " ";
-                        tableviewtable.GetControlFromPosition(2, j).Text = " ";
-                        tableviewtable.GetControlFromPosition(3, j).Text = " ";
-                        tableviewtable.GetControlFromPosition(4, j).Text = " ";
-                    }
-
-                    j++;
-                }
-                tableviewtable.Show();
-            }
-            else { }
-        }
-
-        private void tableviewnext_Click(object sender, EventArgs e)
-        {
-            if (tableviewlist.Count > (tablepage* 8))
-            {
-                tableviewtable.Hide();
-                int j = 1;
-                tablepage++;
-                for (int i = ((tablepage - 1) * 8) + 1; i <= (8 * tablepage); i++)
-                {
-                    if (tableviewlist.Count >= i)
-                    {
-                        tableviewtable.GetControlFromPosition(0, j).Text = tableviewlist[i - 1].Subject;
-                        tableviewtable.GetControlFromPosition(1, j).Text = tableviewlist[i - 1].Number;
-                        tableviewtable.GetControlFromPosition(2, j).Text = tableviewlist[i - 1].Name;
-                        tableviewtable.GetControlFromPosition(3, j).Text = tableviewlist[i - 1].Grade;
-                        tableviewtable.GetControlFromPosition(4, j).Text = tableviewlist[i - 1].Credits;
-
-                    }
-                    else
-                    {
-                        tableviewtable.GetControlFromPosition(0, j).Text = " ";
-                        tableviewtable.GetControlFromPosition(1, j).Text = " ";
-                        tableviewtable.GetControlFromPosition(2, j).Text = " ";
-                        tableviewtable.GetControlFromPosition(3, j).Text = " ";
-                        tableviewtable.GetControlFromPosition(4, j).Text = " ";
-                    }
-
-                    j++;
-                }
-                tableviewtable.Show();
-            }
-            else { }
-        }
-
+        
         private void StudentBox_KeyPress(object sender, KeyPressEventArgs e)
         {
             char ch = e.KeyChar;
