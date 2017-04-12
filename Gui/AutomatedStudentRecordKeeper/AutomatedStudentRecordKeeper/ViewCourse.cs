@@ -15,16 +15,16 @@ namespace AutomatedStudentRecordKeeper
 {
     public partial class ViewCourse : Form
     {
-        List<viewtabletinfo> falllist1 = new List<viewtabletinfo>();
-        List<viewtabletinfo> falllist2 = new List<viewtabletinfo>();
-        List<viewtabletinfo> falllist3 = new List<viewtabletinfo>();
-        List<viewtabletinfo> falllist4 = new List<viewtabletinfo>();
-        List<viewtabletinfo> wintlist1 = new List<viewtabletinfo>();
-        List<viewtabletinfo> wintlist2 = new List<viewtabletinfo>();
-        List<viewtabletinfo> wintlist3 = new List<viewtabletinfo>();
-        List<viewtabletinfo> wintlist4= new List<viewtabletinfo>();
-        List<viewtabletinfo> compalist = new List<viewtabletinfo>();
-        List<viewtabletinfo> compblist = new List<viewtabletinfo>();
+        BindingList<viewtabletinfo> falllist1 = new BindingList<viewtabletinfo>();
+        BindingList<viewtabletinfo> falllist2 = new BindingList<viewtabletinfo>();
+        BindingList<viewtabletinfo> falllist3 = new BindingList<viewtabletinfo>();
+        BindingList<viewtabletinfo> falllist4 = new BindingList<viewtabletinfo>();
+        BindingList<viewtabletinfo> wintlist1 = new BindingList<viewtabletinfo>();
+        BindingList<viewtabletinfo> wintlist2 = new BindingList<viewtabletinfo>();
+        BindingList<viewtabletinfo> wintlist3 = new BindingList<viewtabletinfo>();
+        BindingList<viewtabletinfo> wintlist4 = new BindingList<viewtabletinfo>();
+        BindingList<viewtabletinfo> compalist = new BindingList<viewtabletinfo>();
+        BindingList<viewtabletinfo> compblist = new BindingList<viewtabletinfo>();
         public ViewCourse()
         {
             InitializeComponent();
@@ -54,7 +54,7 @@ namespace AutomatedStudentRecordKeeper
         
 
     }
-        private void loaddatatable(DataGridView falltable,DataGridView winttable, List<viewtabletinfo> list1, List<viewtabletinfo> list2, int yearlevel,int year)
+        private void loaddatatable(DataGridView falltable,DataGridView winttable, BindingList<viewtabletinfo> list1, BindingList<viewtabletinfo> list2, int yearlevel,int year)
         {
             NpgsqlConnection conn = new NpgsqlConnection("Server=Localhost; Port=5432; Database=studentrecordkeeper; User Id=postgres; Password=;");
             //connect to database

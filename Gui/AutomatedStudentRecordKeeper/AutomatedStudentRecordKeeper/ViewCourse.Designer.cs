@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.Coursetab = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
@@ -214,7 +215,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(693, 506);
+            this.tabPage2.Size = new System.Drawing.Size(693, 530);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Year 2";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -305,7 +306,7 @@
             this.tabPage3.Controls.Add(this.tableLayoutPanel9);
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(693, 506);
+            this.tabPage3.Size = new System.Drawing.Size(693, 530);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Year 3";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -396,7 +397,7 @@
             this.tabPage4.Controls.Add(this.tableLayoutPanel13);
             this.tabPage4.Location = new System.Drawing.Point(4, 22);
             this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Size = new System.Drawing.Size(693, 506);
+            this.tabPage4.Size = new System.Drawing.Size(693, 530);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "Year 4";
             this.tabPage4.UseVisualStyleBackColor = true;
@@ -489,7 +490,7 @@
             this.tabPage5.Controls.Add(this.tableLayoutPanel1);
             this.tabPage5.Location = new System.Drawing.Point(4, 22);
             this.tabPage5.Name = "tabPage5";
-            this.tabPage5.Size = new System.Drawing.Size(693, 506);
+            this.tabPage5.Size = new System.Drawing.Size(693, 530);
             this.tabPage5.TabIndex = 4;
             this.tabPage5.Text = "Complementary";
             this.tabPage5.UseVisualStyleBackColor = true;
@@ -557,6 +558,14 @@
             this.listatable.AllowUserToResizeColumns = false;
             this.listatable.AllowUserToResizeRows = false;
             this.listatable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.listatable.DefaultCellStyle = dataGridViewCellStyle1;
             this.listatable.Location = new System.Drawing.Point(3, 22);
             this.listatable.Name = "listatable";
             this.listatable.ReadOnly = true;

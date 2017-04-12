@@ -15,8 +15,9 @@ namespace AutomatedStudentRecordKeeper
     public partial class ViewGrade : Form
     {
         string studentnumber="";
-        bool dataloaded= false;
-        List<viewgradetableinfo> tableviewlist = new List<viewgradetableinfo>();
+        bool dataloaded = false;
+        string curricyear = "";
+        BindingList<viewgradetableinfo> tableviewlist = new BindingList<viewgradetableinfo>();
         public ViewGrade()
         {
             InitializeComponent();
@@ -46,7 +47,7 @@ namespace AutomatedStudentRecordKeeper
                 }
                 else
                 {
-                    NpgsqlCommand cmd = new NpgsqlCommand("select exists (select true from pg_tables where tablename = '" + StudentBox.Text + "')", conn);
+                    NpgsqlCommand cmd = new NpgsqlCommand("select exists (select true from student where studentnumber = '" + StudentBox.Text + "')", conn);
                     string checknum = "False";
                     NpgsqlDataReader reader = cmd.ExecuteReader();
                     while (reader.Read())
@@ -61,15 +62,26 @@ namespace AutomatedStudentRecordKeeper
                     }
                     else
                     {
-                        waitScreen waitscrn = new waitScreen();
-                        waitscrn.Show();
-                        Application.DoEvents();
-                        cmd = new NpgsqlCommand("select distinct yearsection from \"" + StudentBox.Text + "\" order by yearsection asc", conn);
+                        cmd = new NpgsqlCommand("select year from student where studentnumber = '"+StudentBox.Text+"'", conn);
                         reader = cmd.ExecuteReader();
                         while (reader.Read())
                         {
-                            years.Add(reader[0].ToString());
-                            yearbox.Items.Add(reader[0].ToString());
+                            curricyear = reader[0].ToString();
+                        }
+                        cmd.Cancel();
+                        reader.Close();
+                        string temp="";
+                        waitScreen waitscrn = new waitScreen();
+                        waitscrn.Show();
+                        Application.DoEvents();
+                        cmd = new NpgsqlCommand("select distinct yeartaken from grades where studentnumber = '" + StudentBox.Text + "' order by yeartaken asc", conn);
+                        reader = cmd.ExecuteReader();
+                        while (reader.Read())
+                        {
+                            temp = reader[0].ToString();
+                            temp = temp + "/" + (int.Parse(temp) + 1).ToString();
+                            years.Add(temp);
+                            yearbox.Items.Add(temp);
                         }
                         cmd.Cancel();
                         reader.Close();
@@ -85,7 +97,7 @@ namespace AutomatedStudentRecordKeeper
                         {
                             case 1:
                                 date1.Text = years[0];
-                                Loadtable(table1, date1, SCA1);
+                                Loadtable(table1,date1, SCA1);
                                 Fulltable1.Show();
                                 break;
                             case 2:
@@ -176,7 +188,7 @@ namespace AutomatedStudentRecordKeeper
             }
 
         }
-        public void Loadtable(TableLayoutPanel table, Control date, Control SCA)
+        public void Loadtable(TableLayoutPanel table,Control date, Control SCA)
         {
             NpgsqlConnection conn = new NpgsqlConnection("Server=Localhost; Port=5432; Database=studentrecordkeeper; User Id=postgres; Password=;");
             //connect to database
@@ -185,7 +197,7 @@ namespace AutomatedStudentRecordKeeper
             {
                 NpgsqlCommand cmd;
                 NpgsqlDataReader reader;
-                cmd = new NpgsqlCommand("select count(*) from (select distinct on (n.coursesubject,n.coursenumber) n.coursesubject,n.coursenumber,n.coursegrade ,c.credits from \"" + StudentBox.Text + "\"as n,student as s,(select coursesubject, coursenumber ,firstusedyear ,lastusedyear,credits from courses where coursenumber::int<3000 union (select distinct m.coursesubject, m.coursenumber ,s.year,null::int,m.credits from makeupcourses as m,student as s where m.studentid = '" + StudentBox.Text + "') ) as c where c.coursesubject=n.coursesubject and c.coursenumber = n.coursenumber and n.year<= :yearnum and(c.firstusedyear<=s.year and (c.lastusedyear>=s.year or c.lastusedyear is null)) order by n.coursesubject, n.coursenumber, n.year desc) as final", conn);
+                cmd = new NpgsqlCommand("select count(*) from (select distinct on (n.coursesubject,n.coursenumber) n.coursesubject,n.coursenumber from grades as n, courses as c where n.studentnumber = '"+StudentBox.Text+"' and n.coursenumber = c.coursenumber and n.coursesubject = c.coursesubject and n.yeartaken <= :yearnum and ((c.type ='curric' and c.yearused = "+curricyear+" and (c.yearlevel = 1 or c.yearlevel = 2 )) or (c.type = 'makeup')) order by n.coursesubject, n.coursenumber, n.yeartaken desc )as final", conn);
                 cmd.Parameters.Add(new NpgsqlParameter("yearnum", int.Parse(date.Text.Substring(0, 4))));
                 reader = cmd.ExecuteReader();
                 while (reader.Read())
@@ -195,7 +207,7 @@ namespace AutomatedStudentRecordKeeper
                 cmd.Cancel();
                 reader.Close();
 
-                cmd = new NpgsqlCommand("select count(*) from (select distinct on (n.coursesubject,n.coursenumber) n.coursesubject,n.coursenumber,n.coursegrade ,c.credits from \"" + StudentBox.Text + "\" as n,student as s,(select coursesubject, coursenumber ,firstusedyear,lastusedyear ,credits from courses where coursenumber::int >=3000 union select coursesubject, coursenumber ,firstusedyear,lastusedyear ,credits from complementarycourses) as c where c.coursesubject=n.coursesubject and c.coursenumber = n.coursenumber and n.year<= :yearnum and(c.firstusedyear<=s.year and (c.lastusedyear>=s.year or c.lastusedyear is null)) order by n.coursesubject, n.coursenumber, n.year desc)as final", conn);
+                cmd = new NpgsqlCommand("select count(*) from (select distinct on (n.coursesubject,n.coursenumber) n.coursesubject,n.coursenumber from grades as n, courses as c where n.studentnumber = '" + StudentBox.Text + "' and n.coursenumber = c.coursenumber and n.coursesubject = c.coursesubject and n.yeartaken <= :yearnum and ((c.type ='curric' and c.yearused = " + curricyear + " and (c.yearlevel = 3 or c.yearlevel = 4 )) or ((c.type = 'compa' or c.type = 'compb') and c.yearused <= :yearnum and c.yearused = n.yeartaken)) order by n.coursesubject, n.coursenumber, n.yeartaken desc )as final", conn);
                 cmd.Parameters.Add(new NpgsqlParameter("yearnum", int.Parse(date.Text.Substring(0, 4))));
                 reader = cmd.ExecuteReader();
                 while (reader.Read())
@@ -205,7 +217,7 @@ namespace AutomatedStudentRecordKeeper
                 cmd.Cancel();
                 reader.Close();
 
-                cmd = new NpgsqlCommand("select (sum(final.coursegrade * final.credits)/sum(final.credits))::int from (select distinct on (n.coursesubject,n.coursenumber) n.coursesubject,n.coursenumber,n.coursegrade ,c.credits from \"" + StudentBox.Text + "\" as n,student as s,(select coursesubject, coursenumber ,firstusedyear ,lastusedyear,credits from courses where coursenumber::int<3000 union (select distinct m.coursesubject, m.coursenumber ,s.year,null::int,m.credits from makeupcourses as m,student as s where m.studentid = '" + StudentBox.Text + "') ) as c where c.coursesubject=n.coursesubject and c.coursenumber = n.coursenumber and n.year = :yearnum and(c.firstusedyear<=s.year and (c.lastusedyear>=s.year or c.lastusedyear is null)) order by n.coursesubject, n.coursenumber, n.year desc) as final", conn);
+                cmd = new NpgsqlCommand("select (sum(final.grade*final.credits)/sum(final.credits))::int from (select distinct on (n.coursesubject,n.coursenumber) n.coursesubject,n.coursenumber,n.grade,c.credits from grades as n, courses as c where n.studentnumber = '" + StudentBox.Text + "' and n.coursenumber = c.coursenumber and n.coursesubject = c.coursesubject and n.yeartaken = :yearnum and ((c.type ='curric' and c.yearused = " + curricyear + " and (c.yearlevel = 1 or c.yearlevel = 2 )) or (c.type = 'makeup')) order by n.coursesubject, n.coursenumber, n.yeartaken desc )as final", conn);
                 cmd.Parameters.Add(new NpgsqlParameter("yearnum", int.Parse(date.Text.Substring(0, 4))));
                 reader = cmd.ExecuteReader();
                 while (reader.Read())
@@ -215,7 +227,7 @@ namespace AutomatedStudentRecordKeeper
                 cmd.Cancel();
                 reader.Close();
 
-                cmd = new NpgsqlCommand("select (sum(final.coursegrade * final.credits)/sum(final.credits))::int from (select distinct on (n.coursesubject,n.coursenumber) n.coursesubject,n.coursenumber,n.coursegrade ,c.credits from \"" + StudentBox.Text + "\" as n,student as s,(select coursesubject, coursenumber ,firstusedyear,lastusedyear ,credits from courses where coursenumber::int >=3000 union select coursesubject, coursenumber ,firstusedyear,lastusedyear ,credits from complementarycourses) as c where c.coursesubject=n.coursesubject and c.coursenumber = n.coursenumber and n.year = :yearnum and(c.firstusedyear<=s.year and (c.lastusedyear>=s.year or c.lastusedyear is null)) order by n.coursesubject, n.coursenumber, n.year desc)as final", conn);
+                cmd = new NpgsqlCommand("select (sum(final.grade * final.credits)/sum(final.credits))::int from (select distinct on (n.coursesubject,n.coursenumber) n.coursesubject,n.coursenumber,n.grade,c.credits from grades as n, courses as c where n.studentnumber = '" + StudentBox.Text + "' and c.coursenumber = n.coursenumber and c.coursesubject = n.coursesubject and n.yeartaken = :yearnum and ((c.type ='curric' and c.yearused = "+curricyear+" and (c.yearlevel = 3 or c.yearlevel = 4 )) or ((c.type = 'compa' or c.type = 'compb')  and c.yearused = n.yeartaken)) order by n.coursesubject, n.coursenumber, n.yeartaken desc )as final", conn);
                 cmd.Parameters.Add(new NpgsqlParameter("yearnum", int.Parse(date.Text.Substring(0, 4))));
                 reader = cmd.ExecuteReader();
                 while (reader.Read())
@@ -225,7 +237,7 @@ namespace AutomatedStudentRecordKeeper
                 cmd.Cancel();
                 reader.Close();
 
-                cmd = new NpgsqlCommand("select (sum(final.coursegrade * final.credits)/sum(final.credits))::int from (select distinct on (n.coursesubject,n.coursenumber) n.coursesubject,n.coursenumber,n.coursegrade ,c.credits from \"" + StudentBox.Text + "\" as n,student as s,(select coursesubject, coursenumber ,firstusedyear ,lastusedyear,credits from courses where coursenumber::int<3000 union (select distinct m.coursesubject, m.coursenumber ,s.year,null::int,m.credits from makeupcourses as m,student as s where m.studentid = '" + StudentBox.Text + "') ) as c where c.coursesubject=n.coursesubject and c.coursenumber = n.coursenumber and n.year<= :yearnum and(c.firstusedyear<=s.year and (c.lastusedyear>=s.year or c.lastusedyear is null)) order by n.coursesubject, n.coursenumber, n.year desc) as final", conn);
+                cmd = new NpgsqlCommand("select (sum(final.grade*final.credits)/sum(final.credits))::int from (select distinct on (n.coursesubject,n.coursenumber) n.coursesubject,n.coursenumber,n.grade,c.credits from grades as n, courses as c where n.studentnumber = '" + StudentBox.Text + "' and n.coursenumber = c.coursenumber and n.coursesubject = c.coursesubject and n.yeartaken <= :yearnum and ((c.type ='curric' and c.yearused = " + curricyear + " and (c.yearlevel = 1 or c.yearlevel = 2 )) or (c.type = 'makeup')) order by n.coursesubject, n.coursenumber, n.yeartaken desc )as final", conn);
                 cmd.Parameters.Add(new NpgsqlParameter("yearnum", int.Parse(date.Text.Substring(0, 4))));
                 reader = cmd.ExecuteReader();
                 while (reader.Read())
@@ -235,7 +247,7 @@ namespace AutomatedStudentRecordKeeper
                 cmd.Cancel();
                 reader.Close();
 
-                cmd = new NpgsqlCommand("select (sum(final.coursegrade * final.credits)/sum(final.credits))::int from (select distinct on (n.coursesubject,n.coursenumber) n.coursesubject,n.coursenumber,n.coursegrade ,c.credits from \"" + StudentBox.Text + "\" as n,student as s,(select coursesubject, coursenumber ,firstusedyear,lastusedyear ,credits from courses where coursenumber::int >=3000 union select coursesubject, coursenumber ,firstusedyear,lastusedyear ,credits from complementarycourses) as c where c.coursesubject=n.coursesubject and c.coursenumber = n.coursenumber and n.year<= :yearnum and(c.firstusedyear<=s.year and (c.lastusedyear>=s.year or c.lastusedyear is null)) order by n.coursesubject, n.coursenumber, n.year desc)as final", conn);
+                cmd = new NpgsqlCommand("select (sum(final.grade * final.credits)/sum(final.credits))::int from (select distinct on (n.coursesubject,n.coursenumber) n.coursesubject,n.coursenumber,n.grade,c.credits from grades as n, courses as c where n.studentnumber = '" + StudentBox.Text + "' and c.coursenumber = n.coursenumber and c.coursesubject = n.coursesubject and n.yeartaken <= :yearnum and ((c.type ='curric' and c.yearused = " + curricyear + " and (c.yearlevel = 3 or c.yearlevel = 4 )) or ((c.type = 'compa' or c.type = 'compb')  and c.yearused = n.yeartaken)) order by n.coursesubject, n.coursenumber, n.yeartaken desc )as final", conn);
                 cmd.Parameters.Add(new NpgsqlParameter("yearnum", int.Parse(date.Text.Substring(0, 4))));
                 reader = cmd.ExecuteReader();
                 while (reader.Read())
@@ -245,7 +257,7 @@ namespace AutomatedStudentRecordKeeper
                 cmd.Cancel();
                 reader.Close();
 
-                cmd = new NpgsqlCommand("select count(*) from (select distinct on (n.coursesubject,n.coursenumber) n.coursesubject,n.coursenumber,n.coursegrade ,c.credits from \"" + StudentBox.Text + "\" as n,student as s,(select coursesubject, coursenumber ,firstusedyear ,lastusedyear,credits from courses where coursenumber::int<3000 union (select distinct m.coursesubject, m.coursenumber ,s.year,null::int,m.credits from makeupcourses as m,student as s where m.studentid = '" + StudentBox.Text + "') ) as c where c.coursesubject=n.coursesubject and c.coursenumber = n.coursenumber and n.year<= :yearnum and(c.firstusedyear<=s.year and n.coursegrade>=50 and n.coursegrade<60 and (c.lastusedyear>=s.year or c.lastusedyear is null)) order by n.coursesubject, n.coursenumber, n.year desc) as final", conn);
+                cmd = new NpgsqlCommand("select count(*) from (select distinct on (n.coursesubject,n.coursenumber) n.coursesubject,n.coursenumber from grades as n, courses as c where n.studentnumber = '" + StudentBox.Text + "' and n.coursenumber = c.coursenumber and n.coursesubject = c.coursesubject and n.yeartaken <= :yearnum and n.grade < 60 and n.grade >= 50 and ((c.type ='curric' and c.yearused = " + curricyear + " and (c.yearlevel = 1 or c.yearlevel = 2 )) or (c.type = 'makeup')) order by n.coursesubject, n.coursenumber, n.yeartaken desc )as final", conn);
                 cmd.Parameters.Add(new NpgsqlParameter("yearnum", int.Parse(date.Text.Substring(0, 4))));
                 reader = cmd.ExecuteReader();
                 while (reader.Read())
@@ -255,7 +267,7 @@ namespace AutomatedStudentRecordKeeper
                 cmd.Cancel();
                 reader.Close();
 
-                cmd = new NpgsqlCommand("select count(*) from (select distinct on (n.coursesubject,n.coursenumber) n.coursesubject,n.coursenumber,n.coursegrade ,c.credits from \"" + StudentBox.Text + "\" as n,student as s,(select coursesubject, coursenumber ,firstusedyear,lastusedyear ,credits from courses where coursenumber::int >=3000 union select coursesubject, coursenumber ,firstusedyear,lastusedyear ,credits from complementarycourses) as c where c.coursesubject=n.coursesubject and c.coursenumber = n.coursenumber and n.year<= :yearnum and n.coursegrade >= 50 and n.coursegrade < 60 and(c.firstusedyear<=s.year and (c.lastusedyear>=s.year or c.lastusedyear is null)) order by n.coursesubject, n.coursenumber, n.year desc)as final", conn);
+                cmd = new NpgsqlCommand("select count(*) from (select distinct on (n.coursesubject,n.coursenumber) n.coursesubject,n.coursenumber from grades as n, courses as c where n.studentnumber = '" + StudentBox.Text + "' and n.coursenumber = c.coursenumber and n.coursesubject = c.coursesubject and n.yeartaken <= :yearnum and n.grade < 60 and n.grade >= 50 and ((c.type ='curric' and c.yearused = " + curricyear + " and (c.yearlevel = 3 or c.yearlevel = 4 )) or ((c.type = 'compa' or c.type = 'compb') and c.yearused <= :yearnum and c.yearused = n.yeartaken)) order by n.coursesubject, n.coursenumber, n.yeartaken desc )as final", conn);
                 cmd.Parameters.Add(new NpgsqlParameter("yearnum", int.Parse(date.Text.Substring(0, 4))));
                 reader = cmd.ExecuteReader();
                 while (reader.Read())
@@ -265,7 +277,7 @@ namespace AutomatedStudentRecordKeeper
                 cmd.Cancel();
                 reader.Close();
 
-                cmd = new NpgsqlCommand("select count(*) from (select distinct on (n.coursesubject,n.coursenumber) n.coursesubject,n.coursenumber,n.coursegrade ,c.credits from \"" + StudentBox.Text + "\" as n,student as s,(select coursesubject, coursenumber ,firstusedyear ,lastusedyear,credits from courses where coursenumber::int<3000 union (select distinct m.coursesubject, m.coursenumber ,s.year,null::int,m.credits from makeupcourses as m,student as s where m.studentid = '" + StudentBox.Text + "') ) as c where c.coursesubject=n.coursesubject and c.coursenumber = n.coursenumber and n.year<= :yearnum and(c.firstusedyear<=s.year and n.coursegrade<40 and (c.lastusedyear>=s.year or c.lastusedyear is null)) order by n.coursesubject, n.coursenumber, n.year desc) as final", conn);
+                cmd = new NpgsqlCommand("select count(*) from (select distinct on (n.coursesubject,n.coursenumber) n.coursesubject,n.coursenumber from grades as n, courses as c where n.studentnumber = '" + StudentBox.Text + "' and n.coursenumber = c.coursenumber and n.coursesubject = c.coursesubject and n.yeartaken <= :yearnum and n.grade < 40 and ((c.type ='curric' and c.yearused = " + curricyear + " and (c.yearlevel = 1 or c.yearlevel = 2 )) or (c.type = 'makeup')) order by n.coursesubject, n.coursenumber, n.yeartaken desc )as final", conn);
                 cmd.Parameters.Add(new NpgsqlParameter("yearnum", int.Parse(date.Text.Substring(0, 4))));
                 reader = cmd.ExecuteReader();
                 while (reader.Read())
@@ -275,7 +287,7 @@ namespace AutomatedStudentRecordKeeper
                 cmd.Cancel();
                 reader.Close();
 
-                cmd = new NpgsqlCommand("select count(*) from (select distinct on (n.coursesubject,n.coursenumber) n.coursesubject,n.coursenumber,n.coursegrade ,c.credits from \"" + StudentBox.Text + "\" as n,student as s,(select coursesubject, coursenumber ,firstusedyear,lastusedyear ,credits from courses where coursenumber::int >=3000 union select coursesubject, coursenumber ,firstusedyear,lastusedyear ,credits from complementarycourses) as c where c.coursesubject=n.coursesubject and c.coursenumber = n.coursenumber and n.year<= :yearnum and n.coursegrade < 40 and(c.firstusedyear<=s.year and (c.lastusedyear>=s.year or c.lastusedyear is null)) order by n.coursesubject, n.coursenumber, n.year desc)as final", conn);
+                cmd = new NpgsqlCommand("select count(*) from (select distinct on (n.coursesubject,n.coursenumber) n.coursesubject,n.coursenumber from grades as n, courses as c where n.studentnumber = '" + StudentBox.Text + "' and n.coursenumber = c.coursenumber and n.coursesubject = c.coursesubject and n.yeartaken <= :yearnum and n.grade < 40 and ((c.type ='curric' and c.yearused = " + curricyear + " and (c.yearlevel = 3 or c.yearlevel = 4 )) or ((c.type = 'compa' or c.type = 'compb') and c.yearused <= :yearnum and c.yearused = n.yeartaken)) order by n.coursesubject, n.coursenumber, n.yeartaken desc )as final", conn);
                 cmd.Parameters.Add(new NpgsqlParameter("yearnum", int.Parse(date.Text.Substring(0, 4))));
                 reader = cmd.ExecuteReader();
                 while (reader.Read())
@@ -285,7 +297,7 @@ namespace AutomatedStudentRecordKeeper
                 cmd.Cancel();
                 reader.Close();
 
-                cmd = new NpgsqlCommand("select count(*) from (select distinct on (n.coursesubject,n.coursenumber) n.coursesubject,n.coursenumber,n.coursegrade ,c.credits from \"" + StudentBox.Text + "\" as n,student as s,(select coursesubject, coursenumber ,firstusedyear ,lastusedyear,credits from courses where coursenumber::int<3000 union (select distinct m.coursesubject, m.coursenumber ,s.year,null::int,m.credits from makeupcourses as m,student as s where m.studentid = '" + StudentBox.Text + "') ) as c where c.coursesubject=n.coursesubject and c.coursenumber = n.coursenumber and n.year<= :yearnum and(c.firstusedyear<=s.year and n.coursegrade < 50 and n.coursegrade >= 40 and (c.lastusedyear>=s.year or c.lastusedyear is null)) order by n.coursesubject, n.coursenumber, n.year desc) as final", conn);
+                cmd = new NpgsqlCommand("select count(*) from (select distinct on (n.coursesubject,n.coursenumber) n.coursesubject,n.coursenumber from grades as n, courses as c where n.studentnumber = '" + StudentBox.Text + "' and n.coursenumber = c.coursenumber and n.coursesubject = c.coursesubject and n.yeartaken <= :yearnum and n.grade < 50 and n.grade >= 40 and ((c.type ='curric' and c.yearused = " + curricyear + " and (c.yearlevel = 1 or c.yearlevel = 2 )) or (c.type = 'makeup')) order by n.coursesubject, n.coursenumber, n.yeartaken desc )as final", conn);
                 cmd.Parameters.Add(new NpgsqlParameter("yearnum", int.Parse(date.Text.Substring(0, 4))));
                 reader = cmd.ExecuteReader();
                 while (reader.Read())
@@ -295,7 +307,7 @@ namespace AutomatedStudentRecordKeeper
                 cmd.Cancel();
                 reader.Close();
 
-                cmd = new NpgsqlCommand("select count(*) from (select distinct on (n.coursesubject,n.coursenumber) n.coursesubject,n.coursenumber,n.coursegrade ,c.credits from \"" + StudentBox.Text + "\" as n,student as s,(select coursesubject, coursenumber ,firstusedyear,lastusedyear ,credits from courses where coursenumber::int >=3000 union select coursesubject, coursenumber ,firstusedyear,lastusedyear ,credits from complementarycourses) as c where c.coursesubject=n.coursesubject and c.coursenumber = n.coursenumber and n.year<= :yearnum and n.coursegrade < 50 and n.coursegrade >= 40 and(c.firstusedyear<=s.year and (c.lastusedyear>=s.year or c.lastusedyear is null)) order by n.coursesubject, n.coursenumber, n.year desc)as final", conn);
+                cmd = new NpgsqlCommand("select count(*) from (select distinct on (n.coursesubject,n.coursenumber) n.coursesubject,n.coursenumber from grades as n, courses as c where n.studentnumber = '" + StudentBox.Text + "' and n.coursenumber = c.coursenumber and n.coursesubject = c.coursesubject and n.yeartaken <= :yearnum and n.grade < 50 and n.grade >= 40 and ((c.type ='curric' and c.yearused = " + curricyear + " and (c.yearlevel = 3 or c.yearlevel = 4 )) or ((c.type = 'compa' or c.type = 'compb') and c.yearused <= :yearnum and c.yearused = n.yeartaken)) order by n.coursesubject, n.coursenumber, n.yeartaken desc )as final", conn);
                 cmd.Parameters.Add(new NpgsqlParameter("yearnum", int.Parse(date.Text.Substring(0, 4))));
                 reader = cmd.ExecuteReader();
                 while (reader.Read())
@@ -305,7 +317,7 @@ namespace AutomatedStudentRecordKeeper
                 cmd.Cancel();
                 reader.Close();
 
-                cmd = new NpgsqlCommand("select (sum(z.coursegrade * z.credits)/sum(z.credits))::int from (select distinct on (final.coursesubject,final.coursenumber) final.coursegrade , final.credits from ((select distinct on (n.coursesubject,n.coursenumber) n.coursesubject,n.coursenumber,n.coursegrade ,c.credits from \"" + StudentBox.Text + "\" as n,student as s,(select coursesubject, coursenumber ,firstusedyear,lastusedyear ,credits from courses union select coursesubject, coursenumber ,firstusedyear,lastusedyear ,credits from complementarycourses union (select distinct m.coursesubject, m.coursenumber ,s.year,null::int,m.credits from makeupcourses as m,student as s where m.studentid = '" + StudentBox.Text + "') ) as c where c.coursesubject=n.coursesubject and c.coursenumber = n.coursenumber and n.year= :yearnum and(c.firstusedyear<=s.year and (c.lastusedyear>=s.year or c.lastusedyear is null)) order by n.coursesubject, n.coursenumber, n.year desc ))as final group by final.coursesubject, final.coursenumber,final.credits,final.coursegrade order by final.coursesubject,final.coursenumber,final.credits desc) as z", conn);
+                cmd = new NpgsqlCommand("select (sum(final.grade*final.credits)/sum(final.credits))::int from (select distinct on (n.coursesubject,n.coursenumber) n.coursesubject,n.coursenumber,n.grade,c.credits from grades as n, courses as c where n.studentnumber = '" + StudentBox.Text + "' and n.coursenumber = c.coursenumber and n.coursesubject = c.coursesubject and n.yeartaken = :yearnum and ((c.type ='curric' and c.yearused = " + curricyear + ") or ((c.type = 'compa' or c.type = 'compb')  and c.yearused = n.yeartaken) or (c.type = 'makeup')) order by n.coursesubject, n.coursenumber, n.yeartaken desc )as final", conn);
                 cmd.Parameters.Add(new NpgsqlParameter("yearnum", int.Parse(date.Text.Substring(0, 4))));
                 reader = cmd.ExecuteReader();
                 while (reader.Read())
@@ -335,9 +347,9 @@ namespace AutomatedStudentRecordKeeper
                 
                 NpgsqlCommand cmd;
                 NpgsqlDataReader reader;
-                cmd = new NpgsqlCommand("select g.coursesubject, g.coursenumber, c.coursename, g.grade, c.credits from courses as c, grades as g where c.coursesubject = g.coursesubject and c.coursenumber = g.coursenumber and g.studentnumber = :snum and g.yeartaken = :year ", conn);
+                cmd = new NpgsqlCommand("select final.coursesubject, final.coursenumber,final.coursename,final.grade,final.credits from (select distinct on (n.coursesubject,n.coursenumber) n.coursesubject,n.coursenumber,c.coursename,n.grade,c.credits from grades as n, courses as c where n.studentnumber = :snum and n.coursenumber = c.coursenumber and n.coursesubject = c.coursesubject and n.yeartaken = :yearnum and ((c.type ='curric' and c.yearused = "+curricyear+") or ((c.type = 'compa' or c.type = 'compb')  and c.yearused = n.yeartaken) or (c.type = 'makeup')) order by n.coursesubject, n.coursenumber, n.yeartaken desc )as final union select g.coursesubject,g.coursenumber,NULL,g.grade,NULL from grades as g where g.yeartaken = :yearnum and g.coursenumber not in (select coursenumber from courses)", conn);
                 cmd.Parameters.Add(new NpgsqlParameter("snum", studentnumber));
-                cmd.Parameters.Add(new NpgsqlParameter("year", int.Parse(yearsection.Substring(0, 4))));
+                cmd.Parameters.Add(new NpgsqlParameter("yearnum", int.Parse(yearsection.Substring(0, 4))));
                 reader = cmd.ExecuteReader();
                 tableviewlist.Clear();
                 while (reader.Read())
