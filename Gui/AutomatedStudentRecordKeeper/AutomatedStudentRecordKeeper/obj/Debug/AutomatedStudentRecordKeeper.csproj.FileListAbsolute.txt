@@ -40,6 +40,7 @@ C:\Users\bjcri\Desktop\Degree Project\Automated-Student-Record-Keeper\Gui\Automa
 C:\Users\bjcri\Desktop\Degree Project\Automated-Student-Record-Keeper\Gui\AutomatedStudentRecordKeeper\AutomatedStudentRecordKeeper\obj\Debug\AutomatedStudentRecordKeeper.waitScreen.resources
 C:\Users\bjcri\Desktop\Degree Project\Automated-Student-Record-Keeper\Gui\AutomatedStudentRecordKeeper\AutomatedStudentRecordKeeper\obj\Debug\AutomatedStudentRecordKeeper.csproj.GenerateResource.Cache
 C:\Users\Shawn\Documents\GitHub\Automated-Student-Record-Keeper\Gui\AutomatedStudentRecordKeeper\AutomatedStudentRecordKeeper\obj\Debug\AutomatedStudentRecordKeeper.AddMakeupCourse.resources
+<<<<<<< HEAD
 C:\Users\bjcri\Desktop\Newestversiondegree\Automated-Student-Record-Keeper-master\Gui\AutomatedStudentRecordKeeper\AutomatedStudentRecordKeeper\bin\Debug\AutomatedStudentRecordKeeper.exe.config
 C:\Users\bjcri\Desktop\Newestversiondegree\Automated-Student-Record-Keeper-master\Gui\AutomatedStudentRecordKeeper\AutomatedStudentRecordKeeper\obj\Debug\AutomatedStudentRecordKeeper.csproj.ResolveComReference.cache
 C:\Users\bjcri\Desktop\Newestversiondegree\Automated-Student-Record-Keeper-master\Gui\AutomatedStudentRecordKeeper\AutomatedStudentRecordKeeper\obj\Debug\AutomatedStudentRecordKeeper.exe
@@ -61,3 +62,5 @@ C:\Users\bjcri\Desktop\Newestversiondegree\Automated-Student-Record-Keeper-maste
 C:\Users\bjcri\Desktop\Newestversiondegree\Automated-Student-Record-Keeper-master\Gui\AutomatedStudentRecordKeeper\AutomatedStudentRecordKeeper\obj\Debug\AutomatedStudentRecordKeeper.ViewStudents.resources
 C:\Users\bjcri\Desktop\Newestversiondegree\Automated-Student-Record-Keeper-master\Gui\AutomatedStudentRecordKeeper\AutomatedStudentRecordKeeper\obj\Debug\AutomatedStudentRecordKeeper.waitScreen.resources
 C:\Users\bjcri\Desktop\Newestversiondegree\Automated-Student-Record-Keeper-master\Gui\AutomatedStudentRecordKeeper\AutomatedStudentRecordKeeper\obj\Debug\AutomatedStudentRecordKeeper.csproj.GenerateResource.Cache
+=======
+>>>>>>> origin/master

@@ -43,10 +43,13 @@ namespace AutomatedStudentRecordKeeper
                 {
                     MessageBox.Show("Please select a Year");
                 }
+<<<<<<< HEAD
                 else if(listbox.SelectedIndex == -1)
                 {
                     MessageBox.Show("Please select a List");
                 }
+=======
+>>>>>>> origin/master
                 else
                 {
                     for (int j = 0; j < this.CourseTable.RowCount; j++)
@@ -67,10 +70,16 @@ namespace AutomatedStudentRecordKeeper
                             NpgsqlDataReader reader;
                             NpgsqlCommand cmd;
                             string checkifexists = "False";
+<<<<<<< HEAD
                             cmd = new NpgsqlCommand("select exists(select true from courses where coursesubject =  :sub and coursenumber = :num and yearsection = :year)", conn);
                             cmd.Parameters.Add(new NpgsqlParameter("sub", CourseTable.GetControlFromPosition(0, j).Text));
                             cmd.Parameters.Add(new NpgsqlParameter("num", CourseTable.GetControlFromPosition(1, j).Text));
                             cmd.Parameters.Add(new NpgsqlParameter("year", yeardropbox.Text));
+=======
+                            cmd = new NpgsqlCommand("select exists(select true from complementarycourses where coursesubject =  :sub and coursenumber = :num  and lastusedyear is null)", conn);
+                            cmd.Parameters.Add(new NpgsqlParameter("sub", CourseTable.GetControlFromPosition(0, j).Text));
+                            cmd.Parameters.Add(new NpgsqlParameter("num", CourseTable.GetControlFromPosition(1, j).Text));
+>>>>>>> origin/master
                             reader = cmd.ExecuteReader();
                             while (reader.Read())
                             {
@@ -80,6 +89,7 @@ namespace AutomatedStudentRecordKeeper
                             reader.Close();
                             if (checkifexists == "False")
                             {
+<<<<<<< HEAD
                                 string checktype = "";
                                 if(listbox.Text == "A")
                                 {
@@ -90,10 +100,15 @@ namespace AutomatedStudentRecordKeeper
                                     checktype = "compb";
                                 }
                                 cmd = new NpgsqlCommand("insert into courses values(:sub, :num, NULL ,:name, :cred, NULL,:yearsec,:entyear,:type)", conn);
+=======
+
+                                cmd = new NpgsqlCommand("insert into complementarycourses values(:sub, :num, :name, :cred, :entyear)", conn);
+>>>>>>> origin/master
                                 cmd.Parameters.Add(new NpgsqlParameter("sub", CourseTable.GetControlFromPosition(0, j).Text));
                                 cmd.Parameters.Add(new NpgsqlParameter("num", CourseTable.GetControlFromPosition(1, j).Text));
                                 cmd.Parameters.Add(new NpgsqlParameter("name", CourseTable.GetControlFromPosition(2, j).Text));
                                 cmd.Parameters.Add(new NpgsqlParameter("cred", double.Parse(CourseTable.GetControlFromPosition(3, j).Text)));
+<<<<<<< HEAD
                                 cmd.Parameters.Add(new NpgsqlParameter("yearsec", yeardropbox.Text));
                                 cmd.Parameters.Add(new NpgsqlParameter("entyear", int.Parse(yeardropbox.Text.Substring(0, 4))));
                                 cmd.Parameters.Add(new NpgsqlParameter("type", checktype));
@@ -105,6 +120,10 @@ namespace AutomatedStudentRecordKeeper
                                 {
 
                                 }
+=======
+                                cmd.Parameters.Add(new NpgsqlParameter("entyear", int.Parse(yeardropbox.Text.Substring(0, 4))));
+                                cmd.ExecuteNonQuery();
+>>>>>>> origin/master
                             }
                             CourseTable.GetControlFromPosition(0, j).Text = "";
                             CourseTable.GetControlFromPosition(1, j).Text = "";
@@ -155,11 +174,19 @@ namespace AutomatedStudentRecordKeeper
             if (conn.State == System.Data.ConnectionState.Open)
             {
                 if (yeardropbox.SelectedIndex == -1)
+<<<<<<< HEAD
                 {
                     MessageBox.Show("Please select a Year");
                 }
                 else
                 {
+=======
+                {
+                    MessageBox.Show("Please select a Year");
+                }
+                else
+                {
+>>>>>>> origin/master
                     OpenFileDialog choofdlog = new OpenFileDialog(); //opens file viewer
                     choofdlog.Filter = "csv Files (*.csv*)|*.csv"; //only shows html files
                     choofdlog.Title = "Select a CSV File";

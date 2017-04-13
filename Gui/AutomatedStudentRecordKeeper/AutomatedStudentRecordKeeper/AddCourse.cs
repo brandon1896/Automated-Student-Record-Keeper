@@ -172,6 +172,7 @@ namespace AutomatedStudentRecordKeeper
                     if (choofdlog.ShowDialog() == DialogResult.OK)
                     {
                         selectedInputFile = choofdlog.FileName; //sets path
+<<<<<<< HEAD
 
                         //work in progress.... almost done i think..
                         Debug.Write("START");
@@ -209,6 +210,45 @@ namespace AutomatedStudentRecordKeeper
 
                         Console.Write(term.Length);
 
+=======
+
+                        //work in progress.... almost done i think..
+                        Debug.Write("START");
+                        List<string> data = new List<string>();
+                        Microsoft.Office.Interop.Word.Application word = new Microsoft.Office.Interop.Word.Application();
+                        Document document = word.Documents.Open(selectedInputFile, ReadOnly: true);
+
+                        foreach (Paragraph objParagraph in document.Paragraphs)
+                            data.Add(objParagraph.Range.Text.Trim());
+
+                        string totaltext = string.Join(string.Empty, data.ToArray());
+
+                        ((_Document)document).Close();
+                        ((_Application)word).Quit();
+
+                        totaltext = totaltext.Substring(totaltext.IndexOf("YEAR")); //removes irrelevant info at beginning of doc file
+                        totaltext = Regex.Replace(totaltext, @"\a", string.Empty);
+                        totaltext = Regex.Replace(totaltext, @"(Lab)\r|(Lec)\r", string.Empty);
+                        totaltext = Regex.Replace(totaltext, @"\d\.\d", string.Empty);
+                        totaltext = Regex.Replace(totaltext, @"\b\d{1}\s|\b\d{2}\s", Environment.NewLine);
+                        totaltext = Regex.Replace(totaltext, @"YEAR|FALL |WINTER ", string.Empty, RegexOptions.Singleline);
+                        totaltext = Regex.Replace(totaltext, @"SECOND|THIRD|FOURTH", string.Empty);
+                        totaltext = Regex.Replace(totaltext, @"(Total).*?(Hours)", string.Empty);
+                        totaltext = Regex.Replace(totaltext, @"(Sociology 2755).*?\n", string.Empty);
+                        totaltext = Regex.Replace(totaltext, Environment.NewLine, string.Empty);
+                        totaltext = Regex.Replace(totaltext, @"\r+", "\n");
+                        totaltext = Regex.Replace(totaltext, @"(?<=([\d]{4}))\s+", "~", RegexOptions.Singleline);
+                        totaltext = Regex.Replace(totaltext, @"(One half course from Science Elective Course List).*?\n", string.Empty, RegexOptions.Singleline);
+                        totaltext = Regex.Replace(totaltext, @"(One half course from Engineering Elective Course List).*?\n", string.Empty, RegexOptions.Singleline);
+                        totaltext = Regex.Replace(totaltext, @"(One complementary).*?\n", string.Empty, RegexOptions.Singleline);
+
+                        System.IO.File.WriteAllText(@"C:\Users\Public\totaltext.txt", totaltext);
+
+                        string[] term = totaltext.Split(new string[] { "TERM " }, StringSplitOptions.RemoveEmptyEntries);
+
+                        Console.Write(term.Length);
+
+>>>>>>> origin/master
                         //temp fix ------------------------------
                         //drops table if exists
                         try
